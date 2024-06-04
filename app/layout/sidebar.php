@@ -22,7 +22,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="index.php?page=user/index">User</a></li>
                                 <li><a class="nav-link" href="index.php?page=user/add">Tambah User</a></li>
-                                <li><a class="nav-link" href="index.php?page=user/edit">Tambah User</a></li>
+                                <!-- <li><a class="nav-link" href="index.php?page=user/edit&id_user= ">Edit User</a></li> -->
 
                             </ul>
                         </li>

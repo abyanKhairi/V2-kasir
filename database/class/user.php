@@ -43,7 +43,7 @@ class user
     public function getID($id_user)
     {
         $stmt = $this->db->prepare("SELECT * FROM user WHERE id_user = :id_user");
-        $stmt->execute(array(":id_user", $id_user));
+        $stmt->execute(array(":id_user" => $id_user));
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data;
@@ -63,11 +63,11 @@ class user
                     <img class="mr-3 rounded-circle" width="50" src="../../assets/img/avatar/avatar-4.png" alt="avatar">
                     <div class="media-body">
                         <h6 class="media-title"><?php echo $row["nama"] ?></h6>
-                        <div class="text-small text-muted">@<?php echo $row["username"] ?> <div class="bullet"></div> <span class="text-primary"><?php echo $row["role"] ?></span></div>
+                        <div class="text-small text-muted">@<?php echo $row["username"] ?> <div class="bullet"></div> <?php echo $row["email"] ?> <div class="bullet"></div> <span class="text-primary"><?php echo $row["role"] ?></span></div>
                     </div>
                     <td>
-                        <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" href="class.php?id_user=<?php echo $row["id_user"] ?>"><i class="fas fa-trash"></i></a>
+                        <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=user/edit&id_user=<?php echo $row["id_user"] ?>" ><i class="fas fa-pencil-alt"></i></a>
+                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" href="index.php?page=user/hapus&id_user=<?php echo $row["id_user"] ?>" ><i class="fas fa-trash"></i></a>
                     </td>
                 </li>
 <?php
