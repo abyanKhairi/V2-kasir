@@ -8,9 +8,7 @@
         <div class="section-header">
             <h1>User</h1>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg btn-block" id="modal-1" name="tambah">
-            Tambah
-        </button>
+ss
         <div class="card">
             <div class="card-header">
                 <h4 class="d-inline">User List</h4>

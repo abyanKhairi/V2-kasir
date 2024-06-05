@@ -63,7 +63,7 @@ class user
                     <img class="mr-3 rounded-circle" width="50" src="../../assets/img/avatar/avatar-4.png" alt="avatar">
                     <div class="media-body">
                         <h6 class="media-title"><?php echo $row["nama"] ?></h6>
-                        <div class="text-small text-muted">@<?php echo $row["username"] ?> <div class="bullet"></div> <?php echo $row["email"] ?> <div class="bullet"></div> <span class="text-primary"><?php echo $row["role"] ?></span></div>
+                        <div class="text-small text-muted">@<?php echo $row["username"] ?> <div class="bullet"></div> <?php echo $row["email"] ?> <div class="bullet"></div> <span style="cursor:default" data-toggle="tooltip" title="role" class="text-primary"><?php echo $row["role"] ?></span></div>
                     </div>
                     <td>
                         <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=user/edit&id_user=<?php echo $row["id_user"] ?>" ><i class="fas fa-pencil-alt"></i></a>
