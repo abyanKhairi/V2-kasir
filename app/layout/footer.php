@@ -19,6 +19,8 @@
 
     <!-- Page Specific JS File -->
     <script src="../../../../zkasir/assets/js/page/index-0.js"></script>
+    <script src="../../../../zkasir/assets/js/page/bootstrap-modal.js"></script>
+
 
     <!-- Template JS File -->
     <script src="../../../../zkasir/assets/js/scripts.js"></script>

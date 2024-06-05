@@ -61,6 +61,8 @@ $currentUser = $user->getUser();
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="../../../../zkasir/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block"><?php echo $currentUser['nama'];?></div>
+                            
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <!-- <div class="dropdown-title">Logged in 5 min ago</div>
@@ -77,6 +79,7 @@ $currentUser = $user->getUser();
                             <a style="cursor: pointer;" data-toggle="tooltip" data-confirm="Yakin Ingin Log Out?" data-confirm-yes="window.location.href='../app/auth/logout.php'" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
+                            
                         </div>
                     </li>
                 </ul>

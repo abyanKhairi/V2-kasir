@@ -1,7 +1,7 @@
 "use strict";
 
-$("#modal-1").fireModal({body: 'Modal body text goes here.'});
-$("#modal-2").fireModal({body: 'Modal body text goes here.', center: true});
+$("#modal-1").fireModal({body: 'Data Berhasil Ditambahkan'});
+$("#modal-2").fireModal({body: 'Data Ture', center: true});
 
 let modal_3_body = '<p>Object to create a button on the modal.</p><pre class="language-javascript"><code>';
 modal_3_body += '[\n';

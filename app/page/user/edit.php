@@ -12,8 +12,13 @@
         $not_tlp = $_POST["not_tlp"];
         $role = $_POST["role"];
 
-        $crudUser->update($id_user,$nama, $username, $email, $password, $alamat, $not_tlp, $role);    
+        $crudUser->update($id_user,$nama, $username, $email, $password, $alamat, $not_tlp, $role);
+        
+        if ($crudUser->update($id_user,$nama, $username, $email, $password, $alamat, $not_tlp, $role) == true) {
+          ?> <script>window.location.href="index.php?page=user/index"</script> <?php  
+        }
     }
+
 
     if (isset($id_user)) {
         extract($crudUser->getID($id_user));
@@ -27,7 +32,7 @@
                <div class="section-header">
                   <h1>Edit User</h1>
                </div>
-                  <form method="POST" action="index.php?page=user/index">
+                  <form method="POST">
 
                                     <div class="form-group">
                                         <label for="nama">Name</label>
@@ -64,7 +69,7 @@
                                         <label>Role</label>
                                         <select class="form-control selectric" name="role" value="<?php echo $role; ?>" required>
                                             <option  value="admin">admin</option>
-                                            <option  value="<?php echo $role; ?>">superAdmin</option>
+                                            <option  value="superAdmin">superAdmin</option>
                                         </select>
                                     </div>  
 

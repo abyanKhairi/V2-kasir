@@ -21,7 +21,7 @@
                         </div>
                         <div class="card-body">
                             <!-- Jumlah Admin -->
-
+                            <?php echo $count->jumlahAdmin()?>
 
                         </div>
                     </div>
@@ -41,6 +41,8 @@
                         </div>
                         <div class="card-body">
                             <!-- Total Costumer -->
+                            <?php echo $count->jumlahCostumer()?>
+
                         </div>
                     </div>
                 </div>
@@ -56,6 +58,8 @@
                         </div>
                         <div class="card-body">
                             <!-- Total Product -->
+                            <?php echo $count->jumlahProduk()?>
+
 
                         </div>
                     </div>
@@ -72,6 +76,8 @@
                         </div>
                         <div class="card-body">
                             <!-- Total Transaksi -->
+                            <?php echo $count->jumlahtransaksi()?>
+
                         </div>
                     </div>
                 </div>
