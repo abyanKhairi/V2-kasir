@@ -11,7 +11,7 @@ include "class/auth.php";
 include "class/user.php";
 include "class/costumer.php";
 include "class/product.php";
-
+include "class/superadmin.php";
 
 $produk = new produk($con);
 $costumer = new costumer($con);

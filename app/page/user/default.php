@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <a href="../user/index.php">
+                            <a href="index.php?page=user/index">
                                 <h4>Total User</h4>
                             </a>
                         </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <a href="../costumer/index.php">
+                            <a href="index.php?page=costumer/index">
                                 <h4>Total Costumers</h4>
                             </a>
                         </div>
@@ -54,7 +54,8 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Product</h4>
+                            <a href="index.php?page=product/index">
+                            <h4>Total Product</h4></a>
                         </div>
                         <div class="card-body">
                             <!-- Total Product -->

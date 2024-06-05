@@ -1,13 +1,13 @@
 <?php
-include("../database/koneksi.php");
 include("layout/header.php");
 include("layout/sidebar.php");
 
 
 
 
-if (!$user->isLoggedIn() || $user->isLoggedIn() == false) {
-    header('Location: auth/login.php');
+if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
+    ?> <script>window.location.href="auth/login.php"</script>  <?php
+
 }
 
 

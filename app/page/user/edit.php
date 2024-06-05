@@ -77,6 +77,8 @@
                                             <label for="password" class="d-block">Password</label>
                                             <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" required>
                                     </div>
+                                    <br>    
+                                    <br>
 
 <!-- 
                                     <div class="form-group">

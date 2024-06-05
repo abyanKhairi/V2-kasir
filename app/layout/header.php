@@ -1,5 +1,5 @@
 <?php
-
+include("../database/koneksi.php");
 $currentUser = $user->getUser();
 
 ?>
