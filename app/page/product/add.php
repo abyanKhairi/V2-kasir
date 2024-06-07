@@ -42,9 +42,10 @@ if (isset($_POST["submit"])) {
                                         </div>
                                     </div>
                                     <div class="card-footer text-right">
-                                        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
-                                    </div>
-                                </form>
+                                        <button class="btn btn-primary" type="submit" name="submit" id="swal-1">Submit</button>
+                                        
+                                        </div>
+                                        </form>
                             </div>
                         </div>
 

@@ -4,10 +4,10 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href=" ">IYA</a>
+                        <a href=" ">ZKASIR</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href=" ">Y</a>
+                        <a href=" ">Z</a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>

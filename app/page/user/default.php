@@ -1,5 +1,3 @@
-
-
 <!-- Main Content dashboard -->
 <div class="main-content">
     <section class="section">
@@ -84,4 +82,3 @@
                 </div>
             </div>
         </div>
-        

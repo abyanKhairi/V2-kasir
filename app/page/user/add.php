@@ -13,8 +13,6 @@ if (isset($_POST["tambah"])) {
 }
 
 ?>
-
-
 <div class="main-content">
     <section class="section">
         <div class="section-header">
@@ -68,22 +66,14 @@ if (isset($_POST["tambah"])) {
             </div>
             <br>
             <br>
-            <!-- 
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="agree" class="custom-control-input" id="agree" required>
-                                            <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
-                                        </div>
-                                    </div> -->
-
             <div class="form-group">
                 <button type="submit"  class="btn btn-primary btn-lg btn-block" name="tambah">
                     Tambah
                 </button>
             </div>
         </form>
-
-
     </section>
 </div>
+
+<?php
 

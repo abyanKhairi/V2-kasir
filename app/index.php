@@ -2,17 +2,7 @@
 include("layout/header.php");
 include("layout/sidebar.php");
 
-
-
-
-if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
-    ?> <script>window.location.href="auth/login.php"</script>  <?php
-
-}
-
-
 $page = isset($_GET["page"]) ? $_GET["page"] : '';
-
 switch ($page) {
 
         // Page User
@@ -59,13 +49,16 @@ switch ($page) {
         include('page/product/hapus.php');
         include('page/product/index.php');
         break;
-
     default:
         include('page/user/default.php');
-}
+        break;
+        }
+        ?>
+<?php
+
+
+
+
+
+
 include("layout/footer.php");
-?>
-
-
-
-<script src="../../assets/js/page/bootstrap-modal.js"></script>

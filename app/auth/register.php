@@ -9,6 +9,7 @@ if ($user->isLoggedIn()) {
 
 // cek data register yang dikirim
 
+
 if (isset($_POST["regis"])) {
     $nama = $_POST["nama"];
     $username = $_POST["username"];
@@ -21,7 +22,7 @@ if (isset($_POST["regis"])) {
     if ($user->register($nama, $username ,$email, $password, $alamat, $not_tlp, $role)) {
 
         //jika register berhasil
-        $seccess = true;
+        $success = true;
     } else {
         $error = $user->getLasrError();
     }
