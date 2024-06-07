@@ -17,6 +17,8 @@
 
                         <li class="menu-header">User</li>
                         <li class="dropdown ">
+
+
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i><span>User Management</span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="index.php?page=user/index">User</a></li>
@@ -25,6 +27,7 @@
 
                             </ul>
                         </li>
+                        <?php ?>
 
                         <li class="menu-header">Customers</li>
                         <li class="dropdown ">

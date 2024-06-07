@@ -15,7 +15,7 @@
                                         <tr>
                                             <th scope="col">Nama Product</th>
                                             <th scope="col">Jumlah Product</th>
-                                            <th scope="col">Harga Product</th>
+                                            <th scope="col">Harga Satuan</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                         <?php
@@ -26,7 +26,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="card-footer text-center">
+                            <!-- <div class="card-footer text-center">
                                 <nav class="d-inline-block">
                                     <ul class="pagination mb-0">
                                         <li class="page-item disabled">
@@ -42,8 +42,8 @@
                                         </li>
                                     </ul>
                                 </nav>
-                            </div>
-                        </div>
+                            </div> -->
+                         </div>
                     </div>
             </div>
 

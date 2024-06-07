@@ -6,12 +6,17 @@ try {
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
+
+
 include 'class/count.php';
 include "class/auth.php";
 include "class/user.php";
 include "class/costumer.php";
 include "class/product.php";
+include "class/page.php";
 
+
+$page = new Page($con);
 $produk = new produk($con);
 $costumer = new costumer($con);
 $count = new count($con);

@@ -8,7 +8,6 @@
         <div class="section-header">
             <h1>User</h1>
         </div>
-ss
         <div class="card">
             <div class="card-header">
                 <h4 class="d-inline">User List</h4>
