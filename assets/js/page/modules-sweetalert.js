@@ -20,7 +20,7 @@ $("#swal-5").click(function() {
 	swal('Good Job', 'You clicked the button!', 'error');
 });
 
-$("#swal-6").click(function() {
+$("#hapus").click(function() {
   swal({
       title: 'Are you sure?',
       text: 'Once deleted, you will not be able to recover this imaginary file!',
@@ -61,9 +61,8 @@ $("#swal-8").click(function() {
   });
 });
 
-
-$("#tambah").click(function() {
-  swal('Informasi Berhasil Ditambahkan', {
+$("#swal-9").click(function() {
+  swal('This modal will disappear soon!', {
     buttons: false,
     timer: 3000,
   });
@@ -72,22 +71,3 @@ $("#tambah").click(function() {
 
 
 
-$("#deltes").click(function() {
-  swal({
-      title: 'Yakin Ingin Menghapus Data Ini?',
-      text: '',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-      window.location.href="product/hapus.php"
-      swal('Poof! Your imaginary file has been deleted!', {
-        icon: 'success',
-      });
-      } else {
-      swal('Your imaginary file is safe!');
-      }
-    });
-});

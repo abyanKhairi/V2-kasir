@@ -9,7 +9,7 @@ switch ($page) {
     case 'edit':
         include('page/costumer/edit.php');
         break;
-    case 'delet':
+    case 'delete':
         include('page/costumer/hapus.php');
         break;
     default:

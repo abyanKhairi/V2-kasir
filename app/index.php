@@ -1,6 +1,9 @@
+
+
+
 <?php
-include("layout/header.php");
-include("layout/sidebar.php");
+include_once("layout/header.php");
+include_once("layout/sidebar.php");
 
 $page = isset($_GET["page"]) ? $_GET["page"] : '';
 switch ($page) {
@@ -26,6 +29,4 @@ switch ($page) {
         include('page/dashboard/index.php');
 }
 
-
-
-include("layout/footer.php");
+include_once("layout/footer.php");

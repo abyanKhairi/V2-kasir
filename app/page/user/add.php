@@ -9,8 +9,9 @@ if (isset($_POST["tambah"])) {
     $role = $_POST["role"];
 
     $crudUser->tambah($nama, $username, $email, $password, $alamat, $not_tlp, $role);
-   
 }
+
+    
 
 ?>
 <div class="main-content">

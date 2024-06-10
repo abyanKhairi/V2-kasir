@@ -4,4 +4,6 @@ include("../../database/koneksi.php");
 
 $user->logout();
 
-header("Location: login.php");
+?>
+
+<script>window.location.href="../index.php?auth=login";</script>

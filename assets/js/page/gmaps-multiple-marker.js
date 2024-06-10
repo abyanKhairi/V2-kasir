@@ -1,4 +1,4 @@
-"use strict";
+   "use strict";
 
 // initialize map
 var map = new GMaps({

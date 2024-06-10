@@ -10,7 +10,7 @@ if (isset($_POST["edit"])) {
     $costumer->update($id_pembeli, $nama, $alamat, $no_tlp);
             
     if ($costumer->update($id_pembeli, $nama, $alamat, $no_tlp) == true) {
-        ?> <script>window.location.href="index.php?page=costumer/index"</script> <?php  
+        ?> <script>window.location.href="index.php?page=costumer"</script> <?php  
       }
   }
 
