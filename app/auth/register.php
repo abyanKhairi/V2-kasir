@@ -1,10 +1,9 @@
 <?php
-require_once("../../database/koneksi.php");
 
 //cek status user
 
 if ($user->isLoggedIn()) {
-    header("Location: ../index.php");
+    header("Location: ../app/index.php");
 }
 
 // cek data register yang dikirim
@@ -149,7 +148,7 @@ if (isset($_POST["regis"])) {
                             </div>
                         </div>
                         <div class="mt-5 text-muted text-center">
-                            Alredy Have account? <a href="login.php">Log In</a>
+                            Alredy Have account? <a href="index.php?auth=login">Log In</a>
                         </div>
                         <div class="simple-footer">
                             <!--copyright-->

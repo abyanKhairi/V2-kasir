@@ -4,8 +4,9 @@ $currentUser = $user->getUser();
 
 
 if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
-    ?> <script>window.location.href="auth/login.php"</script>  <?php
-
+   header("Location:index.php?page=login",0,1);
+}else{
+    header("Location: index.php", true, 1);
 }
 
 ?>

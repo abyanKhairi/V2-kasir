@@ -1,11 +1,7 @@
 <?php
 
-require_once("../../database/koneksi.php");
-
 //cek status user
-if($user->isLoggedIn()){
-    header("Location: ../index.php");
-}
+
 
 // data dikirm
 
@@ -15,7 +11,7 @@ if(isset($_POST["login"])){
 
     //proses login
     if($user->login($username, $password)){
-        header("Location: ../index.php");
+        header("Location: ../app/index.php");
     }else{
         //jika gaal login
         $error = $user->getLasrError();
@@ -108,7 +104,7 @@ if(isset($_POST["login"])){
               </div>
             </div>
             <div class="mt-5 text-muted text-center">
-              Don't have an account? <a href="register.php">Create One</a>
+              Don't have an account? <a href="index.php?auth=register">Create One</a>
             </div>
             <div class="simple-footer">
               <!--Copyright-->

@@ -10,13 +10,10 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled list-unstyled-border">
-
                     <?php
                     $rows = $con->query("SELECT * FROM `user`");
                     foreach ($rows as $row) {
                     ?>
-
-
                         <li class="media">
                             <img class="mr-3 rounded-circle" width="50" src="../../assets/img/avatar/avatar-4.png" alt="avatar">
                             <div class="media-body">

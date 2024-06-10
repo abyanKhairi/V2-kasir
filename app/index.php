@@ -1,10 +1,22 @@
-
-
-
 <?php
-include_once("layout/header.php");
-include_once("layout/sidebar.php");
+include("layout/header.php");
 
+$auth = isset($_GET['auth']) ? $_GET['auth'] : 'auth';
+if(@$_GET['auth']){
+switch($auth){
+case 'login':
+    include('auth/login.php');
+break;
+case 'register':
+    include('auth/register.php');
+break;
+
+}
+exit;
+}
+
+
+include("layout/sidebar.php");
 $page = isset($_GET["page"]) ? $_GET["page"] : '';
 switch ($page) {
 
@@ -29,4 +41,4 @@ switch ($page) {
         include('page/dashboard/index.php');
 }
 
-include_once("layout/footer.php");
+include("layout/footer.php");

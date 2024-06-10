@@ -14,7 +14,7 @@ if (isset($_POST["edit"])) {
 
     if ($crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role) == true) {
 ?>      <script>
-            window.location.href = "index.php?page=user/index"
+            window.location.href = "index.php?page=user"
         </script> 
 <?php
         }
@@ -24,8 +24,6 @@ if (isset($_POST["edit"])) {
      }
 
 ?>
-
-
 <div class="main-content">
     <section class="section">
         <div class="section-header">
