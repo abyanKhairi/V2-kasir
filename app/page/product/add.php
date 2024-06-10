@@ -13,46 +13,40 @@ if (isset($_POST["submit"])) {
 
 ?>
 
-
 <div class="main-content">
-                <section class="section">
-                    <div class="section-header">
-                        <h1>Product</h1>
-                    </div>
+    <section class="section">
+        <div class="section-header">
+            <h1>Product</h1>
+        </div>
 
-                    <div class="row">
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <div class="card">
-                                <form method="post">
-                                    <div class="card-header">
-                                        <h4>Tambah Product</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label>Nama Product</label>
-                                            <input type="text" class="form-control" name="nama_produk" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Jumlah Product</label>
-                                            <input type="number" class="form-control" required name="jumlah_produk">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Harga Satuan</label>
-                                            <input type="number" class="form-control" required name="harga_produk">
-                                        </div>
-                                    </div>
-                                    <div class="card-footer text-right">
-                                        <button class="btn btn-primary" type="submit" name="submit" id="swal-1">Submit</button>
-                                        
-                                        </div>
-                                        </form>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                    <form method="post">
+                        <div class="card-header">
+                            <h4>Tambah Product</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nama Product</label>
+                                <input type="text" class="form-control" name="nama_produk" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Jumlah Product</label>
+                                <input type="number" class="form-control" required name="jumlah_produk">
+                            </div>
+                            <div class="form-group">
+                                <label>Harga Satuan</label>
+                                <input type="number" class="form-control" required name="harga_produk">
                             </div>
                         </div>
+                        <div class="card-footer text-right">
+                            <button class="btn btn-primary" type="submit" id="swal-8" name="submit">Submit</button>
 
-
-
-
-
-</div>
-</section>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

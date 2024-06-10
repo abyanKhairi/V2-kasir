@@ -13,7 +13,6 @@ include "class/user.php";
 include "class/costumer.php";
 include "class/product.php";
 
-
 $produk = new produk($con);
 $costumer = new costumer($con);
 $count = new count($con);

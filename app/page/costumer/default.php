@@ -2,19 +2,16 @@
 $page = isset($_GET["act"]) ? $_GET["act"] : '';
 switch ($page) {
 
-        // Page User
+
     case 'create':
-        include('add.php');
+        include('page/costumer/add.php');
         break;
     case 'edit':
-        include('edit.php');
+        include('page/costumer/edit.php');
         break;
-    case 'delete':
-        include('hapus.php');
-        include('index.php');
+    case 'delet':
+        include('page/costumer/hapus.php');
         break;
-    default :
+    default:
         include('index.php');
-} 
-
-
+}

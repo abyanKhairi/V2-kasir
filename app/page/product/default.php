@@ -16,5 +16,3 @@ switch ($page) {
     default :
         include('index.php');
 } 
-
-

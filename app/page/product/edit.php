@@ -1,5 +1,5 @@
 <?php
-$id_produk = $_GET['id_product'];
+$id_produk = $_GET['id'];
 
 if (isset($_POST['update'])) {
     $nama_produk = $_POST['nama_produk'];

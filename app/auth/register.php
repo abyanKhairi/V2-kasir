@@ -1,5 +1,5 @@
 <?php
-include("../../database/koneksi.php");
+require_once("../../database/koneksi.php");
 
 //cek status user
 

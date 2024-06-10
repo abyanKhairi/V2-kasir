@@ -62,19 +62,29 @@ $("#swal-8").click(function() {
 });
 
 
+$("#tambah").click(function() {
+  swal('Informasi Berhasil Ditambahkan', {
+    buttons: false,
+    timer: 3000,
+  });
+});
+
+
+
+
 $("#deltes").click(function() {
   swal({
-      title: 'Are you sure?',
-      text: 'Once deleted, you will not be able to recover this imaginary file!',
+      title: 'Yakin Ingin Menghapus Data Ini?',
+      text: '',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
     })
     .then((willDelete) => {
       if (willDelete) {
+      window.location.href="product/hapus.php"
       swal('Poof! Your imaginary file has been deleted!', {
         icon: 'success',
-        Window,location
       });
       } else {
       swal('Your imaginary file is safe!');

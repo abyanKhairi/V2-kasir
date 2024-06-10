@@ -1,5 +1,7 @@
 <?php
 
-$id_produk = $_GET['id_product'];
+$id_produk = $_GET['id'];
 
 $produk->delete($id_produk);
+
+

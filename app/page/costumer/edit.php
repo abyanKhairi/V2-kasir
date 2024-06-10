@@ -1,6 +1,6 @@
 <?php
 
-$id_pembeli = $_GET['id_pembeli'];
+$id_pembeli = $_GET['id'];
 
 
 if (isset($_POST["edit"])) {

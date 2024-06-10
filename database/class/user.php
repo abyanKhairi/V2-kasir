@@ -66,15 +66,15 @@ class user
                         <div class="text-small text-muted">@<?php echo $row["username"] ?> <div class="bullet"></div> <?php echo $row["email"] ?> <div class="bullet"></div> <span style="cursor:default" data-toggle="tooltip" title="role" class="text-primary"><?php echo $row["role"] ?></span></div>
                     </div>
                     <td>
-                        <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=user/edit&id_user=<?php echo $row["id_user"] ?>" ><i class="fas fa-pencil-alt"></i></a>
-                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=user/hapus&id_user=<?php echo $row['id_user']?> Berhasil Di Hapus'" ><i class="fas fa-trash"></i></a>
+                        <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=user&act=edit&id=<?php echo $row["id_user"] ?>" ><i class="fas fa-pencil-alt"></i></a>
+                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=user&act=delete&id=<?php echo $row['id_user']?>'" ><i class="fas fa-trash"></i></a>
                     </td>
                 </li>
 <?php
             }
         }
     }
-
+    
 
     public function update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role)
     {
