@@ -59,7 +59,7 @@ class costumer
                     <td><?php echo $row["no_tlp"] ?></td>
                     <td>
                         <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=costumer&act=edit&id=<?php echo $row["id_pembeli"] ?>"><i class="fas fa-pencil-alt"></i></a>
-                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=costumer&act=hapus&id=<?php echo $row['id_pembeli']?> Berhasil Di Hapus'"><i class="fas fa-trash"></i></a>
+                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=costumer&act=hapus&id=<?php echo $row['id_pembeli'] ?> Berhasil Di Hapus'"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
                 <!-- <a style="cursor: pointer;" data-toggle="tooltip" data-confirm="Yakin Ingin Log Out?" data-confirm-yes="window.location.href='../app/auth/logout.php'" class="dropdown-item has-icon text-danger"> -->

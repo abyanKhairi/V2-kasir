@@ -1,20 +1,19 @@
 <?php
 
-
 class Auth
 {
     private $db;
 
     private $error;
-    
+
     public function __construct($db_conn)
     {
         $this->db = $db_conn;
-        
+
         session_start();
     }
 
-    
+
     public function register($nama, $username, $email, $password, $alamat, $not_tlp, $role)
     {
         try {
@@ -56,7 +55,6 @@ class Auth
             $stmt = $this->db->prepare("SELECT * FROM user WHERE username = :username");
             $stmt->bindParam(":username", $username);
             $stmt->execute();
-
             $data = $stmt->fetch();
 
             if ($stmt->rowCount()  > 0) {
@@ -69,8 +67,8 @@ class Auth
                     $this->error = 'Username Atau Password Salah';
                     return false;
                 }
-            }else{
-                
+            } else {
+
                 $this->error = 'Username Atau Password Salah';
                 return false;
             }
@@ -114,21 +112,18 @@ class Auth
     }
 
 
-    public function logout(){
+    public function logout()
+    {
         //hapus Session
-        session_destroy();
         unset($_SESSION['user_session']);
+        session_destroy();
 
         return true;
     }
-    
 
-    public function getLasrError(){
+
+    public function getLasrError()
+    {
         return $this->error;
     }
-
-    
-
-    
-
 }

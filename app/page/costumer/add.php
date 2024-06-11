@@ -4,14 +4,16 @@ if (isset($_POST["submit"])) {
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
     $no_tlp = $_POST['no_tlp'];
+
+    $pdo = Koneksi::connect();
+    $costumer = new costumer($pdo);
     $costumer->tambah($nama, $alamat, $no_tlp);
+    Koneksi::disconnect();
 
 }
 
 ?>
 
-<div class="main-content">
-            <section class="section">
                <div class="section-header">
                   <h1>Costumers</h1>
                </div>
@@ -43,8 +45,4 @@ if (isset($_POST["submit"])) {
                         </form>
                      </div>
                   </div>
-
-
-               </div>
-            </section>
-         </div>
+                  </div>

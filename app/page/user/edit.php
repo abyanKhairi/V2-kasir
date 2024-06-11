@@ -10,18 +10,23 @@ if (isset($_POST["edit"])) {
     $not_tlp = $_POST["not_tlp"];
     $role = $_POST["role"];
 
+    $pdo = Koneksi::connect();
+    $crudUser = new user($pdo);
     $crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role);
 
     if ($crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role) == true) {
-?>      <script>
+?> <script>
             window.location.href = "index.php?page=user"
-        </script> 
+        </script>
 <?php
-        }
-            }
-    if (isset($id_user)) {
-        extract($crudUser->getID($id_user));
-     }
+    }
+}
+
+$crudUser = new user($pdo);
+if (isset($id_user)) {
+    extract($crudUser->getID($id_user));
+}
+Koneksi::disconnect();
 
 ?>
 <div class="main-content">

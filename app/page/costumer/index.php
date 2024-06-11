@@ -1,6 +1,4 @@
-<div class="main-content">
-    <div class="flash-data" data-flashdata="" ></div>
-    <section class="section">
+
         <div class="section-header">
             <h1>Costumers</h1>
         </div>
@@ -21,7 +19,8 @@
                                 <th scope="col">Action</th>
                             </tr>
                             <?php
-                            $rows = $con->query("SELECT * FROM pembeli");
+                            $pdo = Koneksi::connect();
+                            $rows = $pdo->query("SELECT * FROM pembeli");
                             $i = 1;
                             foreach ($rows as $row) {
                             ?>
@@ -38,14 +37,14 @@
                                     </td>
                                 </tr>
                             <?php $i++;
-                            }  ?>
+                            }  
+                            Koneksi::disconnect();
+                            ?>
 
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-</div>
 
-</section>
-</div>
+

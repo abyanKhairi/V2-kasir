@@ -1,6 +1,3 @@
-<!-- Main Content dashboard -->
-<div class="main-content">
-    <section class="section">
         <div class="section-header">
             <h1>Dashboard</h1>
         </div>
@@ -18,7 +15,11 @@
                             </a>
                         </div>
                         <div class="card-body">
-                        <?php echo $count->jumlahAdmin(); ?>
+                            <?php
+                            $pdo = Koneksi::connect();
+                            $count =  new count($pdo);
+
+                            echo $count->jumlahAdmin(); ?>
 
                         </div>
                     </div>
@@ -37,8 +38,8 @@
                             </a>
                         </div>
                         <div class="card-body">
-                        <?php echo $count->jumlahCostumer(); ?>
 
+                            <?php echo $count->jumlahCostumer(); ?>
 
                         </div>
                     </div>
@@ -56,8 +57,8 @@
                             </a>
                         </div>
                         <div class="card-body">
-                        <?php echo $count->jumlahProduk(); ?>
 
+                            <?php echo $count->jumlahProduk(); ?>
 
                         </div>
                     </div>
@@ -73,7 +74,10 @@
                             <h4>Total Transaksi</h4>
                         </div>
                         <div class="card-body">
-                        <?php echo $count->jumlahtransaksi(); ?>
+
+                            <?php echo $count->jumlahtransaksi();
+                            Koneksi::disconnect();
+                            ?>
 
 
                         </div>

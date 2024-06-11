@@ -2,7 +2,6 @@
 $page = isset($_GET["act"]) ? $_GET["act"] : '';
 switch ($page) {
 
-        // Action User
     case 'create':
         include('add.php');
         break;
@@ -12,8 +11,6 @@ switch ($page) {
     case 'delete':
         include('hapus.php');
         break;
-    default :
+    default:
         include('index.php');
-} 
-
-
+}

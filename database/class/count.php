@@ -1,6 +1,7 @@
 <?php
 
-class count{
+class count
+{
     private $db;
 
 
@@ -11,21 +12,15 @@ class count{
 
     public function query($sql, $data, $fetch = false)
     {
-
         $q = $this->db->prepare($sql);
-
         $q->execute($data);
-
         return $fetch ? $q->fetch(2) : $q;
     }
 
 
-    public function count($table,){
-
+    public function count($table,)
+    {
         $sql = "SELECT COUNT(*) as count FROM $table";
-
-          
-
         $result = $this->query($sql, [], true);
         return $result["count"];
     }
@@ -49,5 +44,4 @@ class count{
     {
         return $this->count("transaksi");
     }
-
 }

@@ -1,44 +1,74 @@
 <?php
-include("layout/header.php");
+include("../database/koneksi.php");
 
-$auth = isset($_GET['auth']) ? $_GET['auth'] : 'auth';
-if(@$_GET['auth']){
-switch($auth){
-case 'login':
-    include('auth/login.php');
-break;
-case 'register':
-    include('auth/register.php');
-break;
+$pdo = Koneksi::connect();
 
+$user = new Auth($pdo);
+$currentUser = $user->getUser();
+
+Koneksi::disconnect();
+
+if (!$user->isLoggedIn()) {
+    include 'auth/login.php';
+} else {
+?>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+        <title>ZKasir</title>
+        <?php
+        include 'layout/stylecss.php';
+        ?>
+    </head>
+
+    <body>
+        <div id="app">
+            <?php
+            include("layout/header.php");
+            include("layout/sidebar.php");
+            ?>
+            <div class="main-content">
+                <section class="section">
+
+                    <?php
+                    $page = isset($_GET["page"]) ? $_GET["page"] : '';
+                    switch ($page) {
+                        case 'user':
+                            include('page/user/default.php');
+                            break;
+
+                        case 'costumer':
+                            include('page/costumer/default.php');
+                            break;
+
+                        case 'product':
+                            include('page/product/default.php');
+                            break;
+
+                        case 'transaksi':
+                            include('page/transaksi/default.php');
+                            break;
+
+                        default:
+                            include('page/dashboard/index.php');
+                    }
+                    ?>
+                </section>
+            </div>
+
+        </div>
+        <!-- General JS Scripts -->
+        <?php
+        include 'layout/footer.php';
+        include("layout/stylejs.php");
+        ?>
+    </body>
+
+    </html>
+
+<?php
 }
-exit;
-}
-
-
-include("layout/sidebar.php");
-$page = isset($_GET["page"]) ? $_GET["page"] : '';
-switch ($page) {
-
-
-    case 'user':
-        include('page/user/default.php');
-        break;
-
-    case 'costumer':
-        include('page/costumer/default.php');
-        break;
-
-    case 'product':
-        include('page/product/default.php');
-        break;
-
-    case 'transaksi':
-        include('page/transaksi/default.php');
-        break;
-
-    default:
-        include('page/dashboard/index.php');
-}
-
-include("layout/footer.php");
+?>

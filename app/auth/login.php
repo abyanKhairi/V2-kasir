@@ -1,21 +1,20 @@
 <?php
 
-//cek status user
+if (isset($_POST["login"])) {
+  $username = $_POST["username"];
+  $password = $_POST["password"];
 
 
-// data dikirm
+  $pdo = Koneksi::connect();
+  $user = new Auth($pdo);
+  if ($user->login($username, $password)) {
+    header("Location: ../app/index.php");
+  } else {
+    //jika gaal login
+    $error = $user->getLasrError();
+  }
 
-if(isset($_POST["login"])){
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    //proses login
-    if($user->login($username, $password)){
-        header("Location: ../app/index.php");
-    }else{
-        //jika gaal login
-        $error = $user->getLasrError();
-    }
+  Koneksi::disconnect();
 }
 
 
@@ -23,26 +22,18 @@ if(isset($_POST["login"])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>Login &mdash; Stisla</title>
-  <link rel="stylesheet" href="../../assets/modules/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../assets/modules/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="../../assets/modules/bootstrap-social/bootstrap-social.css">
-  <link rel="stylesheet" href="../../assets/css/style.css">
-  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/modules/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href=".../assets/modules/bootstrap-social/bootstrap-social.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href=".../assets/css/components.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-94034622-3');
-  </script>
 </head>
 
 <body>
@@ -63,16 +54,16 @@ if(isset($_POST["login"])){
               <div class="card-body">
                 <form method="POST" class="needs-validation" novalidate="">
                   <?php
-                    if(isset($error)) :
-                        ?>
-                        <div class="error">
-                            <?php echo $error ?>
-                        </div>
+                  if (isset($error)) :
+                  ?>
+                    <div class="error">
+                      <?php echo $error ?>
+                    </div>
 
-                    <?php endif;?>    
-                    
-                
-                <div class="form-group">
+                  <?php endif; ?>
+
+
+                  <div class="form-group">
                     <label for="username">username</label>
                     <input id="username" type="username" class="form-control" name="username" tabindex="1" required autofocus>
                     <div class="invalid-feedback">
@@ -116,15 +107,15 @@ if(isset($_POST["login"])){
   </div>
 
 
-  <script src="../../assets/modules/jquery.min.js"></script>
-  <script src="../../assets/modules/popper.js"></script>
-  <script src="../../assets/modules/tooltip.js"></script>
-  <script src="../../assets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../../assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <script src="../../assets/modules/moment.min.js"></script>
-  <script src="../../assets/js/stisla.js"></script>
-  <script src="../../assets/js/scripts.js"></script>
-  <script src="../../assets/js/custom.js"></script>
+  <script src="../assets/modules/jquery.min.js"></script>
+  <script src="../assets/modules/popper.js"></script>
+  <script src="../assets/modules/tooltip.js"></script>
+  <script src="../assets/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="../assets/modules/moment.min.js"></script>
+  <script src="../assets/js/stisla.js"></script>
+  <script src="../assets/js/scripts.js"></script>
+  <script src="../assets/js/custom.js"></script>
 </body>
 
 </html>
