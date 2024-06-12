@@ -52,10 +52,10 @@ class user
     public function update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role)
     {
 
-        $hashPasswd = password_hash($password, PASSWORD_DEFAULT);
 
 
         try {
+            $hashPasswd = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $this->db->prepare("UPDATE user SET nama = :nama, username = :username, email = :email, password = :password, alamat =:alamat, not_tlp = :not_tlp, role = :role WHERE id_user =:id_user ");
             $stmt->bindParam(":id_user", $id_user);
             $stmt->bindParam(":nama", $nama);

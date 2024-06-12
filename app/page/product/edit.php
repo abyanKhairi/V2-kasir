@@ -1,4 +1,7 @@
 <?php
+$pdo = Koneksi::connect();
+$produk = new produk($pdo);
+
 $id_produk = $_GET['id'];
 
 if (isset($_POST['update'])) {
@@ -6,8 +9,6 @@ if (isset($_POST['update'])) {
     $jumlah_produk = $_POST['jumlah_produk'];
     $harga_produk = $_POST['harga_produk'];
 
-    $pdo = Koneksi::connect();
-    $produk = new produk($pdo);
     $produk->update($id_produk, $nama_produk, $jumlah_produk, $harga_produk);
 
 
@@ -21,8 +22,6 @@ if (isset($_POST['update'])) {
 }
 
 if (isset($id_produk)) {
-
-    $produk = new produk($pdo);
     extract($produk->getID($id_produk));
 }
 $pdo =  Koneksi::disconnect();

@@ -1,7 +1,6 @@
 <div class="section-header">
     <h1>Product</h1>
 </div>
-
 <div class="col-18 col-md-16 col-lg-12">
     <div class="card">
         <div class="card-header">
@@ -30,7 +29,7 @@
                             <td><?php echo $row["harga_produk"] ?></td>
                             <td>
                                 <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=product&act=edit&id=<?php echo $row["id_produk"] ?>"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=product&act=delete&id=<?php echo $row['id_produk'] ?> Berhasil Di Hapus'"><i class="fas fa-trash"></i></a>
+                                <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=product&act=delete&id=<?php echo $row['id_produk'] ?>'"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php

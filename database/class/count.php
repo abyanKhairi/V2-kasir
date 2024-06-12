@@ -12,9 +12,9 @@ class count
 
     public function query($sql, $data, $fetch = false)
     {
-        $q = $this->db->prepare($sql);
-        $q->execute($data);
-        return $fetch ? $q->fetch(2) : $q;
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($data);
+        return $fetch ? $stmt->fetch(2) : $stmt;
     }
 
 

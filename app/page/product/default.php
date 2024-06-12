@@ -13,7 +13,6 @@ switch ($page) {
         break;
     case 'delete':
         include('hapus.php');
-        include('index.php');
         break;
     default:
         include('index.php');

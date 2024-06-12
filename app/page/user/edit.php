@@ -1,4 +1,7 @@
 <?php
+$pdo = Koneksi::connect();
+$crudUser = new user($pdo);
+
 $id_user = $_GET['id'];
 
 if (isset($_POST["edit"])) {
@@ -9,10 +12,6 @@ if (isset($_POST["edit"])) {
     $alamat = $_POST["alamat"];
     $not_tlp = $_POST["not_tlp"];
     $role = $_POST["role"];
-
-    $pdo = Koneksi::connect();
-
-    $crudUser = new user($pdo);
     $crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role);
 
     if ($crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role) == true) {
@@ -22,9 +21,7 @@ if (isset($_POST["edit"])) {
         </script>";
     }
 }
-$pdo = Koneksi::connect();
 
-$crudUser = new user($pdo);
 if (isset($id_user)) {
     extract($crudUser->getID($id_user));
 }
