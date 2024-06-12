@@ -16,12 +16,13 @@ if (isset($_POST["edit"])) {
     $crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role);
 
     if ($crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role) == true) {
-?> <script>
-            window.location.href = "index.php?page=user"
-        </script>
-<?php
+
+        echo "<script>
+            window.location.href = 'index.php?page=user'
+        </script>";
     }
 }
+$pdo = Koneksi::connect();
 
 $crudUser = new user($pdo);
 if (isset($id_user)) {

@@ -12,6 +12,9 @@ switch ($page) {
     case 'delete':
         include('hapus.php');
         break;
+    case 'logout':
+        include('userLogout.php');
+        break;
     default:
         include('index.php');
 }

@@ -17,7 +17,7 @@
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a style="cursor: pointer;" data-toggle="tooltip" data-confirm="Yakin Ingin Log Out?" data-confirm-yes="window.location.href='page/user/userLogout.php'" class="dropdown-item has-icon text-danger">
+                    <a style="cursor: pointer;" data-toggle="tooltip" data-confirm="Yakin Ingin Log Out?" data-confirm-yes="window.location.href='index.php?page=user&act=logout'" class="dropdown-item has-icon text-danger">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </div>
