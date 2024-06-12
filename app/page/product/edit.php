@@ -25,7 +25,7 @@ if (isset($id_produk)) {
     $produk = new produk($pdo);
     extract($produk->getID($id_produk));
 }
-Koneksi::disconnect();
+$pdo =  Koneksi::disconnect();
 ?>
 
 

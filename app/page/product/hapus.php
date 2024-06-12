@@ -7,4 +7,4 @@ $produk = new produk($pdo);
 
 $produk->delete($id_produk);
 
-Koneksi::disconnect();
+$pdo =  Koneksi::disconnect();

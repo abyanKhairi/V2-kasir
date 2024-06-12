@@ -14,7 +14,7 @@ if (isset($_POST["login"])) {
     $error = $user->getLasrError();
   }
 
-  Koneksi::disconnect();
+  $pdo =  Koneksi::disconnect();
 }
 
 

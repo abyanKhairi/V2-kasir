@@ -27,7 +27,7 @@
                 </li>
             <?php
             }
-            Koneksi::disconnect();
+            $pdo =  Koneksi::disconnect();
             ?>
         </ul>
     </div>

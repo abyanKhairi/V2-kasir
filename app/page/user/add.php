@@ -12,7 +12,7 @@ if (isset($_POST["tambah"])) {
     $crudUser = new user($pdo);
     $crudUser->tambah($nama, $username, $email, $password, $alamat, $not_tlp, $role);
 
-    Koneksi::disconnect();
+    $pdo =  Koneksi::disconnect();
 }
 
 

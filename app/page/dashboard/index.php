@@ -77,7 +77,7 @@
                         <div class="card-body">
 
                             <?php echo $count->jumlahtransaksi();
-                            Koneksi::disconnect();
+                            $pdo =  Koneksi::disconnect();
                             ?>
 
 

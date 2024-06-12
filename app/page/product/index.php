@@ -36,7 +36,7 @@
                     <?php
                         $i++;
                     endforeach;
-                    Koneksi::disconnect();
+                    $pdo =  Koneksi::disconnect();
                     ?>
                 </table>
             </div>

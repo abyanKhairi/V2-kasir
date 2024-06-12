@@ -9,9 +9,11 @@ if (isset($_POST["submit"])) {
     $harga_produk = $_POST['harga_produk'];
 
     $pdo = Koneksi::connect();
+
     $produk = new produk($pdo);
     $produk->tambah($nama_produk, $jumlah_produk, $harga_produk);
-    Koneksi::disconnect();
+
+    $pdo =  Koneksi::disconnect();
 }
 
 ?>

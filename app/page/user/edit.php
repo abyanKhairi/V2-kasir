@@ -27,7 +27,7 @@ $crudUser = new user($pdo);
 if (isset($id_user)) {
     extract($crudUser->getID($id_user));
 }
-Koneksi::disconnect();
+$pdo =  Koneksi::disconnect();
 
 ?>
 

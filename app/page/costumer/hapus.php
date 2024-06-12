@@ -7,9 +7,9 @@ $costumer->delete($id_pembeli);
 
 if ($costumer->delete($id_pembeli) == true) {
 ?> <script>
-        window.location.href = "index.php?page=costumer"
-    </script> <?php
+                window.location.href = "index.php?page=costumer"
+        </script> <?php
 
-            }
+                }
 
-            Koneksi::disconnect();
+                $pdo =  Koneksi::disconnect();

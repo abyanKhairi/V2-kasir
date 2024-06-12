@@ -37,7 +37,7 @@
                         </tr>
                     <?php $i++;
                     }
-                    Koneksi::disconnect();
+                    $pdo =  Koneksi::disconnect();
                     ?>
 
                 </table>

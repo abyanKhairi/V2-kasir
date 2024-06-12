@@ -6,7 +6,7 @@ include "../database/class/auth.php";
 $user = new Auth($pdo);
 $currentUser = $user->getUser();
 
-Koneksi::disconnect();
+$pdo =  Koneksi::disconnect();
 
 if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
     $log = isset($_GET['auth']) ? $_GET['auth'] : 'auth';

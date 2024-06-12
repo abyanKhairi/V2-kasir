@@ -12,4 +12,4 @@ if ($crudUser->delete($id_user) == true) {
     </script>
 <?php
 }
-Koneksi::disconnect();
+$pdo =  Koneksi::disconnect();
