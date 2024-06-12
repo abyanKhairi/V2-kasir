@@ -1,4 +1,6 @@
 <?php
+include "../database/class/product.php";
+
 $page = isset($_GET["act"]) ? $_GET["act"] : '';
 switch ($page) {
 
@@ -13,6 +15,6 @@ switch ($page) {
         include('hapus.php');
         include('index.php');
         break;
-    default :
+    default:
         include('index.php');
-} 
+}

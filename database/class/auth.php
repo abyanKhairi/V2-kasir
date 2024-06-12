@@ -10,7 +10,7 @@ class Auth
     {
         $this->db = $db_conn;
 
-        session_start();
+        @session_start();
     }
 
 
@@ -117,6 +117,7 @@ class Auth
         //hapus Session
         unset($_SESSION['user_session']);
         session_destroy();
+
 
         return true;
     }

@@ -2,14 +2,25 @@
 include("../database/koneksi.php");
 
 $pdo = Koneksi::connect();
-
+include "../database/class/auth.php";
 $user = new Auth($pdo);
 $currentUser = $user->getUser();
 
 Koneksi::disconnect();
 
-if (!$user->isLoggedIn()) {
-    include 'auth/login.php';
+if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
+    $log = isset($_GET['auth']) ? $_GET['auth'] : 'auth';
+    switch ($log) {
+        case 'login':
+            include 'auth/login.php';
+            break;
+        case 'register':
+            include 'auth/register.php';
+            break;
+        default:
+            include 'auth/login.php';
+            break;
+    }
 } else {
 ?>
     <!DOCTYPE html>

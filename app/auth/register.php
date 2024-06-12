@@ -18,13 +18,15 @@ if (isset($_POST["regis"])) {
     $not_tlp = $_POST["not_tlp"];
     $role = $_POST["role"];
 
-    if ($user->register($nama, $username ,$email, $password, $alamat, $not_tlp, $role)) {
+    $pdo = Koneksi::connect();
+    include "class/auth.php";
+    if ($user->register($nama, $username, $email, $password, $alamat, $not_tlp, $role)) {
 
-        //jika register berhasil
         $success = true;
     } else {
         $error = $user->getLasrError();
     }
+    Koneksi::disconnect();
 }
 
 ?>
@@ -38,23 +40,11 @@ if (isset($_POST["regis"])) {
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Register &mdash; Stisla</title>
 
-    <link rel="stylesheet" href="../../assets/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/modules/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="../../assets/modules/jquery-selectric/selectric.css">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-94034622-3');
-    </script>
-    <!-- /END GA -->
+    <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/modules/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../assets/modules/jquery-selectric/selectric.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
 </head>
 
 <body>
@@ -64,7 +54,7 @@ if (isset($_POST["regis"])) {
                 <div class="row">
                     <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
                         <div class="login-brand">
-                            <img src="../../assets/img/logo.png" alt="logo" width="100" class="shadow-light rounded-circle">
+                            <img src="../assets/img/logo.png" alt="logo" width="100" class="shadow-light rounded-circle">
                         </div>
 
                         <div class="card card-primary">
@@ -74,7 +64,7 @@ if (isset($_POST["regis"])) {
 
                             <div class="card-body">
                                 <form method="POST">
-                                    
+
                                     <?php if (isset($error)) : ?>
                                         <div class="error">
                                             <?php echo $error ?>
@@ -121,14 +111,14 @@ if (isset($_POST["regis"])) {
                                     <div class="form-group">
                                         <label>Role</label>
                                         <select class="form-control selectric" name="role" required>
-                                            <option  value="admin">admin</option>
-                                            <option  value="superAdmin">superAdmin</option>
+                                            <option value="admin">admin</option>
+                                            <option value="superAdmin">superAdmin</option>
                                         </select>
-                                    </div>  
+                                    </div>
 
                                     <div class="form-grup">
-                                            <label for="password" class="d-block">Password</label>
-                                            <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" required>
+                                        <label for="password" class="d-block">Password</label>
+                                        <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" required>
                                     </div>
 
 
@@ -160,18 +150,18 @@ if (isset($_POST["regis"])) {
     </div>
 
 
-    <script src="../../assets/modules/jquery.min.js"></script>
-    <script src="../../assets/modules/popper.js"></script>
-    <script src="../../assets/modules/tooltip.js"></script>
-    <script src="../../assets/modules/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-    <script src="../../assets/modules/moment.min.js"></script>
-    <script src="../../assets/js/stisla.js"></script>
-    <script src="../../assets/modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
-    <script src="../../assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
-    <script src="../../assets/js/page/auth-register.js"></script>
-    <script src="../../assets/js/scripts.js"></script>
-    <script src="../../assets/js/custom.js"></script>
+    <script src="../assets/modules/jquery.min.js"></script>
+    <script src="../assets/modules/popper.js"></script>
+    <script src="../assets/modules/tooltip.js"></script>
+    <script src="../assets/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="../assets/modules/moment.min.js"></script>
+    <script src="../assets/js/stisla.js"></script>
+    <script src="../assets/modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+    <script src="../assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
+    <script src="../assets/js/page/auth-register.js"></script>
+    <script src="../assets/js/scripts.js"></script>
+    <script src="../assets/js/custom.js"></script>
 </body>
 
 </html>

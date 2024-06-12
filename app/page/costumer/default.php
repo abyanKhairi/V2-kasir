@@ -1,4 +1,6 @@
 <?php
+include "../database/class/costumer.php";
+
 $page = isset($_GET["act"]) ? $_GET["act"] : '';
 switch ($page) {
 

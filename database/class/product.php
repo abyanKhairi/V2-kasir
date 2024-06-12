@@ -54,15 +54,7 @@ class produk
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 ?>
 
-                <tr>
-                    <td><?php echo $row["nama_produk"] ?></td>
-                    <td><?php echo $row["jumlah_produk"] ?></td>
-                    <td><?php echo $row["harga_produk"] ?></td>
-                    <td>
-                        <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=product&act=edit&id=<?php echo $row["id_produk"] ?>"><i class="fas fa-pencil-alt"></i></a>
-                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=product&act=delete&id=<?php echo $row['id_produk'] ?> Berhasil Di Hapus'"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
+
                 <!-- <a style="cursor: pointer;" data-toggle="tooltip" data-confirm="Yakin Ingin Log Out?" data-confirm-yes="window.location.href='../app/auth/logout.php'" class="dropdown-item has-icon text-danger"> -->
 <?php
             }

@@ -1,6 +1,8 @@
 <?php
 
 include("../../database/koneksi.php");
+include "../class/auth.php";
+
 $pdo = Koneksi::connect();
 $user = new Auth($pdo);
 $user->logout();

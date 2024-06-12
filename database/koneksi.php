@@ -32,24 +32,3 @@ class Koneksi
         self::$con = null;
     }
 }
-
-
-
-
-
-
-
-
-include 'class/count.php';
-include "class/auth.php";
-include "class/user.php";
-include "class/costumer.php";
-include "class/product.php";
-
-
-
-// $produk = new produk($kcon);
-// $costumer = new costumer($kcon);
-// $count = new count($kcon);
-// $crudUser = new user($kcon);
-// $user = new Auth($data);

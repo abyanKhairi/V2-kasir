@@ -10,13 +10,14 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <a href="index.php?page=user/index">
+                            <a href="index.php?page=user">
                                 <h4>Total User</h4>
                             </a>
                         </div>
                         <div class="card-body">
                             <?php
                             $pdo = Koneksi::connect();
+                            include '../database/class/count.php';
                             $count =  new count($pdo);
 
                             echo $count->jumlahAdmin(); ?>
@@ -33,7 +34,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <a href="index.php?page=costumer/index">
+                            <a href="index.php?page=costumer">
                                 <h4>Total Costumers</h4>
                             </a>
                         </div>
@@ -52,7 +53,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <a href="index.php?page=product/index">
+                            <a href="index.php?page=product">
                                 <h4>Total Product</h4>
                             </a>
                         </div>
