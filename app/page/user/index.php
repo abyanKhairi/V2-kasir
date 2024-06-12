@@ -11,7 +11,9 @@
         <ul class="list-unstyled list-unstyled-border">
             <?php
             $pdo = Koneksi::connect();
-            $rows = $pdo->query("SELECT * FROM `user`");
+
+            $user = new user($pdo);
+            $rows = $user->viewData("user");
             foreach ($rows as $row) {
             ?>
                 <li class="media">

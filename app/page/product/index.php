@@ -18,7 +18,8 @@
                     </tr>
                     <?php
                     $pdo = Koneksi::connect();
-                    $rows = $pdo->query("SELECT * FROM `product`");
+                    $produk = new produk($pdo);
+                    $rows = $produk->viewData("product");
                     $i = 1;
                     foreach ($rows as $row) :
                     ?>

@@ -19,7 +19,8 @@
                     </tr>
                     <?php
                     $pdo = Koneksi::connect();
-                    $rows = $pdo->query("SELECT * FROM pembeli");
+                    $costumer = new costumer($pdo);
+                    $rows = $costumer->viewData("pembeli");
                     $i = 1;
                     foreach ($rows as $row) {
                     ?>

@@ -80,4 +80,12 @@ class user
         $stmt->execute();
         return true;
     }
+
+    public function viewData($query)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM user");
+
+        $stmt->execute();
+        return  $rows = $stmt->fetchAll();
+    }
 }

@@ -1,8 +1,8 @@
 <?php
 include("../database/koneksi.php");
+include "../database/class/auth.php";
 
 $pdo = Koneksi::connect();
-include "../database/class/auth.php";
 $user = new Auth($pdo);
 $currentUser = $user->getUser();
 

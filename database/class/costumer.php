@@ -67,4 +67,12 @@ class costumer
         $stmt->execute();
         return true;
     }
+
+    public function viewData($query)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM pembeli");
+
+        $stmt->execute();
+        return  $rows = $stmt->fetchAll();
+    }
 }
