@@ -31,7 +31,6 @@ class user
             $stmt->execute();
 
             return true;
-            
         } catch (PDOException $e) {
 
             echo $e->getMessage();
@@ -48,7 +47,7 @@ class user
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
-    
+
 
     public function update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role)
     {
@@ -58,7 +57,7 @@ class user
 
         try {
             $stmt = $this->db->prepare("UPDATE user SET nama = :nama, username = :username, email = :email, password = :password, alamat =:alamat, not_tlp = :not_tlp, role = :role WHERE id_user =:id_user ");
-            $stmt->bindParam(":id_user",$id_user);
+            $stmt->bindParam(":id_user", $id_user);
             $stmt->bindParam(":nama", $nama);
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":email", $email);
@@ -74,11 +73,11 @@ class user
         }
     }
 
-    public function delete($id_user){
+    public function delete($id_user)
+    {
         $stmt = $this->db->prepare("DELETE FROM user WHERE id_user =:id_user");
-        $stmt->bindParam(":id_user",$id_user);
+        $stmt->bindParam(":id_user", $id_user);
         $stmt->execute();
         return true;
     }
-
 }

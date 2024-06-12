@@ -44,23 +44,6 @@ class produk
     }
 
 
-    public function viewData($query)
-    {
-        $stmt = $this->db->prepare($query);
-
-        $stmt->execute();
-
-        if ($stmt->rowCount() > 0) {
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-?>
-
-
-                <!-- <a style="cursor: pointer;" data-toggle="tooltip" data-confirm="Yakin Ingin Log Out?" data-confirm-yes="window.location.href='../app/auth/logout.php'" class="dropdown-item has-icon text-danger"> -->
-<?php
-            }
-        }
-    }
-
 
     public function update($id_produk, $nama_produk, $jumlah_produk, $harga_produk)
     {

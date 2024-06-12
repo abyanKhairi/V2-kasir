@@ -9,6 +9,7 @@ if (isset($_POST["edit"])) {
    $no_tlp = $_POST['no_tlp'];
 
    $pdo = Koneksi::connect();
+   $costumer = new costumer($pdo);
    $costumer->update($id_pembeli, $nama, $alamat, $no_tlp);
 
    if ($costumer->update($id_pembeli, $nama, $alamat, $no_tlp) == true) {
@@ -18,7 +19,7 @@ if (isset($_POST["edit"])) {
                }
             }
 
-
+            $costumer = new costumer($pdo);
             if (isset($id_pembeli)) {
                extract($costumer->getID($id_pembeli));
             }

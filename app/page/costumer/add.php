@@ -6,8 +6,10 @@ if (isset($_POST["submit"])) {
    $no_tlp = $_POST['no_tlp'];
 
    $pdo = Koneksi::connect();
+
    $costumer = new costumer($pdo);
    $costumer->tambah($nama, $alamat, $no_tlp);
+
    $pdo =  Koneksi::disconnect();
 }
 
