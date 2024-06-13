@@ -17,7 +17,6 @@ class user
         try {
             // enkripsi
             $hashPasswd = password_hash($password, PASSWORD_DEFAULT);
-
             //Masukkan user baru ke database
             $stmt = $this->db->prepare("INSERT INTO user(id_user ,nama, username,email, password, alamat, not_tlp, role) VALUES(NULL,:nama, :username ,:email, :pass, :alamat, :not_tlp, :role)");
             $stmt->bindParam(":nama", $nama);
@@ -27,14 +26,11 @@ class user
             $stmt->bindParam(":alamat", $alamat);
             $stmt->bindParam(":not_tlp", $not_tlp);
             $stmt->bindParam(":role", $role);
-
             $stmt->execute();
 
             return true;
         } catch (PDOException $e) {
-
             echo $e->getMessage();
-
             return false;
         }
     }
@@ -43,7 +39,6 @@ class user
     {
         $stmt = $this->db->prepare("SELECT * FROM user WHERE id_user = :id_user");
         $stmt->execute(array(":id_user" => $id_user));
-
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
@@ -81,11 +76,10 @@ class user
         return true;
     }
 
-    public function viewData($query)
+    public function viewData()
     {
         $stmt = $this->db->prepare("SELECT * FROM user");
-
         $stmt->execute();
-        return  $rows = $stmt->fetchAll();
+        return $stmt->fetchAll();
     }
 }

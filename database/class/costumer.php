@@ -11,7 +11,6 @@ class costumer
         $this->db = $db_conn;
     }
 
-
     public function tambah($nama, $alamat, $no_tlp)
     {
         try {
@@ -21,15 +20,10 @@ class costumer
             $stmt->bindParam(":nama", $nama);
             $stmt->bindParam(":alamat", $alamat);
             $stmt->bindParam(":no_tlp", $no_tlp);
-
             $stmt->execute();
-
             return true;
         } catch (PDOException $e) {
-
-
             echo $e->getMessage();
-
             return false;
         }
     }
@@ -38,7 +32,6 @@ class costumer
     {
         $stmt = $this->db->prepare("SELECT * FROM pembeli WHERE id_pembeli = :id_pembeli");
         $stmt->execute(array(":id_pembeli" => $id_costumer));
-
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
@@ -68,11 +61,10 @@ class costumer
         return true;
     }
 
-    public function viewData($query)
+    public function viewData()
     {
         $stmt = $this->db->prepare("SELECT * FROM pembeli");
-
         $stmt->execute();
-        return  $rows = $stmt->fetchAll();
+        return   $stmt->fetchAll();
     }
 }

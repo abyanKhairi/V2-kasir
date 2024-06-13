@@ -5,8 +5,6 @@ switch ($act) {
     case 'create';
         include 'add.php';
         break;
-    case '':
-        include '';
     case 'detail';
         include 'detail.php';
         break;

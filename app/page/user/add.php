@@ -9,6 +9,7 @@ if (isset($_POST["tambah"])) {
     $role = $_POST["role"];
 
     $pdo = Koneksi::connect();
+
     $crudUser = new user($pdo);
     $crudUser->tambah($nama, $username, $email, $password, $alamat, $not_tlp, $role);
 

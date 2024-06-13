@@ -48,7 +48,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-credit-card"></i><span>Transaksi</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="index.php?page=transaksi">Transaksi</a></li>
-                    <li><a class="nav-link" href="index.php?page=transaksi&act=create">Tambah Transaksi</a></li>
+                    <li><a class="nav-link" href="index.php?page=transaksi&act=create">Buat Transaksi</a></li>
                     <li><a class="nav-link" href="index.php?page=transaksi&act=detail">Detail Transaksi</a></li>
 
                 </ul>

@@ -70,11 +70,11 @@ class produk
         return true;
     }
 
-    public function viewData($query)
+    public function viewData()
     {
         $stmt = $this->db->prepare("SELECT * FROM product");
 
         $stmt->execute();
-        return  $rows = $stmt->fetchAll();
+        return $stmt->fetchAll();
     }
 }
