@@ -55,10 +55,11 @@ class Transaksi
     //mengambil data produk
     public function getProduk($que, $id_transaksi)
     {
-        $que = "SELECT * FROM product WHERE id_produk NOT LIKE (SELECT id_produk FROM detail_transaksi WHERE id_transaksi = :id_transaksi)";
+        $que = "SELECT * FROM product WHERE id_produk NOT IN (SELECT id_produk FROM detail_transaksi WHERE id_transaksi = :id_transaksi)";
         $stmt =  $this->db->prepare($que);
         $stmt->bindParam(':id_transaksi', $id_transaksi);
         $stmt->execute();
+
         return $stmt->fetchAll();
     }
 
@@ -89,5 +90,15 @@ class Transaksi
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function total($que, $id_transaksi)
+    {
+        $que = "SELECT * FROM detail_transaksi WHERE id_transaksi = :id_transaksi";
+        $stmt = $this->db->prepare($que);
+        $stmt->bindParam("id_transaksi", $id_transaksi);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

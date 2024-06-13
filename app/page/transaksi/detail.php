@@ -71,6 +71,7 @@ if (isset($_POST['tambahProduct'])) {
                             <th scope="col">Harga Satuan</th>
                             <th scope="col">Jumlah</th>
                             <th scope="col">Total</th>
+                            <th scope="col">Total</th>
                             <th scope="col">Action</th>
                         </tr>
                         <?php
@@ -78,14 +79,15 @@ if (isset($_POST['tambahProduct'])) {
                         $rows = $transaksi->getDetail("detail_transaksi", $id_transaksi);
                         $i = 1;
                         foreach ($rows as $row) :
-                            $total = $row['qty'] * $row['harga_produk']
+                            $total = $row['qty'] * $row['harga_produk'];
                         ?>
                             <tr>
                                 <td><?php echo $i ?></td>
                                 <td><?php echo $row["nama_produk"] ?></td>
-                                <td><?php echo number_format($row["harga_produk"]) ?></td>
+                                <td>Rp. <?php echo number_format($row["harga_produk"]) ?></td>
                                 <td><?php echo $row["qty"] ?></td>
-                                <td><?php echo number_format($total) ?></td>
+                                <td>Rp. <?php echo number_format($total) ?></td>
+
                                 <td>
                                     <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail" href="index.php?page=transaksi&act=edit&id=<?php echo $row["id_transaksi"] ?>"><i class="fas fa-shopping-cart"></i></a>
                                     <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=product&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>

@@ -25,6 +25,13 @@ class count
         return $result["count"];
     }
 
+    public function counts($tables,)
+    {
+        $sql = "SELECT * FROM detail_transaksi WHERE id_transaksi = :id_jumlah";
+        $result = $this->query($sql, [], true);
+        return $result["count"];
+    }
+
     public function jumlahCostumer()
     {
         return $this->count("pembeli");
@@ -43,5 +50,9 @@ class count
     public function jumlahtransaksi()
     {
         return $this->count("transaksi");
+    }
+
+    public function total()
+    {
     }
 }
