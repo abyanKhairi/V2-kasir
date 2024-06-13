@@ -65,6 +65,6 @@ class costumer
     {
         $stmt = $this->db->prepare("SELECT * FROM pembeli");
         $stmt->execute();
-        return   $stmt->fetchAll();
+        return  $stmt->fetchAll();
     }
 }

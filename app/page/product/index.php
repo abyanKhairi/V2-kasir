@@ -27,7 +27,7 @@
                             <td><?php echo $i ?></td>
                             <td><?php echo $row["nama_produk"] ?></td>
                             <td><?php echo $row["jumlah_produk"] ?></td>
-                            <td>Rp. <?php echo $row["harga_produk"] ?></td>
+                            <td>Rp. <?php echo number_format($row["harga_produk"]) ?></td>
                             <td>
                                 <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=product&act=edit&id=<?php echo $row["id_produk"] ?>"><i class="fas fa-pencil-alt"></i></a>
                                 <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=product&act=delete&id=<?php echo $row['id_produk'] ?>'"><i class="fas fa-trash"></i></a>
