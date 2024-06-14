@@ -3,11 +3,14 @@ include "../database/class/transaksi.php";
 
 $act = isset($_GET['act']) ? $_GET['act'] : '';
 switch ($act) {
-    case 'create';
+    case 'create':
         include 'add.php';
         break;
-    case 'detail';
+    case 'detail':
         include 'detail.php';
+        break;
+    case 'delete':
+        include 'hapus.php';
         break;
     default:
         include 'index.php';

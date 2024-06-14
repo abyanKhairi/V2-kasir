@@ -27,6 +27,12 @@ if (isset($_POST['tambahProduct'])) {
                             <option>Pilih Produk</option>
                             <?php
                             $transaksi = new Transaksi($pdo);
+                            $cek = $transaksi->cekStok($id_produk, $qty);
+
+                            if ($stok && $stok['jumlah_produk'] >= $qty) {
+                                return true;
+                            }
+
                             $rows = $transaksi->getProduk("product", $id_transaksi);
 
                             foreach ($rows as $row) {
@@ -41,7 +47,7 @@ if (isset($_POST['tambahProduct'])) {
                         <br>
                         <div class="form-group">
                             <label>Jumlah Produk</label>
-                            <input type="number" name="qty" required class="form-control">
+                            <input min="1" type="number" name="qty" required class="form-control">
                         </div>
                         <input type="hidden" name="id_transaksi" class="form-control" value="<?= $id_transaksi ?>">
                         <br>
@@ -71,7 +77,6 @@ if (isset($_POST['tambahProduct'])) {
                             <th scope="col">Harga Satuan</th>
                             <th scope="col">Jumlah</th>
                             <th scope="col">Total</th>
-                            <th scope="col">Total</th>
                             <th scope="col">Action</th>
                         </tr>
                         <?php
@@ -90,7 +95,7 @@ if (isset($_POST['tambahProduct'])) {
 
                                 <td>
                                     <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail" href="index.php?page=transaksi&act=edit&id=<?php echo $row["id_transaksi"] ?>"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=product&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
+                                    <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id_detail=<?php echo $row['id_detail_transaksi'] ?>'&id_produk=<?php echo $row["id_produk"] ?>"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php

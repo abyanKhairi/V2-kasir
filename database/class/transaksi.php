@@ -63,17 +63,47 @@ class Transaksi
         return $stmt->fetchAll();
     }
 
+    public function cekStok($id_produk, $qty)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT jumlah_produk FROM product WHERE id_produk = :id_produk");
+            $stmt->bindParam(":id_produk", $id_produk);
+            $stmt->execute();
+            $stok = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($stok >= $qty) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
 
     //menambahkan detail transaksi
     public function tambahDetail($id_transaksi, $id_produk, $qty,)
     {
         try {
+
+            if ($this->cekStok($id_produk, $qty) == false) {
+                return false;
+            }
+
             $stmt = $this->db->prepare("INSERT INTO detail_transaksi (id_transaksi, id_produk, qty) VALUE ( :id_transaksi , :id_produk, :qty )");
             $stmt->bindParam(":id_transaksi", $id_transaksi);
             $stmt->bindParam(":id_produk", $id_produk);
             $stmt->bindParam(":qty", $qty);
             $stmt->execute();
 
+
+            //mengurangi stok
+            $stmt = $this->db->prepare("UPDATE product SET jumlah_produk = jumlah_produk - :qty WHERE id_produk = :id_produk");
+            $stmt->bindParam(":id_produk", $id_produk);
+            $stmt->bindParam(":qty", $qty);
+
+            $stmt->execute();
             return true;
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -92,13 +122,20 @@ class Transaksi
         }
     }
 
-    public function total($que, $id_transaksi)
+    public function total($id_transaksi)
     {
-        $que = "SELECT * FROM detail_transaksi WHERE id_transaksi = :id_transaksi";
-        $stmt = $this->db->prepare($que);
+        $stmt = $this->db->prepare("SELECT SUM(detail_transaksi.qty * product.harga_produk) as total_harga FROM detail_transaksi JOIN product ON detail_transaksi.id_produk = product.id_produk WHERE id_transaksi = :id_transaksi");
         $stmt->bindParam("id_transaksi", $id_transaksi);
         $stmt->execute();
-
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function hapusDetail($id_produk, $id_detail)
+    {
+        $stmt = $this->db->prepare("DELETE FROM detail_transaksi WHERE id_produk = :id_produk AND id_detail_transaksi = :id_detail");
+        $stmt->bindParam(":id_produk", $id_produk);
+        $stmt->bindParam(":id_dtail", $id_detail);
+        $stmt->execute();
     }
 }

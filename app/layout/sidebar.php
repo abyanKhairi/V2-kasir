@@ -39,7 +39,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-shopping-basket"></i><span>Produck</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="index.php?page=product">Product</a></li>
-                    <li><a class="nav-link" href="index.php?page=product&act=create">Product Settings</a></li>
+                    <li><a class="nav-link" href="index.php?page=product&act=create">Tambah Product</a></li>
                 </ul>
 
 
@@ -49,8 +49,6 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="index.php?page=transaksi">Transaksi</a></li>
                     <li><a class="nav-link" href="index.php?page=transaksi&act=create">Buat Transaksi</a></li>
-                    <li><a class="nav-link" href="index.php?page=transaksi&act=detail">Detail Transaksi</a></li>
-
                 </ul>
 
         </ul>
