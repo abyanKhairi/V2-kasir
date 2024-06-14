@@ -45,7 +45,7 @@
 
             <li class="menu-header">Transaksi</li>
             <li class="dropdown ">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-credit-card"></i><span>Transaksi</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-shopping-cart"></i><span>Transaksi</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="index.php?page=transaksi">Transaksi</a></li>
                     <li><a class="nav-link" href="index.php?page=transaksi&act=create">Buat Transaksi</a></li>

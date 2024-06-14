@@ -35,7 +35,7 @@ class Transaksi
         return $stmt->fetchAll();
     }
 
-    //menambahkan transaksi / menginout data transaksi
+    //menambahkan transaksi / menginput data transaksi
     public function tambahTransaksi($id_pembeli, $tanggal)
     {
         try {
@@ -127,7 +127,7 @@ class Transaksi
         $stmt = $this->db->prepare("SELECT SUM(detail_transaksi.qty * product.harga_produk) as total_harga FROM detail_transaksi JOIN product ON detail_transaksi.id_produk = product.id_produk WHERE id_transaksi = :id_transaksi");
         $stmt->bindParam("id_transaksi", $id_transaksi);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
     }
 
 
@@ -135,7 +135,18 @@ class Transaksi
     {
         $stmt = $this->db->prepare("DELETE FROM detail_transaksi WHERE id_produk = :id_produk AND id_detail_transaksi = :id_detail");
         $stmt->bindParam(":id_produk", $id_produk);
-        $stmt->bindParam(":id_dtail", $id_detail);
+        $stmt->bindParam(":id_detail", $id_detail);
         $stmt->execute();
+
+        return true;
+    }
+
+    public function hapusTransaksi($id_transaksi)
+    {
+        $stmt = $this->db->prepare("DELETE FROM transaksi WHERE id_transaksi = :id");
+        $stmt->bindParam(":id", $id_transaksi);
+        $stmt->execute();
+
+        return true;
     }
 }

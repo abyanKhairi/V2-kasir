@@ -16,6 +16,11 @@
  <script src="../assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
  <script src="../assets/js/dist/sweetalert2.all.min.js"></script>
  <script src="../assets/js/dist/swtal.js"></script>
+ <script src="../assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
+ <script src="../assets/modules/select2/dist/js/select2.full.min.js"></script>
+
+
+
 
  <!-- Page Specific JS File -->
  <script src="../assets/js/page/index-0.js"></script>

@@ -1,15 +1,19 @@
 <?php
-$pdo = Koneksi::connect();
 $id_transaksi = $_GET['id'];
 if (isset($_POST['tambahProduct'])) {
 
+    $pdo = Koneksi::connect();
     $id_produk = $_POST['id_produk'];
     $id_transaksi = $_POST['id_transaksi'];
     $qty = $_POST['qty'];
+    $nama = $_POST['nama_pembeli'];
     $transaksi = new Transaksi($pdo);
 
     $transaksi->tambahDetail($id_transaksi, $id_produk, $qty);
+    $pdo = Koneksi::disconnect();
 }
+
+
 ?>
 
 <div class="section-header">
@@ -22,28 +26,32 @@ if (isset($_POST['tambahProduct'])) {
             <form method="POST">
                 <div class="form-group">
                     <div class="card-body">
-                        <label for="nama">Name Pelanggan</label>
-                        <select class="form-control selectric" name="id_produk">
-                            <option>Pilih Produk</option>
-                            <?php
-                            $transaksi = new Transaksi($pdo);
-                            $cek = $transaksi->cekStok($id_produk, $qty);
+                        <div class="form-group">
+                            <label for="nama">Nama Pelanggan</label>
+                            <select class="form-control selectric" name="id_produk">
+                                <?php
+                                $pdo = Koneksi::connect();
+                                $transaksi = new Transaksi($pdo);
+                                $cek = $transaksi->cekStok($id_produk, $qty);
 
-                            if ($stok && $stok['jumlah_produk'] >= $qty) {
-                                return true;
-                            }
+                                if ($stok && $stok['jumlah_produk'] >= $qty) {
+                                    return true;
+                                }
 
-                            $rows = $transaksi->getProduk("product", $id_transaksi);
+                                $rows = $transaksi->getProduk("product", $id_transaksi);
 
-                            foreach ($rows as $row) {
-                            ?>
-                                <option value="<?= $row['id_produk'] ?>"><?= $row['nama_produk'] ?></option>
+                                foreach ($rows as $row) {
+                                ?>
+                                    <option value="<?= $row['id_produk'] ?>"><?= $row['nama_produk'] ?></option>
 
-                            <?php
-                            }
-                            ?>
+                                <?php
+                                }
+                                $pdo = Koneksi::disconnect();
+                                ?>
 
-                        </select>
+
+                            </select>
+                        </div>
                         <br>
                         <div class="form-group">
                             <label>Jumlah Produk</label>
@@ -57,6 +65,7 @@ if (isset($_POST['tambahProduct'])) {
                             </button>
                         </div>
                     </div>
+
             </form>
         </div>
     </div>
@@ -80,6 +89,7 @@ if (isset($_POST['tambahProduct'])) {
                             <th scope="col">Action</th>
                         </tr>
                         <?php
+                        $pdo = Koneksi::connect();
                         $transaksi = new Transaksi($pdo);
                         $rows = $transaksi->getDetail("detail_transaksi", $id_transaksi);
                         $i = 1;
@@ -95,7 +105,7 @@ if (isset($_POST['tambahProduct'])) {
 
                                 <td>
                                     <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail" href="index.php?page=transaksi&act=edit&id=<?php echo $row["id_transaksi"] ?>"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id_detail=<?php echo $row['id_detail_transaksi'] ?>'&id_produk=<?php echo $row["id_produk"] ?>"><i class="fas fa-trash"></i></a>
+                                    <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Produk Dari Transaksi?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id_produk=<?= $row['id_produk'] ?>&id_detail=<?= $row['id_detail_transaksi'] ?>&id_transaksi=<?= $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php
@@ -107,6 +117,25 @@ if (isset($_POST['tambahProduct'])) {
                 </div>
             </div>
         </div>
-
     </div>
+</div>
+
+<div style="text-align: center;" class="col-3">
+    <div class="card">
+        <div class="card-body">
+            <?php
+            $pdo = Koneksi::connect();
+            $transaksi = new Transaksi($pdo);
+            $totals = $transaksi->total($id_transaksi);
+            foreach ($totals as $total) {
+            ?>
+                <h5>Total Harga</h5>
+                <h6>Rp. <?= number_format($total["total_harga"]) ?></h6>
+            <?php
+            }
+            $pdo = Koneksi::disconnect();
+            ?>
+        </div>
+    </div>
+</div>
 </div>

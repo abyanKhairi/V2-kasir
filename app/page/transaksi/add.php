@@ -12,9 +12,6 @@ if (isset($_POST['tambahTransaksi'])) {
 }
 
 
-
-
-
 ?>
 
 <div class="section-header">
@@ -29,11 +26,11 @@ if (isset($_POST['tambahTransaksi'])) {
                     <div class="card-body">
                         <label for="nama">Name Pelanggan</label>
                         <select class="form-control selectric" name="id_pembeli">
-                            <option>Pilih Nama Pelanngan</option>
                             <?php
                             $pdo = Koneksi::connect();
                             $transaksi = new Transaksi($pdo);
-                            $rows = $transaksi->getCustomer("pembeli");
+                            $rows = $transaksi->getCustomer();
+
                             foreach ($rows as $row) {
                             ?>
                                 <option value="<?= $row['id_pembeli'] ?>"><?= $row['nama'] ?></option>
@@ -42,8 +39,8 @@ if (isset($_POST['tambahTransaksi'])) {
                             }
                             $pdo = Koneksi::disconnect();
                             ?>
-
                         </select>
+
                         <br>
                         <div class="form-group">
                             <label>Tanggal Transaksi (YY/MM/DD)</label>

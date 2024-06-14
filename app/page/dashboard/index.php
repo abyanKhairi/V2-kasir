@@ -11,7 +11,7 @@ include '../database/class/count.php';
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
             <div class="card-icon bg-primary">
-                <i class="far fa-user"></i>
+                <i class="fas fa-user"></i>
             </div>
             <div class="card-wrap">
                 <div class="card-header">
@@ -71,7 +71,9 @@ include '../database/class/count.php';
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Total Transaksi</h4>
+                    <a href="index.php?page=transaksi">
+                        <h4>Total Transaksi</h4>
+                    </a>
                 </div>
                 <div class="card-body">
                     <?php echo $count->jumlahtransaksi();

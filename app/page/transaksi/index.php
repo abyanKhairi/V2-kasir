@@ -21,6 +21,7 @@
                         <th scope="col">Action</th>
                     </tr>
                     <?php
+
                     $pdo = Koneksi::connect();
                     $transaksi = new Transaksi($pdo);
                     $rows = $transaksi->getTransaksi("transaksi");
@@ -36,13 +37,14 @@
                             <td><?php echo $row["no_tlp"] ?></td>
                             <td>
                                 <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail" href="index.php?page=transaksi&act=detail&id=<?php echo $row["id_transaksi"] ?>"><i class="fas fa-shopping-cart"></i></a>
-                                <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?" data-confirm-yes="window.location.href='index.php?page=product&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
+                                <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Transaksi Ini?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php
                         $i++;
                     endforeach;
                     $pdo =  Koneksi::disconnect();
+
                     ?>
                 </table>
             </div>
