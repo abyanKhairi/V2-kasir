@@ -13,7 +13,7 @@
             $pdo = Koneksi::connect();
 
             $user = new user($pdo);
-            $rows = $user->viewData("user");
+            $rows = $user->viewData();
             foreach ($rows as $row) {
             ?>
                 <li class="media">
@@ -27,7 +27,7 @@
                     </div>
                     <td>
                         <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=user&act=edit&id=<?php echo $row["id_user"] ?>"><i class="fas fa-pencil-alt"></i></a>
-                        <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" href='index.php?page=user&act=delete&id=<?php echo $row['id_user'] ?>'><i class="fas fa-trash"></i></a>
+                        <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="Delete" href='index.php?page=user&act=delete&id=<?php echo $row['id_user'] ?>'><i class="fas fa-trash"></i></a>
                     </td>
                 </li>
             <?php

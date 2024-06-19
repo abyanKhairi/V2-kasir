@@ -20,7 +20,7 @@
                     <?php
                     $pdo = Koneksi::connect();
                     $costumer = new costumer($pdo);
-                    $rows = $costumer->viewData("pembeli");
+                    $rows = $costumer->viewData();
                     $i = 1;
                     foreach ($rows as $row) {
                     ?>

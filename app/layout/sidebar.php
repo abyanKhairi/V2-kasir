@@ -2,10 +2,10 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href=" ">ZKASIR</a>
+            <a href="index.php">ZKASIR</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href=" ">Z</a>
+            <a href="index.php">Z</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>

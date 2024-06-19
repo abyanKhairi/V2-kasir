@@ -19,7 +19,6 @@ if (isset($_POST["regis"])) {
     $role = $_POST["role"];
 
     $pdo = Koneksi::connect();
-    include "class/auth.php";
     if ($user->register($nama, $username, $email, $password, $alamat, $not_tlp, $role)) {
 
         $success = true;
@@ -73,7 +72,7 @@ if (isset($_POST["regis"])) {
 
                                     <?php if (isset($success)) : ?>
                                         <div class="success">
-                                            Berhasil mendaftar. Silakan <a href="login.php">login</a>.
+                                            Berhasil mendaftar. Silakan <a href="index.php?auth=login">login</a>.
                                         </div>
                                     <?php endif; ?>
 

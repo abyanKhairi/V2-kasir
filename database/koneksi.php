@@ -30,5 +30,6 @@ class Koneksi
     public static function disconnect()
     {
         self::$con = null;
+        return false;
     }
 }

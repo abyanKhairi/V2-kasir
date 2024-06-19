@@ -18,12 +18,15 @@
  <script src="../assets/js/dist/swtal.js"></script>
  <script src="../assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
  <script src="../assets/modules/select2/dist/js/select2.full.min.js"></script>
+ <script src="../assets/modules/jquery.sparkline.min.js"></script>
+ <script src="../assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
 
 
 
 
  <!-- Page Specific JS File -->
  <script src="../assets/js/page/index-0.js"></script>
+ <script src="../assets/js/page/index.js"></script>
  <script src="../assets/js/page/bootstrap-modal.js"></script>
 
 

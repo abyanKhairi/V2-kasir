@@ -6,7 +6,6 @@ if (isset($_POST['tambahProduct'])) {
     $id_produk = $_POST['id_produk'];
     $id_transaksi = $_POST['id_transaksi'];
     $qty = $_POST['qty'];
-    $nama = $_POST['nama_pembeli'];
     $transaksi = new Transaksi($pdo);
 
     $transaksi->tambahDetail($id_transaksi, $id_produk, $qty);
@@ -91,7 +90,7 @@ if (isset($_POST['tambahProduct'])) {
                         <?php
                         $pdo = Koneksi::connect();
                         $transaksi = new Transaksi($pdo);
-                        $rows = $transaksi->getDetail("detail_transaksi", $id_transaksi);
+                        $rows = $transaksi->getDetail($id_transaksi);
                         $i = 1;
                         foreach ($rows as $row) :
                             $total = $row['qty'] * $row['harga_produk'];
@@ -104,8 +103,8 @@ if (isset($_POST['tambahProduct'])) {
                                 <td>Rp. <?php echo number_format($total) ?></td>
 
                                 <td>
-                                    <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail" href="index.php?page=transaksi&act=edit&id=<?php echo $row["id_transaksi"] ?>"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Produk Dari Transaksi?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id_produk=<?= $row['id_produk'] ?>&id_detail=<?= $row['id_detail_transaksi'] ?>&id_transaksi=<?= $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
+                                    <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail" href=""><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Produk Dari Transaksi?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id_produk=<?= $row['id_produk'] ?>&id_transaksi=<?= $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php
@@ -135,7 +134,10 @@ if (isset($_POST['tambahProduct'])) {
             }
             $pdo = Koneksi::disconnect();
             ?>
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" name="">
+                Selesaikan Transaksi
+            </button>
         </div>
     </div>
-</div>
 </div>

@@ -30,9 +30,13 @@ class Transaksi
     //untuk mengambil data pembeli agar bisa diinput ke transaksi
     public function getCustomer()
     {
-        $stmt =  $this->db->prepare("SELECT * FROM pembeli");
-        $stmt->execute();
-        return $stmt->fetchAll();
+        try {
+            $stmt =  $this->db->prepare("SELECT * FROM pembeli");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
     //menambahkan transaksi / menginput data transaksi
@@ -55,12 +59,16 @@ class Transaksi
     //mengambil data produk
     public function getProduk($que, $id_transaksi)
     {
-        $que = "SELECT * FROM product WHERE id_produk NOT IN (SELECT id_produk FROM detail_transaksi WHERE id_transaksi = :id_transaksi)";
-        $stmt =  $this->db->prepare($que);
-        $stmt->bindParam(':id_transaksi', $id_transaksi);
-        $stmt->execute();
+        try {
+            $que = "SELECT * FROM product WHERE id_produk NOT IN (SELECT id_produk FROM detail_transaksi WHERE id_transaksi = :id_transaksi)";
+            $stmt =  $this->db->prepare($que);
+            $stmt->bindParam(':id_transaksi', $id_transaksi);
+            $stmt->execute();
 
-        return $stmt->fetchAll();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
     public function cekStok($id_produk, $qty)
@@ -69,9 +77,9 @@ class Transaksi
             $stmt = $this->db->prepare("SELECT jumlah_produk FROM product WHERE id_produk = :id_produk");
             $stmt->bindParam(":id_produk", $id_produk);
             $stmt->execute();
-            $stok = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stok = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($stok >= $qty) {
+            if ($stok && $stok['jumlah_produk'] >= $qty) {
                 return true;
             } else {
                 return false;
@@ -87,7 +95,8 @@ class Transaksi
     {
         try {
 
-            if ($this->cekStok($id_produk, $qty) == false) {
+            if (!$this->cekStok($id_produk, $qty)) {
+                echo 'Stok Tidak Cukup';
                 return false;
             }
 
@@ -110,7 +119,7 @@ class Transaksi
         }
     }
 
-    public function getDetail($query, $id_transaksi)
+    public function getDetail($id_transaksi)
     {
         try {
             $stmt = $this->db->prepare("SELECT * FROM detail_transaksi, product WHERE detail_transaksi.id_produk = product.id_produk AND id_transaksi = :idTrk");
@@ -124,29 +133,66 @@ class Transaksi
 
     public function total($id_transaksi)
     {
-        $stmt = $this->db->prepare("SELECT SUM(detail_transaksi.qty * product.harga_produk) as total_harga FROM detail_transaksi JOIN product ON detail_transaksi.id_produk = product.id_produk WHERE id_transaksi = :id_transaksi");
-        $stmt->bindParam("id_transaksi", $id_transaksi);
-        $stmt->execute();
-        return $stmt->fetchAll();
+        try {
+
+            $stmt = $this->db->prepare("SELECT SUM(detail_transaksi.qty * product.harga_produk) as total_harga FROM detail_transaksi JOIN product ON detail_transaksi.id_produk = product.id_produk WHERE id_transaksi = :id_transaksi");
+            $stmt->bindParam("id_transaksi", $id_transaksi);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
 
-    public function hapusDetail($id_produk, $id_detail)
+    public function hapusDetail($id_produk, $id_transaksi)
     {
-        $stmt = $this->db->prepare("DELETE FROM detail_transaksi WHERE id_produk = :id_produk AND id_detail_transaksi = :id_detail");
-        $stmt->bindParam(":id_produk", $id_produk);
-        $stmt->bindParam(":id_detail", $id_detail);
-        $stmt->execute();
 
-        return true;
+        try {
+            //cek jumlah qty 
+            $stmt = $this->db->prepare("SELECT qty FROM detail_transaksi WHERE id_transaksi = :id_transaksi AND id_produk = :id_produk");
+            $stmt->bindParam(':id_transaksi', $id_transaksi);
+            $stmt->bindParam(':id_produk', $id_produk);
+            $stmt->execute();
+            $cek = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+            //jika detail tidak ditemukan tidak ditenukan
+            if ($cek === false) {
+                echo "Data Yang ingin Dihapus Tidak Ada";
+                return false;
+            }
+
+            $qty = $cek['qty'];
+
+            //hapus data 
+            $stmt = $this->db->prepare("DELETE FROM detail_transaksi WHERE id_produk = :id_produk AND id_transaksi = :id_transaksi");
+            $stmt->bindParam(":id_produk", $id_produk);
+            $stmt->bindParam(":id_transaksi", $id_transaksi);
+            $stmt->execute();
+
+            //kembalikan stok seperti semula
+            $stmt = $this->db->prepare("UPDATE product SET jumlah_produk = jumlah_produk + :qty WHERE id_produk = :id_produk");
+            $stmt->bindParam(':qty', $qty);
+            $stmt->bindParam(':id_produk', $id_produk);
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
     public function hapusTransaksi($id_transaksi)
     {
-        $stmt = $this->db->prepare("DELETE FROM transaksi WHERE id_transaksi = :id");
-        $stmt->bindParam(":id", $id_transaksi);
-        $stmt->execute();
+        try {
+            $stmt = $this->db->prepare("DELETE FROM transaksi WHERE id_transaksi = :id");
+            $stmt->bindParam(":id", $id_transaksi);
+            $stmt->execute();
 
-        return true;
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 }

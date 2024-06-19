@@ -10,7 +10,7 @@ include '../database/class/count.php';
 
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-            <div class="card-icon bg-primary">
+            <div class="card-icon shadow-primary bg-primary">
                 <i class="fas fa-user"></i>
             </div>
             <div class="card-wrap">
@@ -23,7 +23,7 @@ include '../database/class/count.php';
                     <?php
                     $pdo = Koneksi::connect();
                     $count =  new count($pdo);
-                    echo $count->jumlahAdmin();
+                    echo $count->count("user");
                     ?>
                 </div>
             </div>
@@ -32,7 +32,7 @@ include '../database/class/count.php';
 
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-            <div class="card-icon bg-danger">
+            <div class="card-icon shadow-danger bg-danger">
                 <i class="fas fa-users"></i>
             </div>
             <div class="card-wrap">
@@ -42,14 +42,15 @@ include '../database/class/count.php';
                     </a>
                 </div>
                 <div class="card-body">
-                    <?php echo $count->jumlahCostumer(); ?>
+                    <?php echo $count->count('pembeli'); ?>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-            <div class="card-icon bg-warning">
+            <div class="card-icon shadow-warning bg-warning">
                 <i class="fas fa-archive"></i>
             </div>
             <div class="card-wrap">
@@ -59,14 +60,16 @@ include '../database/class/count.php';
                     </a>
                 </div>
                 <div class="card-body">
-                    <?php echo $count->jumlahProduk(); ?>
+                    <?php echo $count->count('product');
+                    ?>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-            <div class="card-icon bg-success">
+            <div class="card-icon shadow-info bg-info">
                 <i class="fas fa-file"></i>
             </div>
             <div class="card-wrap">
@@ -76,11 +79,30 @@ include '../database/class/count.php';
                     </a>
                 </div>
                 <div class="card-body">
-                    <?php echo $count->jumlahtransaksi();
+                    <?php echo $count->count('transaksi');
                     $pdo =  Koneksi::disconnect();
                     ?>
                 </div>
             </div>
         </div>
     </div>
+
+    <!--
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card card-statistic-2">
+            <div class="card-icon shadow-success bg-success">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="card-wrap">
+                <div class="card-header">
+                    <h4>Penghasilan</h4>
+                </div>
+                <div class="card-body">
+                    $187,13
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+
 </div>

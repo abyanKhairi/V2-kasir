@@ -24,7 +24,7 @@
 
                     $pdo = Koneksi::connect();
                     $transaksi = new Transaksi($pdo);
-                    $rows = $transaksi->getTransaksi("transaksi");
+                    $rows = $transaksi->getTransaksi();
                     $i = 1;
                     foreach ($rows as $row) :
                     ?>
