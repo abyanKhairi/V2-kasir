@@ -13,18 +13,22 @@
                 <a href="index.php"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
 
-            <li class="menu-header">User</li>
-            <li class="dropdown ">
+            <?php
+            if ($currentUser['role'] === 'superAdmin') {
+            ?>
+                <li class="menu-header">User</li>
+                <li class="dropdown ">
 
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i><span>User Management</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="nav-link" href="index.php?page=user">User</a></li>
+                        <li><a class="nav-link" href="index.php?page=user&act=create">Tambah User</a></li>
 
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i><span>User Management</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="index.php?page=user">User</a></li>
-                    <li><a class="nav-link" href="index.php?page=user&act=create">Tambah User</a></li>
-
-                </ul>
-            </li>
-            <?php ?>
+                    </ul>
+                </li>
+            <?php } elseif ($currentUser['role'] === 'admin') {
+                echo "<script>window.location.href = 'index.php </script>";
+            } ?>
 
             <li class="menu-header">Customers</li>
             <li class="dropdown ">
