@@ -11,9 +11,10 @@
         <ul class="list-unstyled list-unstyled-border">
             <?php
             $pdo = Koneksi::connect();
-
             $user = new user($pdo);
-            $rows = $user->viewData();
+            $paging = new Page($pdo, 'user');
+            $rows = $paging->get_data();
+            $pages = $paging->get_pagination_number();
             foreach ($rows as $row) {
             ?>
                 <li class="media">
@@ -35,5 +36,24 @@
             $pdo =  Koneksi::disconnect();
             ?>
         </ul>
+    </div>
+    <div class="card-footer text-right">
+        <nav class="d-inline-block">
+            <ul class="pagination mb-0">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                </li>
+                <?php
+                for ($i = 1; $i <= $pages; $i++) {
+                ?>
+                    <a class="page-link" href="index.php?page=user&halaman=<?= $i; ?>"><?= $i ?> </a>
+                <?php
+                }
+                ?>
+                <li class="page-item">
+                    <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>

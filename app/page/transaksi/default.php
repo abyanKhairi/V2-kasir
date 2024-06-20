@@ -1,5 +1,7 @@
 <?php
 include "../database/class/transaksi.php";
+include "../database/class/page.php";
+
 
 $act = isset($_GET['act']) ? $_GET['act'] : '';
 switch ($act) {
@@ -12,8 +14,8 @@ switch ($act) {
     case 'delete':
         include 'hapus.php';
         break;
-    case 'deleteDetail':
-        include 'hapusDetail.php';
+    case 'edit':
+        include 'detail.php';
         break;
     default:
         include 'index.php';

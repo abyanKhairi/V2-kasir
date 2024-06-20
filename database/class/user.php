@@ -46,9 +46,6 @@ class user
 
     public function update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role)
     {
-
-
-
         try {
             $hashPasswd = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $this->db->prepare("UPDATE user SET nama = :nama, username = :username, email = :email, password = :password, alamat =:alamat, not_tlp = :not_tlp, role = :role WHERE id_user =:id_user ");
@@ -74,12 +71,5 @@ class user
         $stmt->bindParam(":id_user", $id_user);
         $stmt->execute();
         return true;
-    }
-
-    public function viewData()
-    {
-        $stmt = $this->db->prepare("SELECT * FROM user");
-        $stmt->execute();
-        return $stmt->fetchAll();
     }
 }

@@ -8,8 +8,9 @@ if (isset($_POST["submit"])) {
    $pdo = Koneksi::connect();
 
    $costumer = new costumer($pdo);
-   $costumer->tambah($nama, $alamat, $no_tlp);
-
+   if ($costumer->tambah($nama, $alamat, $no_tlp)) {
+      echo "<script>window.location.href = 'index.php?page=costumer'</script>";
+   };
    $pdo =  Koneksi::disconnect();
 }
 

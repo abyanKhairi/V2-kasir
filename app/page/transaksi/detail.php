@@ -1,12 +1,14 @@
 <?php
+$pdo = Koneksi::connect();
+$transaksi = new Transaksi($pdo);
 $id_transaksi = $_GET['id'];
+
+
 if (isset($_POST['tambahProduct'])) {
 
-    $pdo = Koneksi::connect();
     $id_produk = $_POST['id_produk'];
     $id_transaksi = $_POST['id_transaksi'];
     $qty = $_POST['qty'];
-    $transaksi = new Transaksi($pdo);
 
     $transaksi->tambahDetail($id_transaksi, $id_produk, $qty);
     $pdo = Koneksi::disconnect();
@@ -31,11 +33,6 @@ if (isset($_POST['tambahProduct'])) {
                                 <?php
                                 $pdo = Koneksi::connect();
                                 $transaksi = new Transaksi($pdo);
-                                $cek = $transaksi->cekStok($id_produk, $qty);
-
-                                if ($stok && $stok['jumlah_produk'] >= $qty) {
-                                    return true;
-                                }
 
                                 $rows = $transaksi->getProduk("product", $id_transaksi);
 
@@ -103,7 +100,6 @@ if (isset($_POST['tambahProduct'])) {
                                 <td>Rp. <?php echo number_format($total) ?></td>
 
                                 <td>
-                                    <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail" href=""><i class="fas fa-shopping-cart"></i></a>
                                     <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Produk Dari Transaksi?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id_produk=<?= $row['id_produk'] ?>&id_transaksi=<?= $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>

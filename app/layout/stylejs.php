@@ -20,6 +20,7 @@
  <script src="../assets/modules/select2/dist/js/select2.full.min.js"></script>
  <script src="../assets/modules/jquery.sparkline.min.js"></script>
  <script src="../assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
+ <script src="../assets/modules/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 
 

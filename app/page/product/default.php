@@ -1,5 +1,6 @@
 <?php
 include "../database/class/product.php";
+include "../database/class/page.php";
 
 
 $page = isset($_GET["act"]) ? $_GET["act"] : '';

@@ -13,10 +13,16 @@ class Transaksi
     public function getTransaksi()
     {
         try {
+            $start = 0;
+            $limit = 5;
+            if ($this->current_page() > 1) {
+                $start = ($this->current_page() * $limit) - $limit;
+            }
+
             $stmt = $this->db->prepare("SELECT transaksi.*, pembeli.id_pembeli , pembeli.nama ,pembeli.alamat , pembeli.no_tlp           
             FROM transaksi 
             JOIN pembeli 
-            ON pembeli.id_pembeli = transaksi.id_pembeli");
+            ON pembeli.id_pembeli = transaksi.id_pembeli LIMIT $start, $limit");
 
 
             $stmt->execute();
@@ -25,6 +31,11 @@ class Transaksi
             echo $e->getMessage();
             return false;
         }
+    }
+
+    public function current_page()
+    {
+        return isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
     }
 
     //untuk mengambil data pembeli agar bisa diinput ke transaksi
@@ -191,6 +202,39 @@ class Transaksi
             $stmt->execute();
 
             return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function jumlahT($id_transaksi)
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(id_transaksi)FROM detail_transaksi WHERE id_transaksi = :id_transaksi");
+        $stmt->bindParam(":id_transaksi", $id_transaksi);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_COLUMN);
+    }
+
+    public function edit($id_detail)
+    {
+        try {
+            $stmt = $this->db->prepare("UPDATE detail_transaksi SET qty = :qty WHERE id_detail_transaksi = :id_detail");
+            $stmt->bindParam(":id_detail", $id_detail);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function cariTanggal($tanggal)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT transaksi.*, pembeli.id_pembeli , pembeli.nama ,pembeli.alamat , pembeli.no_tlp           
+            FROM transaksi 
+            JOIN pembeli 
+            ON pembeli.id_pembeli = transaksi.id_pembeli WHERE tanggal_transaksi LIKE :tanggal");
+            $stmt->bindParam(":tanggal", $tanggal);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

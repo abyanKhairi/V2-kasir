@@ -15,6 +15,7 @@ class costumer
     {
         try {
 
+
             //Masukkan costumer baru ke database
             $stmt = $this->db->prepare("INSERT INTO pembeli(id_pembeli,nama, alamat, no_tlp) VALUES(NULL,:nama,:alamat, :no_tlp)");
             $stmt->bindParam(":nama", $nama);
@@ -27,6 +28,7 @@ class costumer
             return false;
         }
     }
+
 
     public function getID($id_costumer)
     {
@@ -59,12 +61,5 @@ class costumer
         $stmt->bindParam(":id_pembeli", $id_pembeli);
         $stmt->execute();
         return true;
-    }
-
-    public function viewData()
-    {
-        $stmt = $this->db->prepare("SELECT * FROM pembeli");
-        $stmt->execute();
-        return  $stmt->fetchAll();
     }
 }

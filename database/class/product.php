@@ -69,12 +69,4 @@ class produk
         $stmt->execute();
         return true;
     }
-
-    public function viewData()
-    {
-        $stmt = $this->db->prepare("SELECT * FROM product");
-
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
 }

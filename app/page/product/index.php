@@ -18,8 +18,10 @@
                     </tr>
                     <?php
                     $pdo = Koneksi::connect();
+                    $paging = new Page($pdo, 'product');
                     $produk = new produk($pdo);
-                    $rows = $produk->viewData();
+                    $rows = $paging->get_data();
+                    $pages = $paging->get_pagination_number();
                     $i = 1;
                     foreach ($rows as $row) :
                     ?>
@@ -39,6 +41,25 @@
                     $pdo =  Koneksi::disconnect();
                     ?>
                 </table>
+                <div class="card-footer text-right">
+                    <nav class="d-inline-block">
+                        <ul class="pagination mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                            </li>
+                            <?php
+                            for ($i = 1; $i <= $pages; $i++) {
+                            ?>
+                                <a class="page-link" href="index.php?page=product&halaman=<?= $i; ?>"><?= $i ?> </a>
+                            <?php
+                            }
+                            ?>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>

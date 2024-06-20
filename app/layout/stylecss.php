@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../assets/modules/jquery-selectric/selectric.css" />
 <link rel="stylesheet" href="../assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css" />
 <link rel="stylesheet" href="../assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css" />
-
+<link rel="stylesheet" href="../assets/modules/bootstrap-daterangepicker/daterangepicker.css" />
 
 
 <!-- Template CSS -->

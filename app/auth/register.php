@@ -71,7 +71,7 @@ if (isset($_POST["regis"])) {
                                     <?php endif; ?>
 
                                     <?php if (isset($success)) : ?>
-                                        <div class="success">
+                                        <div class="success shadow-info bg-info">
                                             Berhasil mendaftar. Silakan <a href="index.php?auth=login">login</a>.
                                         </div>
                                     <?php endif; ?>

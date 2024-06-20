@@ -9,7 +9,7 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="dropdown active">
+            <li class="dropdown ">
                 <a href="index.php"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
 

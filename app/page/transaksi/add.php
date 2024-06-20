@@ -6,7 +6,9 @@ if (isset($_POST['tambahTransaksi'])) {
     $pdo = Koneksi::connect();
 
     $transaksi = new Transaksi($pdo);
-    $transaksi->tambahTransaksi($id_pembeli, $tanggal);
+    if ($transaksi->tambahTransaksi($id_pembeli, $tanggal)) {
+        echo "<script>window.location.href = 'index.php?page=transaksi'</script>";
+    };
 
     $pdo =  Koneksi::disconnect();
 }
@@ -44,7 +46,7 @@ if (isset($_POST['tambahTransaksi'])) {
                         <br>
                         <div class="form-group">
                             <label>Tanggal Transaksi (YY/MM/DD)</label>
-                            <input type="datetime" required class="form-control" name="tanggal" value="<?= date('y-m-d') ?>" placeholder="(YY/MM/DD)">
+                            <input type="date" required class="form-control datepicker" name="tanggal" value="<?= date('y-m-d') ?>" placeholder="(YY/MM/DD)">
                         </div>
                         <br>
                         <br>
