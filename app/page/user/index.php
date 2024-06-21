@@ -3,6 +3,20 @@
 <div class="section-header">
     <h1>User</h1>
 </div>
+
+<div class="col-18 col-md-16 mb-md-3 col-lg-12">
+    <form action="" method="post">
+        <div class="form-grup">
+            <div class="row">
+                <div class="col-3">
+                    <input type="text" class="form-control" size="5" name="keyword" autocomplete="off" placeholder="Cari Nama Costumer">
+                </div>
+                <button class="btn btn-primary btn-action mr-1" type="submit" style="cursor: pointer;" name="cari"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+
 <div class="card">
     <div class="card-header">
         <h4 class="d-inline">User List</h4>
@@ -11,9 +25,11 @@
         <ul class="list-unstyled list-unstyled-border">
             <?php
             $pdo = Koneksi::connect();
-            $user = new user($pdo);
+            if (isset($_POST['cari'])) {
+                $key = $_POST['keyword'];
+            }
             $paging = new Page($pdo, 'user');
-            $rows = $paging->get_data();
+            $rows = $paging->get_data(@$key, 'nama');
             $pages = $paging->get_pagination_number();
             foreach ($rows as $row) {
             ?>
@@ -33,15 +49,16 @@
                 </li>
             <?php
             }
-            $pdo =  Koneksi::disconnect();
             ?>
         </ul>
     </div>
     <div class="card-footer text-right">
         <nav class="d-inline-block">
             <ul class="pagination mb-0">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                <li class="page-item ">
+                    <?php
+                    ?>
+                    <a class="page-link" href="index.php?page=user&halaman=<?= $paging->prev_page() ?>" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                 </li>
                 <?php
                 for ($i = 1; $i <= $pages; $i++) {
@@ -51,8 +68,11 @@
                 }
                 ?>
                 <li class="page-item">
-                    <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                    <a class="page-link" href="index.php?page=user&halaman=<?= $paging->next_page() ?>"><i class="fas fa-chevron-right"></i></a>
                 </li>
+                <?php
+                $pdo =  Koneksi::disconnect();
+                ?>
             </ul>
         </nav>
     </div>

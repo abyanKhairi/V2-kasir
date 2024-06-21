@@ -2,6 +2,19 @@
     <h1>Costumers</h1>
 </div>
 
+<div class="col-18 col-md-16 mb-md-3 col-lg-12">
+    <form action="" method="post">
+        <div class="form-grup">
+            <div class="row">
+                <div class="col-3">
+                    <input type="text" class="form-control" size="5" name="keyword" autocomplete="off" placeholder="Cari Nama Costumer">
+                </div>
+                <button class="btn btn-primary btn-action mr-1" type="submit" style="cursor: pointer;" name="cari"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+
 <div class="col-18 col-md-16 col-lg-12">
     <div class="card">
         <div class="card-header">
@@ -20,8 +33,12 @@
                     <?php
                     $pdo = Koneksi::connect();
                     $costumer = new costumer($pdo);
+                    if (isset($_POST['cari'])) {
+                        $key = $_POST['keyword'];
+                    }
+
                     $paging = new Page($pdo, 'pembeli');
-                    $rows = $paging->get_data();
+                    $rows = $paging->get_data(@$key, 'nama');
                     $pages = $paging->get_pagination_number();
                     $i = 1;
                     foreach ($rows as $row) {
@@ -36,7 +53,6 @@
                                 <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="delete" href='index.php?page=costumer&act=delete&id=<?php echo $row['id_pembeli'] ?>' id="delete"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
-
                     <?php $i++;
                     }
                     $pdo =  Koneksi::disconnect();
@@ -45,8 +61,8 @@
                 <div class="card-footer text-right">
                     <nav class="d-inline-block">
                         <ul class="pagination mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                            <li class="page-item">
+                                <a class="page-link" href="index.php?page=costumer&halaman=<?= $paging->prev_page() ?>" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                             </li>
                             <?php
                             for ($i = 1; $i <= $pages; $i++) {
@@ -56,7 +72,7 @@
                             }
                             ?>
                             <li class="page-item">
-                                <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                                <a class="page-link" href="index.php?page=costumer&halaman=<?= $paging->next_page() ?>" tabindex="-1"><i class="fas fa-chevron-right"></i></a>
                             </li>
                         </ul>
                     </nav>

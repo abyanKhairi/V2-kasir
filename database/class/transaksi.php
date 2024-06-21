@@ -10,7 +10,7 @@ class Transaksi
     }
 
     //untuk menggambil data dari tabel transaksi yang berelasi dengan pembeli
-    public function getTransaksi()
+    public function getTransaksi($tanggal = null)
     {
         try {
             $start = 0;
@@ -18,13 +18,21 @@ class Transaksi
             if ($this->current_page() > 1) {
                 $start = ($this->current_page() * $limit) - $limit;
             }
-
-            $stmt = $this->db->prepare("SELECT transaksi.*, pembeli.id_pembeli , pembeli.nama ,pembeli.alamat , pembeli.no_tlp           
+            if ($tanggal) {
+                $stmt = $this->db->prepare("SELECT transaksi.*, pembeli.id_pembeli , pembeli.nama ,pembeli.alamat , pembeli.no_tlp           
             FROM transaksi 
             JOIN pembeli 
-            ON pembeli.id_pembeli = transaksi.id_pembeli LIMIT $start, $limit");
+            ON pembeli.id_pembeli = transaksi.id_pembeli WHERE tanggal_transaksi LIKE :tanggal LIMIT :start, :limit");
+                $stmt->bindValue(":tanggal", "%$tanggal%");
+            } else {
+                $stmt = $this->db->prepare("SELECT transaksi.*, pembeli.id_pembeli , pembeli.nama ,pembeli.alamat , pembeli.no_tlp           
+            FROM transaksi 
+            JOIN pembeli 
+            ON pembeli.id_pembeli = transaksi.id_pembeli LIMIT :start, :limit");
+            }
 
-
+            $stmt->bindValue(":start", $start, PDO::PARAM_INT);
+            $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

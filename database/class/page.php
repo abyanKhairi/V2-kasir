@@ -24,13 +24,13 @@ class Page
         return isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
     }
 
-    public function get_data()
+    public function get_data($keyword, $record)
     {
         $start = 0;
         if ($this->current_page() > 1) {
             $start = ($this->current_page() * $this->limit) - $this->limit;
         }
-        $stmt = $this->db->prepare("SELECT * FROM $this->table LIMIT $start, $this->limit");
+        $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE $record like '%$keyword%' LIMIT $start, $this->limit");
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -38,5 +38,15 @@ class Page
     public function get_pagination_number()
     {
         return ceil($this->total_records / $this->limit);
+    }
+
+    public function prev_page()
+    {
+        return ($this->current_page() > 1) ? $this->current_page() - 1 : 1;
+    }
+
+    public function next_page()
+    {
+        return ($this->current_page() < $this->get_pagination_number()) ? $this->current_page() + 1 : $this->get_pagination_number();
     }
 }

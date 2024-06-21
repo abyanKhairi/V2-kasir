@@ -46,7 +46,7 @@ if (isset($_POST['tambahTransaksi'])) {
                         <br>
                         <div class="form-group">
                             <label>Tanggal Transaksi (YY/MM/DD)</label>
-                            <input type="date" required class="form-control datepicker" name="tanggal" value="<?= date('y-m-d') ?>" placeholder="(YY/MM/DD)">
+                            <input type="date" required class="form-control datepicker" name="tanggal" placeholder="(YY/MM/DD)">
                         </div>
                         <br>
                         <br>

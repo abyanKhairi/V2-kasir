@@ -3,6 +3,19 @@
     <h1>Transaksi</h1>
 </div>
 
+<div class="col-18 col-md-16 mb-md-3 col-lg-12">
+    <form action="" method="post">
+        <div class="form-grup">
+            <div class="row">
+                <div class="col-3">
+                    <input type='date' class="form-control datepicker" onKeyDown="{(e)=> e.preventDefault()}" name="keyword" autocomplete="off" value="<?= date('y-m-d') ?>" placeholder="Cari Nama Costumer">
+                </div>
+                <button class="btn btn-primary btn-action mr-1" type="submit" style="cursor: pointer;" name="cari"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+
 <div class="col-18 col-md-16 col-lg-12">
     <div class="card">
         <div class="card-header">
@@ -25,7 +38,11 @@
                     $pdo = Koneksi::connect();
                     $transaksi = new Transaksi($pdo);
                     $paging = new Page($pdo, 'transaksi');
-                    $rows = $transaksi->getTransaksi();
+
+                    if (isset($_POST['cari'])) {
+                        $key = $_POST['keyword'];
+                    }
+                    $rows = $transaksi->getTransaksi(@$key);
                     $pages = $paging->get_pagination_number();
                     $i = 1;
                     foreach ($rows as $row) :
@@ -45,15 +62,14 @@
                     <?php
                         $i++;
                     endforeach;
-                    $pdo =  Koneksi::disconnect();
 
                     ?>
                 </table>
                 <div class="card-footer text-right">
                     <nav class="d-inline-block">
                         <ul class="pagination mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                            <li class="page-item ">
+                                <a class="page-link" href="index.php?page=transaksi&halaman=<?= $paging->prev_page() ?>" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                             </li>
                             <?php
                             for ($i = 1; $i <= $pages; $i++) {
@@ -63,8 +79,11 @@
                             }
                             ?>
                             <li class="page-item">
-                                <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                                <a class="page-link" href="index.php?page=transaksi&halaman=<?= $paging->next_page() ?>" tabindex="-1"><i class="fas fa-chevron-right"></i></a>
                             </li>
+                            <?php
+                            $pdo =  Koneksi::disconnect();
+                            ?>
                         </ul>
                     </nav>
                 </div>
