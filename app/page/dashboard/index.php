@@ -87,25 +87,9 @@ include '../database/class/count.php';
         </div>
     </div>
 
-    <div class="col-lg-3 col-md-6 col-sm-12">
+    <!-- <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="card card-statistic-2">
             <div class="card-icon shadow-success bg-success">
-                <i class="fas fa-dollar-sign"></i>
-            </div>
-            <div class="card-wrap">
-                <div class="card-header">
-                    <h4>Penghasilan</h4>
-                </div>
-                <div class="card-body">
-                    $187,13
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card card-statistic-2">
-            <div class="card-icon shadow-warning bg-warning">
                 <i class="fas fa-dollar-sign"></i>
             </div>
             <div class="card-wrap">
@@ -113,11 +97,11 @@ include '../database/class/count.php';
                     <h4></h4>
                 </div>
                 <div class="card-body">
-                    $187,13
+
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 </div>

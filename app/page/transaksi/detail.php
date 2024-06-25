@@ -131,9 +131,9 @@ if (isset($_POST['tambahProduct'])) {
             $pdo = Koneksi::disconnect();
             ?>
             <br>
-            <button type="submit" class="btn btn-primary btn-lg btn-block" name="">
-                Selesaikan Transaksi
-            </button>
+            <a href="index.php?page=struk&act=pembayaran&id=<?= $id_transaksi ?>"> <button type="submit" class="btn btn-primary btn-lg btn-block" name="">
+                    Selesaikan Transaksi
+                </button></a>
         </div>
     </div>
 </div>

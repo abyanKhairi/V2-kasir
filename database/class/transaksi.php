@@ -247,4 +247,16 @@ class Transaksi
             echo $e->getMessage();
         }
     }
+
+    public function getIdBayar($id_transaksi)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM bayar WHERE id_transaksi = :id_transaksi");
+        $stmt->bindParam(":id_transaksi", $id_transaksi);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function allDelete()
+    {
+    }
 }

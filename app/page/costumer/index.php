@@ -2,7 +2,7 @@
     <h1>Costumers</h1>
 </div>
 
-<div class="col-18 col-md-16 mb-md-3 col-lg-12">
+<div class="col-18 col-md-16 mb-md-2 col-lg-12">
     <form action="" method="post">
         <div class="form-grup">
             <div class="row">

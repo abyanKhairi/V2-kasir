@@ -5,7 +5,7 @@
             <a href="index.php">ZKASIR</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.php">Z</a>
+            <a href="index.php"><span>Z</span></i></a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>

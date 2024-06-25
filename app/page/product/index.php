@@ -2,18 +2,17 @@
     <h1>Product</h1>
 </div>
 
-<div class="col-18 col-md-16 mb-md-3 col-lg-12">
-    <form action="" method="post">
-        <div class="form-grup">
-            <div class="row">
-                <div class="col-3">
-                    <input type="text" class="form-control" size="5" name="keyword" autocomplete="off" placeholder="Cari Nama Product">
-                </div>
-                <button class="btn btn-primary btn-action mr-1" type="submit" style="cursor: pointer;" name="cari"><i class="fas fa-search"></i></button>
+<form action="" method="post">
+    <div class="form-grup">
+        <div class="row">
+            <div class="col-3 mb-md-2">
+                <input type="text" class="form-control" size="5" name="keyword" autocomplete="off" placeholder="Cari Nama Product">
             </div>
+            <button class="btn btn-primary btn-action mr-1" type="submit" style="cursor: pointer;" name="cari"><i class="fas fa-search"></i></button>
         </div>
-    </form>
-</div>
+    </div>
+</form>
+
 
 <div class="card">
     <div class="card-header">

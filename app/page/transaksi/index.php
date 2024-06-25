@@ -8,7 +8,7 @@
         <div class="form-grup">
             <div class="row">
                 <div class="col-3">
-                    <input type='date' class="form-control datepicker" onKeyDown="{(e)=> e.preventDefault()}" name="keyword" autocomplete="off" value="<?= date('y-m-d') ?>" placeholder="Cari Nama Costumer">
+                    <input type='date' class="form-control datepicker" name="keyword" autocomplete="off" placeholder="YYYY-MM-DD">
                 </div>
                 <button class="btn btn-primary btn-action mr-1" type="submit" style="cursor: pointer;" name="cari"><i class="fas fa-search"></i></button>
             </div>
@@ -31,14 +31,13 @@
                         <th scope="col">Jumlah</th>
                         <th scope="col">No Hp</th>
                         <th scope="col">Alamat</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                     <?php
-
                     $pdo = Koneksi::connect();
                     $transaksi = new Transaksi($pdo);
                     $paging = new Page($pdo, 'transaksi');
-
                     if (isset($_POST['cari'])) {
                         $key = $_POST['keyword'];
                     }
@@ -46,6 +45,7 @@
                     $pages = $paging->get_pagination_number();
                     $i = 1;
                     foreach ($rows as $row) :
+                        $cek = $transaksi->getIdBayar($row['id_transaksi'])
                     ?>
                         <tr>
                             <td><?php echo $i ?></td>
@@ -54,15 +54,28 @@
                             <td><?php echo $transaksi->jumlahT($row["id_transaksi"]) ?></td>
                             <td><?php echo $row["no_tlp"] ?></td>
                             <td><?php echo $row["alamat"] ?></td>
-                            <td>
-                                <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail" href="index.php?page=transaksi&act=detail&id=<?php echo $row["id_transaksi"] ?>"><i class="fas fa-shopping-cart"></i></a>
-                                <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Transaksi Ini?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
-                            </td>
+                            <td><?php echo $row["status"] ?></td>
+                            <?php
+                            if ($row["status"] === "SELESAI") {
+                            ?>
+                                <td>
+                                    <a class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="Struk" href="index.php?page=struk&act=total&id_struk=<?php echo $cek["id_bayar"] ?>"><i class="fas fa-file"></i></a>
+                                    <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Transaksi Ini?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
+                                </td>
+                            <?php
+                            } else {
+                            ?>
+                                <td>
+                                    <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail" href="index.php?page=transaksi&act=detail&id=<?php echo $row["id_transaksi"] ?>"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Transaksi Ini?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
+                                </td>
+                            <?php
+                            }
+                            ?>
                         </tr>
                     <?php
                         $i++;
                     endforeach;
-
                     ?>
                 </table>
                 <div class="card-footer text-right">

@@ -63,6 +63,10 @@ if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
                             include('page/transaksi/default.php');
                             break;
 
+                        case 'struk':
+                            include('page/cetak/default.php');
+                            break;
+
                         default:
                             include('page/dashboard/index.php');
                     }
