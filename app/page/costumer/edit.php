@@ -39,15 +39,15 @@ if (isset($_POST["edit"])) {
             <div class="card-body">
                <div class="form-group">
                   <label>Name</label>
-                  <input type="text" class="form-control" name="nama" required value="<?php echo $nama ?>">
+                  <input type="text" autocomplete="off" class="form-control" name="nama" required value="<?php echo $nama ?>">
                </div>
                <div class="form-group">
                   <label>Alamat</label>
-                  <input type="text" class="form-control" required name="alamat" value="<?php echo $alamat ?>">
+                  <input type="text" autocomplete="off" class="form-control" required name="alamat" value="<?php echo $alamat ?>">
                </div>
                <div class="form-group">
                   <label>Nomor Telpon</label>
-                  <input type="text" class="form-control" required name="no_tlp" value="<?php echo $no_tlp ?>">
+                  <input type="text" autocomplete="off" class="form-control" required name="no_tlp" value="<?php echo $no_tlp ?>">
                </div>
             </div>
             <div class="card-footer text-right">

@@ -17,16 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
 ?>
-
+<br><br><br>
 <div class="row">
-    <div class="col-3 col-md-29 col-lg-26">
+    <div class="col-10 col-sm-6 col-md-4 col-lg-4 offset-lg-4">
         <div class="card">
             <form method="POST">
                 <div class="form-group">
                     <div class="card-body">
                         <div class="form-group">
                             <label>Jumlah Uang</label>
-                            <input min="1" type="number" name="jumlah_bayar" required class="form-control">
+                            <input min="1" type="number" name="jumlah_bayar" autofocus required class="form-control">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block" name="tambahProduct">

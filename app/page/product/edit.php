@@ -41,15 +41,15 @@ $pdo =  Koneksi::disconnect();
                 <div class="card-body">
                     <div class="form-group">
                         <label>Nama Product</label>
-                        <input type="text" class="form-control" name="nama_produk" required value="<?php echo $nama_produk ?>">
+                        <input type="text" class="form-control" autocomplete="off" name="nama_produk" required value="<?php echo $nama_produk ?>">
                     </div>
                     <div class="form-group">
                         <label>Jumlah Product</label>
-                        <input type="number" class="form-control" required name="jumlah_produk" value="<?php echo $jumlah_produk ?>">
+                        <input type="number" class="form-control" autocomplete="off" required name="jumlah_produk" value="<?php echo $jumlah_produk ?>">
                     </div>
                     <div class="form-group">
                         <label>Harga Satuan</label>
-                        <input type="number" class="form-control" required name="harga_produk" value="<?php echo $harga_produk ?>">
+                        <input type="number" class="form-control" autocomplete="off" required name="harga_produk" value="<?php echo $harga_produk ?>">
                     </div>
                 </div>
                 <div class="card-footer text-right">

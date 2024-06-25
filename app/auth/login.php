@@ -65,7 +65,7 @@ if (isset($_POST["login"])) {
 
                   <div class="form-group">
                     <label for="username">username</label>
-                    <input id="username" type="username" class="form-control" name="username" tabindex="1" required autofocus>
+                    <input id="username" type="username" class="form-control" name="username" tabindex="1" autocomplete="off" required autofocus>
                     <div class="invalid-feedback">
                       Please fill in your username
                     </div>

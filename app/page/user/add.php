@@ -26,36 +26,36 @@ if (isset($_POST["tambah"])) {
 </div>
 
 <div class="row">
-    <div class="col-12 col-md-6 col-lg-6">
+    <div class="col-12 col-md-6 offset-lg-3 col-lg-6">
         <div class="card">
             <form method="POST">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nama">Name</label>
-                        <input id="nama" type="text" class="form-control" name="nama" autofocus required>
+                        <input id="nama" type="text" class="form-control" autocomplete="off" name="nama" autofocus required>
                     </div>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input id="username" type="text" class="form-control" name="username" required>
+                        <input id="username" type="text" class="form-control" autocomplete="off" name="username" required>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input id="email" type="email" class="form-control" name="email" required>
+                        <input id="email" type="email" class="form-control" autocomplete="off" name="email" required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
-                        <input id="alamat" type="text" class="form-control" name="alamat" required>
+                        <input id="alamat" type="text" class="form-control" autocomplete="off" name="alamat" required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="not_tlp">Nomor Telpon</label>
-                        <input id="not_tlp" type="text" class="form-control" name="not_tlp" required>
+                        <input id="not_tlp" type="text" class="form-control" autocomplete="off" name="not_tlp" required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
@@ -71,7 +71,7 @@ if (isset($_POST["tambah"])) {
 
                     <div class="form-grup">
                         <label for="password" class="d-block">Password</label>
-                        <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" required>
+                        <input id="password" type="password" autocomplete="off" class="form-control pwstrength" data-indicator="pwindicator" name="password" required>
                     </div>
                     <br>
                     <br>
