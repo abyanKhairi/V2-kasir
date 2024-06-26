@@ -32,7 +32,7 @@ $pdo =  Koneksi::disconnect();
     <h1>Product</h1>
 </div>
 <div class="row">
-    <div class="col-12 col-md-6 col-lg-6">
+    <div class="col-3 col-md-29 offset-lg-4 col-lg-26">
         <div class="card">
             <form method="post">
                 <div class="card-header">
@@ -49,7 +49,7 @@ $pdo =  Koneksi::disconnect();
                     </div>
                     <div class="form-group">
                         <label>Harga Satuan</label>
-                        <input type="number" class="form-control" autocomplete="off" required name="harga_produk" value="<?php echo $harga_produk ?>">
+                        <input type="numer" class="form-control" autocomplete="off" required name="harga_produk" value="<?php echo $harga_produk ?>">
                     </div>
                 </div>
                 <div class="card-footer text-right">

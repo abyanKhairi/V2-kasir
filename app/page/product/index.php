@@ -2,6 +2,14 @@
     <h1>Product</h1>
 </div>
 
+<?php
+
+if (isset($error)) {
+    echo "<div class='card'> bisa gak jangan eror</div>";
+}
+
+?>
+
 <form action="" method="post">
     <div class="form-grup">
         <div class="row">

@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
 </div>
 
 <div class="row">
-    <div class="col-3 col-md-29 col-lg-26">
+    <div class="col-3 col-md-29 offset-lg-4 col-lg-26">
         <div class="card">
             <form method="post">
                 <div class="card-header">

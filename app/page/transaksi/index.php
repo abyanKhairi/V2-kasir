@@ -54,7 +54,13 @@
                             <td><?php echo $transaksi->jumlahT($row["id_transaksi"]) ?></td>
                             <td><?php echo $row["no_tlp"] ?></td>
                             <td><?php echo $row["alamat"] ?></td>
-                            <td><?php echo $row["status"] ?></td>
+                            <?php
+                            if ($row["status"] === 'SELESAI') {
+                            ?>
+                                <td class="badge badge-success">Dibayar</td>
+                            <?php } else { ?>
+                                <td class="badge badge-warning">Belum Dibayar</td>
+                            <?php } ?>
                             <?php
                             if ($row["status"] === "SELESAI") {
                             ?>

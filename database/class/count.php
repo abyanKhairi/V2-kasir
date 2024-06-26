@@ -16,4 +16,11 @@ class count
         $stmt->execute();
         return  $stmt->fetch(PDO::FETCH_COLUMN);
     }
+
+    public function countUang($table)
+    {
+        $stmt = $this->db->prepare("SELECT SUM(jumlah_bayar - kembalian) FROM $table");
+        $stmt->execute();
+        return  $stmt->fetch(PDO::FETCH_COLUMN);
+    }
 }

@@ -80,28 +80,29 @@ include '../database/class/count.php';
                 </div>
                 <div class="card-body">
                     <?php echo $count->count('transaksi');
-                    $pdo =  Koneksi::disconnect();
                     ?>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- <div class="col-lg-3 col-md-6 col-sm-12">
+    <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="card card-statistic-2">
             <div class="card-icon shadow-success bg-success">
                 <i class="fas fa-dollar-sign"></i>
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4></h4>
+                    <h4>Pendapatan</h4>
                 </div>
                 <div class="card-body">
-
+                    Rp. <?php echo number_format($count->countUang('bayar'));
+                        $pdo =  Koneksi::disconnect();
+                        ?>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
 
 </div>

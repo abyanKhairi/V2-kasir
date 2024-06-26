@@ -30,7 +30,7 @@ if (isset($_POST["edit"])) {
    <h1>Costumers</h1>
 </div>
 <div class="row">
-   <div class="col-12 col-md-6 col-lg-6">
+   <div class="col-12 col-md-6 offset-lg-3 col-lg-6">
       <div class="card">
          <form method="post">
             <div class="card-header">

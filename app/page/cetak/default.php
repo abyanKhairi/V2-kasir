@@ -10,4 +10,7 @@ switch ($act) {
     case 'total':
         include('index.php');
         break;
+
+    default:
+        include('index.php');
 }

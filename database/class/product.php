@@ -4,6 +4,7 @@ class produk
 {
 
     private $db;
+    private $error;
 
 
     public function __construct($db_conn)
@@ -64,9 +65,13 @@ class produk
 
     public function delete($id_produk)
     {
-        $stmt = $this->db->prepare("DELETE FROM product WHERE id_produk =:id_produk");
-        $stmt->bindParam(":id_produk", $id_produk);
-        $stmt->execute();
-        return true;
+        try {
+            $stmt = $this->db->prepare("DELETE FROM product WHERE id_produk =:id_produk");
+            $stmt->bindParam(":id_produk", $id_produk);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            return $this->error;
+        }
     }
 }

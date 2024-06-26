@@ -67,6 +67,10 @@ if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
                             include('page/cetak/default.php');
                             break;
 
+                        case 'dashboard':
+                            include('page/dashboard/index.php');
+
+                            break;
                         default:
                             include('page/dashboard/index.php');
                     }

@@ -14,9 +14,6 @@ switch ($act) {
     case 'delete':
         include 'hapus.php';
         break;
-    case 'edit':
-        include 'detail.php';
-        break;
     default:
         include 'index.php';
         break;

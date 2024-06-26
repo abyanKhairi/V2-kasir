@@ -57,9 +57,9 @@ class Bayar
     public function getStruk($id_transaksi)
     {
         $stmt = $this->db->prepare("SELECT detail_transaksi.qty, product.nama_produk, product.harga_produk 
-                           FROM detail_transaksi 
-                           JOIN product ON detail_transaksi.id_produk = product.id_produk 
-                           WHERE detail_transaksi.id_transaksi = :id_transaksi");
+                        FROM detail_transaksi 
+                        JOIN product ON detail_transaksi.id_produk = product.id_produk 
+                        WHERE detail_transaksi.id_transaksi = :id_transaksi");
         $stmt->bindParam(":id_transaksi", $id_transaksi);
         $stmt->execute();
         return $stmt->fetchAll();
