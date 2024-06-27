@@ -88,5 +88,3 @@ if (isset($error)) {
         </div>
     </div>
 </div>
-</div>
-</div>

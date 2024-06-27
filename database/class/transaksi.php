@@ -157,7 +157,7 @@ class Transaksi
             $stmt = $this->db->prepare("SELECT SUM(detail_transaksi.qty * product.harga_produk) as total_harga FROM detail_transaksi JOIN product ON detail_transaksi.id_produk = product.id_produk WHERE id_transaksi = :id_transaksi");
             $stmt->bindParam("id_transaksi", $id_transaksi);
             $stmt->execute();
-            return $stmt->fetchAll();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

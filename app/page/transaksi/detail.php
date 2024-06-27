@@ -122,18 +122,19 @@ if (isset($_POST['tambahProduct'])) {
             $pdo = Koneksi::connect();
             $transaksi = new Transaksi($pdo);
             $totals = $transaksi->total($id_transaksi);
-            foreach ($totals as $total) {
             ?>
-                <h5>Total Harga</h5>
-                <h6>Rp. <?= number_format($total["total_harga"]) ?></h6>
+            <h5>Total Harga</h5>
+            <h6>Rp. <?= number_format($totals["total_harga"]) ?></h6>
             <?php
-            }
             $pdo = Koneksi::disconnect();
+
+            if ($rows == true) {
             ?>
-            <br>
-            <a href="index.php?page=struk&act=pembayaran&id=<?= $id_transaksi ?>"> <button type="submit" class="btn btn-primary btn-lg btn-block" name="">
-                    Selesaikan Transaksi
-                </button></a>
+                <br>
+                <a href="index.php?page=struk&act=pembayaran&id=<?= $id_transaksi ?>"> <button type="submit" class="btn btn-primary btn-lg btn-block" name="">
+                        Selesaikan Transaksi
+                    </button></a>
+            <?php } ?>
         </div>
     </div>
 </div>

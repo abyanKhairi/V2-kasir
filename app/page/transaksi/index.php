@@ -34,6 +34,7 @@
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
+
                     <?php
                     $pdo = Koneksi::connect();
                     $transaksi = new Transaksi($pdo);

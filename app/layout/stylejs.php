@@ -22,11 +22,14 @@
 <script src="../assets/modules/jquery.sparkline.min.js"></script>
 <script src="../assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
 <script src="../assets/modules/bootstrap-daterangepicker/daterangepicker.js"></script>
-
+<script src="../assets/modules/datatables/datatables.min.js"></script>
+<script src="../assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="../assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
 
 
 
 <!-- Page Specific JS File -->
+<script src="../assets/js/page/modules-chartjs.js"></script>
 <script src="../assets/js/page/index-0.js"></script>
 <script src="../assets/js/page/index.js"></script>
 <script src="../assets/js/page/bootstrap-modal.js"></script>

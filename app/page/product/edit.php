@@ -9,10 +9,9 @@ if (isset($_POST['update'])) {
     $jumlah_produk = $_POST['jumlah_produk'];
     $harga_produk = $_POST['harga_produk'];
 
-    $produk->update($id_produk, $nama_produk, $jumlah_produk, $harga_produk);
 
 
-    if ($produk->update($id_produk, $nama_produk, $jumlah_produk, $harga_produk) == true) {
+    if ($produk->update($id_produk, $nama_produkk, $jumlah_produk, $harga_produk) == true) {
 ?>
         <script>
             window.location.href = "index.php?page=product"

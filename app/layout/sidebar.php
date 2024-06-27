@@ -37,11 +37,11 @@
                             <li><a class="nav-link" href="index.php?page=user&act=create">Tambah User</a></li>
                         </ul>
                         </li>
+
+
                     <?php } elseif ($currentUser['role'] === 'admin') {
                     echo "<script>window.location.href = 'index.php </script>";
                 } ?>
-
-
                     <li class="menu-header">Customers</li>
                     <?php if ($nav === 'costumer') {
                     ?>
