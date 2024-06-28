@@ -57,9 +57,13 @@ class costumer
 
     public function delete($id_pembeli)
     {
-        $stmt = $this->db->prepare("DELETE FROM pembeli WHERE id_pembeli =:id_pembeli");
-        $stmt->bindParam(":id_pembeli", $id_pembeli);
-        $stmt->execute();
-        return true;
+        try {
+            $stmt = $this->db->prepare("DELETE FROM pembeli WHERE id_pembeli =:id_pembeli");
+            $stmt->bindParam(":id_pembeli", $id_pembeli);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
     }
 }

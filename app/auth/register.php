@@ -1,13 +1,8 @@
 <?php
 
-//cek status user
-
 if ($user->isLoggedIn()) {
     header("Location: ../app/index.php");
 }
-
-// cek data register yang dikirim
-
 
 if (isset($_POST["regis"])) {
     $nama = $_POST["nama"];
@@ -20,10 +15,9 @@ if (isset($_POST["regis"])) {
 
     $pdo = Koneksi::connect();
     if ($user->register($nama, $username, $email, $password, $alamat, $not_tlp, $role)) {
-
         $success = true;
     } else {
-        $error = $user->getLasrError();
+        $error = $user->getError();
     }
     $pdo = Koneksi::disconnect();
 }
@@ -49,6 +43,24 @@ if (isset($_POST["regis"])) {
 <body>
     <div id="app">
         <section class="section">
+            <?php
+            if (isset($error)) {
+                echo "<div>
+                        <div class='alert alert-danger text-center'>
+                            <div class='alert-title '>Anda Gagal Login Pastikan Username Dan Password Bener</div>
+                            Username Dan Password Salah
+                        </div>
+                    </div>";
+            }
+            if (isset($success)) {
+                echo "<div>
+                        <div class='alert alert-success text-center'>
+                            <div class='alert-title '>
+                            Berhasil Registrasi Silahkan <a href='index.php?auth=login'> > Login <</a>
+                        </div>
+                    </div>";
+            } ?>
+
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
@@ -64,17 +76,6 @@ if (isset($_POST["regis"])) {
                             <div class="card-body">
                                 <form method="POST">
 
-                                    <?php if (isset($error)) : ?>
-                                        <div class="error">
-                                            <?php echo $error ?>
-                                        </div>
-                                    <?php endif; ?>
-
-                                    <?php if (isset($success)) : ?>
-                                        <div class="success shadow-info bg-info">
-                                            Berhasil mendaftar. Silakan <a href="index.php?auth=login">login</a>.
-                                        </div>
-                                    <?php endif; ?>
 
                                     <div class="form-group">
                                         <label for="nama">Name</label>

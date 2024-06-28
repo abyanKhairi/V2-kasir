@@ -6,8 +6,9 @@ $costumer = new costumer($pdo);
 $costumer->delete($id_pembeli);
 
 if ($costumer->delete($id_pembeli) == true) {
-
-        echo " <script>window.location.href = 'index.php?page=costumer'</script>";
+        echo " <script>window.location.href = 'index.php?page=costumer&pesan=success'</script>";
+} else {
+        echo "<script>window.location.href = 'index.php?page=costumer&pesan=gagal'</script>";
 }
 
 $pdo =  Koneksi::disconnect();

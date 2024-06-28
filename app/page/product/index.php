@@ -3,11 +3,32 @@
 </div>
 
 <?php
+$pesan =  isset($_GET['pesan']) ? $_GET['pesan'] : '';
 
-if (isset($error)) {
-    echo "<div class='card'> bisa gak jangan eror</div>";
+switch ($pesan) {
+    case 'gagal':
+        echo "<div class='alert alert-danger alert-dismissible show fade'>
+                <div class='alert-body'>
+                    <button class='close' data-dismiss='alert'>
+                        <span>&times;</span>
+                    </button>
+                    Product Gagal Untuk Dihapus Karena Masih Terkait Dengan Transaksi Lainnya
+                </div>
+            </div>";
+        break;
+    case 'success':
+        echo "<div class='alert alert-success alert-dismissible show fade'>
+                <div class='alert-body'>
+                    <button class='close' data-dismiss='alert'>
+                        <span>&times;</span>
+                    </button>
+                    Product Berhasil Untuk Dihapus
+                </div>
+            </div>";
+        break;
+    default:
+        break;
 }
-
 ?>
 
 <form action="" method="post">
@@ -55,7 +76,7 @@ if (isset($error)) {
                         <td>Rp. <?php echo number_format($row["harga_produk"]) ?></td>
                         <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=product&act=edit&id=<?php echo $row["id_produk"] ?>"><i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Product Ini?" data-confirm-yes="window.location.href='index.php?page=product&act=delete&id=<?php echo $row['id_produk'] ?>'"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="Delete" href="index.php?page=product&act=delete&id=<?php echo $row['id_produk'] ?>'"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 <?php

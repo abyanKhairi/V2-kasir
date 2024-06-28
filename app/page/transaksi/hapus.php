@@ -7,10 +7,10 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     if ($transaksi->hapusTransaksi($id)) {
-        echo   "<script>window.location.href = 'index.php?page=transaksi'</script>";
+        echo   "<script>window.location.href = 'index.php?page=transaksi&pesan=success'</script>";
         exit();
     } else {
-        echo "Masih Ada Transaksi Yang Sedang Belum Selesai";
+        echo "<script>window.location.href = 'index.php?page=transaksi&pesan=gagal'</script>";
     }
 }
 

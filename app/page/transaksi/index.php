@@ -2,6 +2,34 @@
 <div class="section-header">
     <h1>Transaksi</h1>
 </div>
+<?php
+$pesan =  isset($_GET['pesan']) ? $_GET['pesan'] : '';
+
+switch ($pesan) {
+    case 'gagal':
+        echo "  <div class='alert alert-danger alert-dismissible show fade'>
+            <div class='alert-body'>
+                <button class='close' data-dismiss='alert'>
+                    <span>&times;</span>
+                </button>
+                Transaksi Gagal Untuk Dihapus Karena Masih Terkait Dengan Transaksi Lainnya
+            </div>
+            </div>";
+        break;
+    case 'success':
+        echo "  <div class='alert alert-success alert-dismissible show fade'>
+    <div class='alert-body'>
+        <button class='close' data-dismiss='alert'>
+            <span>&times;</span>
+        </button>
+        Transaksi Berhasil Untuk Dihapus
+    </div>
+    </div>";
+        break;
+    default:
+        break;
+}
+?>
 
 <div class="col-18 col-md-16 mb-md-3 col-lg-12">
     <form action="" method="post">
@@ -67,14 +95,14 @@
                             ?>
                                 <td>
                                     <a class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="Struk" href="index.php?page=struk&act=total&id_struk=<?php echo $cek["id_bayar"] ?>"><i class="fas fa-file"></i></a>
-                                    <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Transaksi Ini?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
+                                    <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="Delete" href="index.php?page=transaksi&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
                                 </td>
                             <?php
                             } else {
                             ?>
                                 <td>
                                     <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail" href="index.php?page=transaksi&act=detail&id=<?php echo $row["id_transaksi"] ?>"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Transaksi Ini?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
+                                    <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="Delete" href="index.php?page=transaksi&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
                                 </td>
                             <?php
                             }

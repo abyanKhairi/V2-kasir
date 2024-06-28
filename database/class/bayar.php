@@ -3,7 +3,6 @@
 class Bayar
 {
     private $db;
-
     public function __construct($db_conn)
     {
         $this->db = $db_conn;
@@ -71,5 +70,10 @@ class Bayar
         $stmt->bindParam(":id_transaksi", $id_transaksi);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getError()
+    {
+        return true;
     }
 }

@@ -11,7 +11,7 @@ if (isset($_POST["login"])) {
     header("Location: ../app/index.php");
   } else {
     //jika gaal login
-    $error = $user->getLasrError();
+    $error = $user->getError();
   }
 
   $pdo =  Koneksi::disconnect();
@@ -38,7 +38,16 @@ if (isset($_POST["login"])) {
 
 <body>
   <div id="app">
+
     <section class="section">
+      <?php
+      if (isset($error)) {
+        echo "
+                    <div class='alert alert-danger text-center'>
+                      <div class='alert-title '>Anda Gagal Login Pastikan Username Dan Password Bener</div>
+                      Username Dan Password Salah
+                    </div>";
+      } ?>
       <div class="container mt-5">
         <div class="row">
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
@@ -53,16 +62,6 @@ if (isset($_POST["login"])) {
 
               <div class="card-body">
                 <form method="POST" class="needs-validation" novalidate="">
-                  <?php
-                  if (isset($error)) :
-                  ?>
-                    <div class="error">
-                      <?php echo $error ?>
-                    </div>
-
-                  <?php endif; ?>
-
-
                   <div class="form-group">
                     <label for="username">username</label>
                     <input id="username" type="username" class="form-control" name="username" tabindex="1" autocomplete="off" required autofocus>

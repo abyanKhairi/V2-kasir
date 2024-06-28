@@ -71,7 +71,7 @@ class produk
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
-            return $this->error;
+            echo $e->getMessage();
         }
     }
 }

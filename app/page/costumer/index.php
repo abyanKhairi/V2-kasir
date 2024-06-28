@@ -1,6 +1,34 @@
 <div class="section-header">
     <h1>Costumers</h1>
 </div>
+<?php
+$pesan =  isset($_GET['pesan']) ? $_GET['pesan'] : '';
+
+switch ($pesan) {
+    case 'gagal':
+        echo "  <div class='alert alert-danger alert-dismissible show fade'>
+            <div class='alert-body'>
+                <button class='close' data-dismiss='alert'>
+                    <span>&times;</span>
+                </button>
+                Costumer Gagal Untuk Dihapus Karena Masih Terkait Dengan Transaksi Lainnya
+            </div>
+            </div>";
+        break;
+    case 'success':
+        echo "  <div class='alert alert-success alert-dismissible show fade'>
+    <div class='alert-body'>
+        <button class='close' data-dismiss='alert'>
+            <span>&times;</span>
+        </button>
+        Costumer Berhasil Untuk Dihapus
+    </div>
+    </div>";
+        break;
+    default:
+        break;
+}
+?>
 
 <div class="col-18 col-md-16 mb-md-2 col-lg-12">
     <form action="" method="post">

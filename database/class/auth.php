@@ -108,9 +108,8 @@ class Auth
         return true;
     }
 
-
-    public function getLasrError()
+    public function getError()
     {
-        return $this->error;
+        return true;
     }
 }
