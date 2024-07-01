@@ -43,7 +43,7 @@ $("#modal-4").fireModal({
 });
 
 $("#modal-5").fireModal({
-  title: "Login",
+  title: "Tambah",
   body: $("#modal-login-part"),
   footerClass: "bg-whitesmoke",
   autoFocus: false,
@@ -71,7 +71,7 @@ $("#modal-5").fireModal({
   },
   buttons: [
     {
-      text: "Login",
+      text: "Tambah",
       submit: true,
       class: "btn btn-primary btn-shadow",
       handler: function (modal) {},

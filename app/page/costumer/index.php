@@ -1,3 +1,21 @@
+<?php
+
+if (isset($_POST["tambah"])) {
+    $nama = $_POST['nama'];
+    $alamat = $_POST['alamat'];
+    $no_tlp = $_POST['no_tlp'];
+
+    $pdo = Koneksi::connect();
+
+    $costumer = new costumer($pdo);
+    if ($costumer->tambah($nama, $alamat, $no_tlp)) {
+        echo "<script>window.location.href = 'index.php?page=costumer'</script>";
+    };
+    $pdo =  Koneksi::disconnect();
+}
+
+?>
+
 <div class="section-header">
     <h1>Costumers</h1>
 </div>
@@ -45,9 +63,19 @@ switch ($pesan) {
 
 <div class="col-18 col-md-16 col-lg-12">
     <div class="card">
+
         <div class="card-header">
-            <h4>Costumers Information</h4>
+            <div class="card-header">
+                <h4 class="d-inline">Costumers List</h4>
+            </div>
+            <div class="text-right">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#costumerModal">
+                    Tambah user
+                </button>
+            </div>
         </div>
+
         <div class="card-body p-0" style="text-align : center;">
             <div class="table-responsive">
                 <table class="table table-striped table-md">
@@ -105,6 +133,48 @@ switch ($pesan) {
                         </ul>
                     </nav>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="costumerModal" data-backdrop="" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title h5" id="staticBackdropLabel">Tambah Data Costumer</h1>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="nama">Name</label>
+                            <input id="nama" type="text" class="form-control" autocomplete="off" name="nama" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat">Alamat</label>
+                            <input id="alamat" type="text" class="form-control" autocomplete="off" name="alamat" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nomor Telpon</label>
+                            <input type="text" autocomplete="off" class="form-control" required name="no_tlp">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="tambah">
+                                Tambah
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

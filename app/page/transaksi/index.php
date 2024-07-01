@@ -1,3 +1,19 @@
+<?php
+if (isset($_POST['tambahTransaksi'])) {
+    $id_pembeli = $_POST['id_pembeli'];
+    $tanggal = $_POST['tanggal'];
+
+    $pdo = Koneksi::connect();
+
+    $transaksi = new Transaksi($pdo);
+    if ($transaksi->tambahTransaksi($id_pembeli, $tanggal)) {
+        echo "<script>window.location.href = 'index.php?page=transaksi'</script>";
+    };
+
+    $pdo =  Koneksi::disconnect();
+}
+
+?>
 <!-- Main Content -->
 <div class="section-header">
     <h1>Transaksi</h1>
@@ -47,7 +63,15 @@ switch ($pesan) {
 <div class="col-18 col-md-16 col-lg-12">
     <div class="card">
         <div class="card-header">
-            <h4>Transaksi Information</h4>
+            <div class="card-header">
+                <h4 class="d-inline">Transaksi List</h4>
+            </div>
+            <div class="text-right">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#transaksiModal">
+                    Tambah Product
+                </button>
+            </div>
         </div>
         <div class="card-body p-0" style="text-align : center;">
             <div class="table-responsive">
@@ -138,4 +162,58 @@ switch ($pesan) {
             </div>
         </div>
     </div>
+</div>
+
+<!--Modal-->
+
+<div class="modal fade" id="transaksiModal" data-backdrop="" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title h5" id="staticBackdropLabel">Tambah Data Transaksi</h1>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <div class="form-group">
+                        <div class="card-body">
+                            <label for="nama">Name Pelanggan</label>
+                            <select class="form-control selectric" name="id_pembeli">
+                                <?php
+                                $pdo = Koneksi::connect();
+                                $transaksi = new Transaksi($pdo);
+                                $rows = $transaksi->getCustomer();
+
+                                foreach ($rows as $row) {
+                                ?>
+                                    <option value="<?= $row['id_pembeli'] ?>"><?= $row['nama'] ?></option>
+
+                                <?php
+                                }
+                                $pdo = Koneksi::disconnect();
+                                ?>
+                            </select>
+
+                            <br>
+                            <div class="form-group">
+                                <label>Tanggal Transaksi (YY/MM/DD)</label>
+                                <input type="date" required class="form-control datepicker" name="tanggal" placeholder="(YY/MM/DD)">
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" name="tambahTransaksi">
+                                    Tambah Transaksi
+                                </button>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
