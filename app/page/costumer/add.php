@@ -4,11 +4,22 @@ if (isset($_POST["submit"])) {
    $nama = $_POST['nama'];
    $alamat = $_POST['alamat'];
    $no_tlp = $_POST['no_tlp'];
+   $member = $_POST['member'];
 
    $pdo = Koneksi::connect();
 
    $costumer = new costumer($pdo);
    if ($costumer->tambah($nama, $alamat, $no_tlp)) {
+      //untuk mendapatkan id pembeli yang terakhir kali dimasukkan
+      $id_pembeli = $pdo->lastInsertId();
+
+      if ($member) {
+         $id_member = $costumer->addMember($member);
+         if ($id_member) {
+            $costumer->memberPembeli($id_pembeli, $id_member);
+         }
+      }
+
       echo "<script>window.location.href = 'index.php?page=costumer'</script>";
    };
    $pdo =  Koneksi::disconnect();
@@ -35,6 +46,15 @@ if (isset($_POST["submit"])) {
                <div class="form-group">
                   <label>Alamat</label>
                   <input type="text" autocomplete="off" class="form-control" required name="alamat">
+               </div>
+               <div class="form-group">
+                  <label>Member</label>
+                  <select name="member" class="form-control selectric">
+                     <option value="NONE">NONE</option>
+                     <option value="SILVER">SILVER</option>
+                     <option value="GOLD">GOLD</option>
+                     <option value="PLATINUM">PLATINUM</option>
+                  </select>
                </div>
                <div class="form-group">
                   <label>Nomor Telpon</label>

@@ -1,5 +1,4 @@
 <?php
-
 class Bayar
 {
     private $db;
@@ -40,7 +39,7 @@ class Bayar
     public function statusUpdate($id_transaksi)
     {
 
-        $stmt = $this->db->prepare("UPDATE transaksi SET status = 'selesai' WHERE id_transaksi = :id_transaksi ");
+        $stmt = $this->db->prepare("UPDATE transaksi SET status = 'SELESAI' WHERE id_transaksi = :id_transaksi ");
         $stmt->bindParam(":id_transaksi", $id_transaksi);
         $stmt->execute();
         return true;
@@ -75,5 +74,13 @@ class Bayar
     public function getError()
     {
         return true;
+    }
+
+    public function getDiscount($id_pembeli)
+    {
+        $stmt = $this->db->prepare("SELECT pembeli.* , member.* FROM pembeli JOIN member ON pembeli.id_member = member.id_member WHERE id_pembeli = :id_pembeli");
+        $stmt->bindParam(":id_pembeli", $id_pembeli);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

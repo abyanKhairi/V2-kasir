@@ -1,4 +1,6 @@
 <?php
+
+//modal Tambah
 if (isset($_POST["tambah"])) {
     $nama = $_POST["nama"];
     $username = $_POST["username"];

@@ -9,14 +9,16 @@ $blmjual = $count->chart('PENDING');
 $user = $count->count("user");
 $pembeli = $count->count('pembeli');
 $product = $count->count('product');
+$transaksiTl = $count->count('transaksi');
 $pdSelesai = $count->countJual("SELESAI");
 $pdBelum = $count->countJual("PENDING");
 $bayar = $count->countUang('bayar');
-$transaksiTl = $count->count('transaksi');
 
 $pdo =  Koneksi::disconnect();
 
 ?>
+
+<!-- main content -->
 
 <div class="section-header">
     <h1>Dashboard</h1>
@@ -163,8 +165,10 @@ $pdo =  Koneksi::disconnect();
             </div>
         </div>
     </div>
-
 </div>
+
+
+<!-- Chart -->
 
 <div class="row">
     <div class="col-lg-6 col-md-10 col-sm-15">
@@ -173,7 +177,7 @@ $pdo =  Koneksi::disconnect();
                 <h4>Product Telah Dibayar</h4>
             </div>
             <div class="card-body">
-                <canvas id="myCha"></canvas>
+                <canvas id="chartBayar"></canvas>
             </div>
         </div>
     </div>
@@ -183,15 +187,17 @@ $pdo =  Koneksi::disconnect();
                 <h4>Product Belum Dibayar</h4>
             </div>
             <div class="card-body">
-                <canvas id="myCha2"></canvas>
+                <canvas id="chartBelum"></canvas>
             </div>
         </div>
     </div>
 </div>
 
+
+<!-- cart script -->
 <script>
-    const cha1 = document.getElementById("myCha");
-    new Chart(cha1, {
+    const chart1 = document.getElementById("chartBayar");
+    new Chart(chart1, {
         type: "bar",
         data: {
             labels: <?= json_encode(array_column($jual, 'nama_produk')) ?>,
@@ -214,8 +220,9 @@ $pdo =  Koneksi::disconnect();
         },
     });
 
-    const cha2 = document.getElementById("myCha2");
-    new Chart(cha2, {
+
+    const chart2 = document.getElementById("chartBelum");
+    new Chart(chart2, {
         type: "bar",
         data: {
             labels: <?= json_encode(array_column($blmjual, 'nama_produk')) ?>,

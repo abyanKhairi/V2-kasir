@@ -4,26 +4,32 @@ $costumer = new costumer($pdo);
 
 $id_pembeli = $_GET['id'];
 
+$getMember = $costumer->showMember($id_pembeli);
+
 if (isset($_POST["edit"])) {
    $nama = $_POST['nama'];
    $alamat = $_POST['alamat'];
    $no_tlp = $_POST['no_tlp'];
+   $anggota = $_POST['member'];
+   $id_member = $_POST['id_member'];
 
-   $costumer->update($id_pembeli, $nama, $alamat, $no_tlp);
+   $costumer->update($id_pembeli, $nama, $alamat, $no_tlp, $anggota, $id_member);
 
-   if ($costumer->update($id_pembeli, $nama, $alamat, $no_tlp) == true) {
-?> <script>
+   if ($costumer->update($id_pembeli, $nama, $alamat, $no_tlp, $anggota, $id_member) == true) {
+?>
+      <script>
          window.location.href = "index.php?page=costumer"
-      </script> <?php
-               }
-            }
+      </script>
+<?php
+   }
+}
 
-            if (isset($id_pembeli)) {
-               extract($costumer->getID($id_pembeli));
-            }
+if (isset($id_pembeli)) {
+   extract($costumer->getID($id_pembeli));
+}
 
-            $pdo =  Koneksi::disconnect();
-                  ?>
+$pdo =  Koneksi::disconnect();
+?>
 
 
 <div class="section-header">
@@ -46,6 +52,16 @@ if (isset($_POST["edit"])) {
                   <input type="text" autocomplete="off" class="form-control" required name="alamat" value="<?php echo $alamat ?>">
                </div>
                <div class="form-group">
+                  <label>Member</label>
+                  <select name="member" class="form-control selectric">
+                     <option value="<?php echo $getMember ?>"><?php echo $getMember ?> (Saat Ini)</option>
+                     <option value="NONE">NONE</option>
+                     <option value="SILVER">SILVER</option>
+                     <option value="GOLD">GOLD</option>
+                     <option value="PLATINUM">PLATINUM</option>
+                  </select>
+               </div>
+               <div class="form-group">
                   <label>Nomor Telpon</label>
                   <input type="text" autocomplete="off" class="form-control" required name="no_tlp" value="<?php echo $no_tlp ?>">
                </div>
@@ -53,6 +69,7 @@ if (isset($_POST["edit"])) {
             <div class="card-footer text-right">
                <button class="btn btn-primary" type="submit" name="edit">Edit</button>
             </div>
+            <input type="text" name="id_member" value="<?php echo $id_member ?>">
          </form>
       </div>
    </div>

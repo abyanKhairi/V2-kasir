@@ -84,6 +84,7 @@ switch ($pesan) {
                         <th scope="col">Name</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">No Hp</th>
+                        <th scope="col">Status Member</th>
                         <th scope="col">Action</th>
                     </tr>
                     <?php
@@ -98,12 +99,15 @@ switch ($pesan) {
                     $pages = $paging->get_pagination_number();
                     $i = 1;
                     foreach ($rows as $row) {
+                        $anggota = $costumer->showMember($row["id_pembeli"])
+
                     ?>
                         <tr>
                             <td><?php echo $i ?></td>
                             <td><?php echo $row["nama"] ?></td>
                             <td><?php echo $row["alamat"] ?></td>
                             <td><?php echo $row["no_tlp"] ?></td>
+                            <td><?php echo $anggota ?></td>
                             <td>
                                 <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=costumer&act=edit&id=<?php echo $row["id_pembeli"] ?>"><i class="fas fa-pencil-alt"></i></a>
                                 <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="delete" href='index.php?page=costumer&act=delete&id=<?php echo $row['id_pembeli'] ?>' id="delete"><i class="fas fa-trash"></i></a>

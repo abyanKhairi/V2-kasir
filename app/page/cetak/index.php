@@ -10,7 +10,7 @@ $rows = $bayar->getStruk($cek['id_transaksi']);
 $pdo = Koneksi::disconnect();
 ?>
 
-<div class="col-18 col-sm-14 offset-sm-2 col-md-10 col-lg-10 offset-lg-3">
+<div class="col-25 col-sm-20 offset-sm-2 col-md-18 col-lg-20 offset-lg-3">
 
     <div class="card text-bg-primary mb-2" style="max-width: 33rem">
         <div class="card-header font-weight-bold">Zkasir
@@ -47,13 +47,35 @@ $pdo = Koneksi::disconnect();
                 <table class="table table-striped table-md">
                     <tr>
                         <th>Total Harga</th>
+                        <th>Discount Member</th>
                         <th>Jumlah Yang Dibayarkan</th>
                         <th>Kembalian</td>
                     </tr>
                     <tr>
+                        <?php
+                        $cekAnggota = $bayar->getDiscount($get["id_pembeli"]);
+                        $discount = $cekAnggota['keanggotaan'];
+
+                        switch ($discount) {
+                            case 'SILVER':
+                                $harga =   $cek['total_harga'] * 0.15;
+                                break;
+                            case 'GOLD':
+                                $harga =   $cek['total_harga'] * 0.20;
+                                break;
+                            case 'PLATINUM':
+                                $harga = $cek['total_harga'] * 0.25;
+                                break;
+                            default:
+                                $harga = 0;
+                                break;
+                        }
+                        $kembalian = $cek['kembalian'] + $harga;
+                        ?>
                         <td>Rp. <?= number_format($cek['total_harga']) ?></td>
+                        <td>Rp. <?= number_format($harga) ?></td>
                         <td>Rp. <?= number_format($cek['jumlah_bayar']) ?></td>
-                        <td>Rp. <?= number_format($cek['kembalian']) ?></td>
+                        <td>Rp. <?= number_format($kembalian) ?></td>
                     </tr>
                 </table>
             </div>
