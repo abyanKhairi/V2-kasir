@@ -3,13 +3,37 @@
 $id_transaksi = $_GET["id"];
 $pdo = Koneksi::connect();
 $bayar = new Bayar($pdo);
+$get = $bayar->getTransaksi($id_transaksi);
 
+//pengecekan discount member
+$cekAnggota = $bayar->getDiscount($get["id_pembeli"]);
+$cekDiscount = $cekAnggota['keanggotaan'];
+$total_harga = $bayar->hitungTotal($id_transaksi);
+
+var_dump($total_harga);
+switch ($cekDiscount) {
+    case 'SILVER':
+        $discount = $total_harga * 0.15;
+        break;
+    case 'GOLD':
+        $discount = $total_harga * 0.20;
+        break;
+    case 'PLATINUM':
+        $discount = $total_harga * 0.25;
+        break;
+    default:
+        $discount = 0;
+        break;
+}
+var_dump($discount);
+
+//proses memasukan data ke tabel bayar
 if (isset($_POST['bayar'])) {
     $jumlah_bayar = $_POST['jumlah_bayar'];
-    $total_harga = $bayar->hitungTotal($id_transaksi);
-    $kembalian = $jumlah_bayar - $total_harga;
+    $hargaSeluruh = $total_harga - $discount;
+
     if ($jumlah_bayar >= $total_harga) {
-        $id_bayar = $bayar->simpanPembayaran($id_transaksi, $total_harga, $jumlah_bayar, $kembalian);
+        $id_bayar = $bayar->simpanPembayaran($id_transaksi, $hargaSeluruh, $jumlah_bayar, $kembalian);
         $bayar->statusUpdate($id_transaksi);
         echo "<script>window.location.href ='index.php?page=struk&act=total&id_struk=$id_bayar'</script>";
     } else {

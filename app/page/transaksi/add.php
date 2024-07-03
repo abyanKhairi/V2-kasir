@@ -9,13 +9,9 @@ if (isset($_POST['tambahTransaksi'])) {
     if ($transaksi->tambahTransaksi($id_pembeli, $tanggal)) {
         echo "<script>window.location.href = 'index.php?page=transaksi'</script>";
     };
-
     $pdo =  Koneksi::disconnect();
 }
-
-
 ?>
-
 <div class="section-header">
     <h1>Tambah Transaksi</h1>
 </div>

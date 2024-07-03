@@ -125,7 +125,6 @@ class Transaksi
             $stmt->bindParam(":qty", $qty);
             $stmt->execute();
 
-
             //mengurangi stok
             $stmt = $this->db->prepare("UPDATE product SET jumlah_produk = jumlah_produk - :qty WHERE id_produk = :id_produk");
             $stmt->bindParam(":id_produk", $id_produk);
@@ -222,7 +221,6 @@ class Transaksi
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_COLUMN);
     }
-
     public function edit($id_detail)
     {
         try {
@@ -254,9 +252,5 @@ class Transaksi
         $stmt->bindParam(":id_transaksi", $id_transaksi);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public function allDelete()
-    {
     }
 }

@@ -13,15 +13,16 @@ class produk
     }
 
 
-    public function tambah($nama_produk, $jumlah_produk, $harga_produk)
+    public function tambah($nama_produk, $jumlah_produk, $harga_produk, $gambar)
     {
         try {
 
             //Masukkan costumer baru ke database
-            $stmt = $this->db->prepare("INSERT INTO product(id_produk,nama_produk, jumlah_produk, harga_produk) VALUES(NULL,:nama_produk,:jumlah_produk, :harga_produk)");
+            $stmt = $this->db->prepare("INSERT INTO product(id_produk,nama_produk, jumlah_produk, harga_produk, gambar) VALUES(NULL,:nama_produk,:jumlah_produk, :harga_produk, :gambar)");
             $stmt->bindParam(":nama_produk", $nama_produk);
             $stmt->bindParam(":jumlah_produk", $jumlah_produk);
             $stmt->bindParam(":harga_produk", $harga_produk);
+            $stmt->bindParam(":gambar", $gambar);
 
             $stmt->execute();
 

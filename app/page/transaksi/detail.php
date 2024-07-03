@@ -73,11 +73,12 @@ if (isset($_POST['tambahProduct'])) {
 <div class="row">
     <div class="col-12 col-md-25 col-lg-25">
         <div class="card">
-            <div class="card-body p-0" style="text-align : center;">
+            <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table table-striped table-md">
+                    <table class="table table-striped table-md text-center">
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Gambar</th>
                             <th scope="col">Nama Produk</th>
                             <th scope="col">Harga Satuan</th>
                             <th scope="col">Jumlah</th>
@@ -93,13 +94,16 @@ if (isset($_POST['tambahProduct'])) {
                             $total = $row['qty'] * $row['harga_produk'];
                         ?>
                             <tr>
-                                <td><?php echo $i ?></td>
-                                <td><?php echo $row["nama_produk"] ?></td>
-                                <td>Rp. <?php echo number_format($row["harga_produk"]) ?></td>
-                                <td><?php echo $row["qty"] ?></td>
-                                <td>Rp. <?php echo number_format($total) ?></td>
+                                <td class="align-middle"><?php echo $i ?></td>
+                                <td class="align-middle">
+                                    <img src="page/product/img/<?php echo $row["gambar"] ?>" width="90px" alt="gambar">
+                                </td>
+                                <td class="align-middle"><?php echo $row["nama_produk"] ?></td>
+                                <td class="align-middle">Rp. <?php echo number_format($row["harga_produk"]) ?></td>
+                                <td class="align-middle"><?php echo $row["qty"] ?></td>
+                                <td class="align-middle">Rp. <?php echo number_format($total) ?></td>
 
-                                <td>
+                                <td class="align-middle">
                                     <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Produk Dari Transaksi?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id_produk=<?= $row['id_produk'] ?>&id_transaksi=<?= $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>

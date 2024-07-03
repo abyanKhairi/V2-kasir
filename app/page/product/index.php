@@ -8,8 +8,9 @@ if (isset($_POST["tambah"])) {
     $nama_produk = $_POST['nama_produk'];
     $jumlah_produk = $_POST['jumlah_produk'];
     $harga_produk = $_POST['harga_produk'];
+    $gambar = $_POST['gambar'];
 
-    if ($produk->tambah($nama_produk, $jumlah_produk, $harga_produk)) {
+    if ($produk->tambah($nama_produk, $jumlah_produk, $harga_produk, $gambar)) {
         echo "<script>window.location.href = 'index.php?page=product'</script>";
     };
 }
@@ -86,11 +87,12 @@ switch ($pesan) {
         </div>
     </div>
 
-    <div class="card-body p-0" style="text-align : center;">
+    <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-striped table-md">
+            <table class="table table-striped table-md text-center ">
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Gambar</th>
                     <th scope="col">Nama Product</th>
                     <th scope="col">Jumlah Product</th>
                     <th scope="col">Harga Satuan</th>
@@ -109,11 +111,14 @@ switch ($pesan) {
                 foreach ($rows as $row) :
                 ?>
                     <tr>
-                        <td><?php echo $i ?></td>
-                        <td><?php echo $row["nama_produk"] ?></td>
-                        <td><?php echo $row["jumlah_produk"] ?></td>
-                        <td>Rp. <?php echo number_format($row["harga_produk"]) ?></td>
-                        <td>
+                        <td class="align-middle"><?php echo $i ?></td>
+                        <td class="align-middle">
+                            <img src="page/product/img/<?php echo $row["gambar"] ?>" width="90px" alt="gambar">
+                        </td>
+                        <td class="align-middle"><?php echo $row["nama_produk"] ?></td>
+                        <td class="align-middle"><?php echo $row["jumlah_produk"] ?></td>
+                        <td class="align-middle">Rp. <?php echo number_format($row["harga_produk"]) ?></td>
+                        <td class="align-middle">
                             <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=product&act=edit&id=<?php echo $row["id_produk"] ?>"><i class="fas fa-pencil-alt"></i></a>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" title="Edit" data-target="#productModal<?php echo $row['id_produk'] ?>"><i class="fas fa-pen"></i></a>
                             <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="Delete" href="index.php?page=product&act=delete&id=<?php echo $row['id_produk'] ?>'"><i class="fas fa-trash"></i></a>

@@ -1,5 +1,9 @@
 <?php
 
+$pdo = Koneksi::connect();
+$user = new Auth($pdo);
+
+
 if ($user->isLoggedIn()) {
     header("Location: ../app/index.php");
 }
@@ -13,7 +17,6 @@ if (isset($_POST["regis"])) {
     $not_tlp = $_POST["not_tlp"];
     $role = $_POST["role"];
 
-    $pdo = Koneksi::connect();
     if ($user->register($nama, $username, $email, $password, $alamat, $not_tlp, $role)) {
         $success = true;
     } else {

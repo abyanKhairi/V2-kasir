@@ -11,7 +11,7 @@ if (isset($_POST['update'])) {
 
 
 
-    if ($produk->update($id_produk, $nama_produkk, $jumlah_produk, $harga_produk) == true) {
+    if ($produk->update($id_produk, $nama_produk, $jumlah_produk, $harga_produk) == true) {
 ?>
         <script>
             window.location.href = "index.php?page=product"

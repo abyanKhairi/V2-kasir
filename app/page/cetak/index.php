@@ -47,35 +47,13 @@ $pdo = Koneksi::disconnect();
                 <table class="table table-striped table-md">
                     <tr>
                         <th>Total Harga</th>
-                        <th>Discount Member</th>
                         <th>Jumlah Yang Dibayarkan</th>
                         <th>Kembalian</td>
                     </tr>
                     <tr>
-                        <?php
-                        $cekAnggota = $bayar->getDiscount($get["id_pembeli"]);
-                        $discount = $cekAnggota['keanggotaan'];
-
-                        switch ($discount) {
-                            case 'SILVER':
-                                $harga =   $cek['total_harga'] * 0.15;
-                                break;
-                            case 'GOLD':
-                                $harga =   $cek['total_harga'] * 0.20;
-                                break;
-                            case 'PLATINUM':
-                                $harga = $cek['total_harga'] * 0.25;
-                                break;
-                            default:
-                                $harga = 0;
-                                break;
-                        }
-                        $kembalian = $cek['kembalian'] + $harga;
-                        ?>
                         <td>Rp. <?= number_format($cek['total_harga']) ?></td>
-                        <td>Rp. <?= number_format($harga) ?></td>
                         <td>Rp. <?= number_format($cek['jumlah_bayar']) ?></td>
-                        <td>Rp. <?= number_format($kembalian) ?></td>
+                        <td>Rp. <?= number_format($cek['kembalian']) ?></td>
                     </tr>
                 </table>
             </div>
