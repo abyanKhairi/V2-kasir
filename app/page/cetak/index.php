@@ -47,13 +47,15 @@ $pdo = Koneksi::disconnect();
                 <table class="table table-striped table-md">
                     <tr>
                         <th>Total Harga</th>
+                        <th>Discount</th>
                         <th>Jumlah Yang Dibayarkan</th>
                         <th>Kembalian</td>
                     </tr>
                     <tr>
-                        <td>Rp. <?= number_format($cek['total_harga']) ?></td>
-                        <td>Rp. <?= number_format($cek['jumlah_bayar']) ?></td>
-                        <td>Rp. <?= number_format($cek['kembalian']) ?></td>
+                        <td class="col-md-3">Rp. <?= number_format($cek['total_harga']) ?></td>
+                        <td class="col-md-3">Rp. <?= number_format($cek['discount']) ?></td>
+                        <td class="col-md-3">Rp. <?= number_format($cek['jumlah_bayar']) ?></td>
+                        <td class="col-md-3">Rp. <?= number_format($cek['kembalian']) ?></td>
                     </tr>
                 </table>
             </div>

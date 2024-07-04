@@ -111,9 +111,9 @@ switch ($pesan) {
                             <?php
                             if ($row["status"] === 'SELESAI') {
                             ?>
-                                <td class="badge badge-success align-middle">Dibayar</td>
+                                <td class="align-middle"><span class="badge badge-success">Dibayar</span></td>
                             <?php } else { ?>
-                                <td class="badge badge-warning align-middle">Belum Dibayar</td>
+                                <td class="align-middle"><span class="badge badge-warning">Belum Dibayar</span></td>
                             <?php } ?>
                             <?php
                             if ($row["status"] === "SELESAI") {

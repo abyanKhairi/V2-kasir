@@ -19,14 +19,15 @@ class Bayar
         return $result ? $result['total_harga'] : 0;
     }
 
-    public function simpanPembayaran($id_transaksi, $total_harga, $jumlah_bayar, $kembalian)
+    public function simpanPembayaran($id_transaksi, $total_harga, $jumlah_bayar, $kembalian, $discount)
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO bayar (id_transaksi, total_harga, jumlah_bayar, kembalian) VALUES (:id_transaksi, :total_harga, :jumlah_bayar, :kembalian)");
+            $stmt = $this->db->prepare("INSERT INTO bayar (id_transaksi, total_harga, jumlah_bayar, kembalian, discount) VALUES (:id_transaksi, :total_harga, :jumlah_bayar, :kembalian, :discount)");
             $stmt->bindParam(":id_transaksi", $id_transaksi);
             $stmt->bindParam(":total_harga", $total_harga);
             $stmt->bindParam(":jumlah_bayar", $jumlah_bayar);
             $stmt->bindParam(":kembalian", $kembalian);
+            $stmt->bindParam(":discount", $discount);
             $stmt->execute();
 
 

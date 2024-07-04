@@ -31,9 +31,10 @@ var_dump($discount);
 if (isset($_POST['bayar'])) {
     $jumlah_bayar = $_POST['jumlah_bayar'];
     $hargaSeluruh = $total_harga - $discount;
+    $kembalian = $jumlah_bayar - $hargaSeluruh;
 
     if ($jumlah_bayar >= $total_harga) {
-        $id_bayar = $bayar->simpanPembayaran($id_transaksi, $hargaSeluruh, $jumlah_bayar, $kembalian);
+        $id_bayar = $bayar->simpanPembayaran($id_transaksi, $hargaSeluruh, $jumlah_bayar, $kembalian, $discount);
         $bayar->statusUpdate($id_transaksi);
         echo "<script>window.location.href ='index.php?page=struk&act=total&id_struk=$id_bayar'</script>";
     } else {

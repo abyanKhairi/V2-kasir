@@ -8,6 +8,7 @@ if (isset($_POST["tambah"])) {
     $not_tlp = $_POST["not_tlp"];
     $role = $_POST["role"];
 
+
     $pdo = Koneksi::connect();
 
     $crudUser = new user($pdo);
@@ -28,7 +29,7 @@ if (isset($_POST["tambah"])) {
 <div class="row">
     <div class="col-12 col-md-6 col-lg-10">
         <div class="card">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="row">
                         <div class="form-group col-md-6">

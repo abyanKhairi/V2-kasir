@@ -117,11 +117,18 @@ switch ($pesan) {
                             <img src="page/product/img/<?php echo $row["gambar"] ?>" width="90px" alt="gambar">
                         </td>
                         <td class="align-middle"><?php echo $row["nama_produk"] ?></td>
-                        <td class="align-middle"><?php echo $row["jumlah_produk"] ?></td>
+                        <?php
+                        if ($row["jumlah_produk"] == 0) { ?>
+                            <td class="align-middle"><span class="badge badge-warning">Habis</span></td>
+                        <?php
+                        } else {
+                        ?>
+                            <td class="align-middle"><span class="badge badge-light"><?php echo $row["jumlah_produk"] ?></span></td>
+                        <?php } ?>
                         <td class="align-middle">Rp. <?php echo number_format($row["harga_produk"]) ?></td>
                         <td class="align-middle">
                             <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=product&act=edit&id=<?php echo $row["id_produk"] ?>"><i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" title="Edit" data-target="#productModal<?php echo $row['id_produk'] ?>"><i class="fas fa-pen"></i></a>
+                            <!-- <a class="btn btn-primary btn-action mr-1" data-toggle="modal" title="Edit" data-target="#productModal<?php echo $row['id_produk'] ?>"><i class="fas fa-pen"></i></a> -->
                             <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="Delete" href="index.php?page=product&act=delete&id=<?php echo $row['id_produk'] ?>'"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
