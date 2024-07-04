@@ -43,9 +43,10 @@ if (isset($_POST["tambah"])) {
         </div>
         <div class="text-right">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">
-                Tambah user
-            </button>
+            <a href="index.php?page=user&act=create"><button type="button" class="btn btn-primary">
+                    Tambah user
+                </button>
+            </a>
         </div>
 
     </div>
@@ -84,16 +85,25 @@ if (isset($_POST["tambah"])) {
         <nav class="d-inline-block">
             <ul class="pagination mb-0">
                 <li class="page-item ">
-                    <?php
-                    ?>
                     <a class="page-link" href="index.php?page=user&halaman=<?= $paging->prev_page() ?>" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                 </li>
                 <?php
-                for ($i = 1; $i <= $pages; $i++) {
+                for ($i = 1; $i <= $pages; $i++) :
+                    $halaman = isset($_GET['halaman']) ? $_GET['halaman'] : '';
+                    if ($halaman == $i) {
                 ?>
-                    <a class="page-link" href="index.php?page=user&halaman=<?= $i; ?>"><?= $i ?> </a>
+                        <li class="page-item active">
+                            <a class="page-link active" href="index.php?page=user&halaman=<?= $i; ?>"><?= $i ?> </a>
+                        </li>
+                    <?php
+                    } else {
+                    ?>
+                        <li class="page-item">
+                            <a class="page-link active" href="index.php?page=user&halaman=<?= $i; ?>"><?= $i ?> </a>
+                        </li>
                 <?php
-                }
+                    }
+                endfor;
                 ?>
                 <li class="page-item">
                     <a class="page-link" href="index.php?page=user&halaman=<?= $paging->next_page() ?>"><i class="fas fa-chevron-right"></i></a>
@@ -106,9 +116,7 @@ if (isset($_POST["tambah"])) {
     </div>
 </div>
 
-
 <!-- Modal -->
-
 <div class="modal fade" id="userModal" data-backdrop="" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

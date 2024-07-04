@@ -68,9 +68,10 @@ switch ($pesan) {
             </div>
             <div class="text-right">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#transaksiModal">
-                    Tambah Transaksi
-                </button>
+                <a href="index.php?page=transaksi&act=create"> <button type="button" class="btn btn-primary">
+                        Tambah Transaksi
+                    </button>
+                </a>
             </div>
         </div>
         <div class="card-body p-0" style="text-align : center;">
@@ -101,23 +102,23 @@ switch ($pesan) {
                         $cek = $transaksi->getIdBayar($row['id_transaksi'])
                     ?>
                         <tr>
-                            <td><?php echo $i ?></td>
-                            <td><?php echo $row["tanggal_transaksi"] ?></td>
-                            <td><?php echo $row["nama"] ?></td>
-                            <td><?php echo $transaksi->jumlahT($row["id_transaksi"]) ?></td>
-                            <td><?php echo $row["no_tlp"] ?></td>
-                            <td><?php echo $row["alamat"] ?></td>
+                            <td class="align-middle"><?php echo $i ?></td>
+                            <td class="align-middle"><?php echo $row["tanggal_transaksi"] ?></td>
+                            <td class="align-middle"><?php echo $row["nama"] ?></td>
+                            <td class="align-middle"><?php echo $transaksi->jumlahT($row["id_transaksi"]) ?></td>
+                            <td class="align-middle"><?php echo $row["no_tlp"] ?></td>
+                            <td class="align-middle"><?php echo $row["alamat"] ?></td>
                             <?php
                             if ($row["status"] === 'SELESAI') {
                             ?>
-                                <td class="badge badge-success">Dibayar</td>
+                                <td class="badge badge-success align-middle">Dibayar</td>
                             <?php } else { ?>
-                                <td class="badge badge-warning">Belum Dibayar</td>
+                                <td class="badge badge-warning align-middle">Belum Dibayar</td>
                             <?php } ?>
                             <?php
                             if ($row["status"] === "SELESAI") {
                             ?>
-                                <td>
+                                <td class="align-middle">
                                     <a class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="Struk" href="index.php?page=struk&act=total&id_struk=<?php echo $cek["id_bayar"] ?>"><i class="fas fa-file"></i></a>
                                     <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="Delete" href="index.php?page=transaksi&act=delete&id=<?php echo $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
                                 </td>
@@ -144,14 +145,25 @@ switch ($pesan) {
                                 <a class="page-link" href="index.php?page=transaksi&halaman=<?= $paging->prev_page() ?>" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                             </li>
                             <?php
-                            for ($i = 1; $i <= $pages; $i++) {
+                            for ($i = 1; $i <= $pages; $i++) :
+                                $halaman = isset($_GET['halaman']) ? $_GET['halaman'] : '';
+                                if ($halaman == $i) {
                             ?>
-                                <a class="page-link" href="index.php?page=transaksi&halaman=<?= $i; ?>"><?= $i ?> </a>
+                                    <li class="page-item active">
+                                        <a class="page-link active" href="index.php?page=transaksi&halaman=<?= $i; ?>"><?= $i ?> </a>
+                                    </li>
+                                <?php
+                                } else {
+                                ?>
+                                    <li class="page-item">
+                                        <a class="page-link active" href="index.php?page=transaksi&halaman=<?= $i; ?>"><?= $i ?> </a>
+                                    </li>
                             <?php
-                            }
+                                }
+                            endfor;
                             ?>
                             <li class="page-item">
-                                <a class="page-link" href="index.php?page=transaksi&halaman=<?= $paging->next_page() ?>" tabindex="-1"><i class="fas fa-chevron-right"></i></a>
+                                <a class="page-link" href="index.php?page=transaksi&halaman=<?= $paging->next_page() ?>"><i class="fas fa-chevron-right"></i></a>
                             </li>
                             <?php
                             $pdo =  Koneksi::disconnect();

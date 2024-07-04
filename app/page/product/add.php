@@ -31,33 +31,37 @@ if (isset($_POST["submit"])) {
 </div>
 
 <div class="row">
-    <div class="col-3 col-md-29 offset-lg-4 col-lg-26">
+    <div class="col-3 col-md-6 col-lg-7">
         <div class="card">
             <form method="post" enctype="multipart/form-data">
                 <div class="card-header">
                     <h4>Tambah Product</h4>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label>Nama Product</label>
-                        <input type="text" autocomplete="off" autofocus class="form-control" name="nama_produk" required>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nama Product</label>
+                            <input type="text" autocomplete="off" autofocus class="form-control" name="nama_produk" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Jumlah Product</label>
+                            <input type="number" autocomplete="off" class="form-control" required name="jumlah_produk">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Jumlah Product</label>
-                        <input type="number" autocomplete="off" class="form-control" required name="jumlah_produk">
-                    </div>
-                    <div class="form-group">
-                        <label>Harga Satuan</label>
-                        <input type="number" autocomplete="off" class="form-control" required name="harga_produk">
-                    </div>
-                    <div class="form-group">
-                        <label>Gambar Product</label>
-                        <input type="file" autocomplete="off" class="form-control" required name="gambar">
-                    </div>
-                </div>
-                <div class="card-footer text-right">
-                    <button class="btn btn-primary" type="submit" id="swal-8" name="submit">Submit</button>
 
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Harga Satuan</label>
+                            <input type="number" autocomplete="off" class="form-control" required name="harga_produk">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Gambar Product</label>
+                            <input type="file" autocomplete="off" class="form-control" required name="gambar">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" id="swal-8" name="submit">Submit</button>
+                    </div>
                 </div>
             </form>
         </div>

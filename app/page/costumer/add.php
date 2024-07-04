@@ -32,37 +32,44 @@ if (isset($_POST["submit"])) {
 </div>
 
 <div class="row">
-   <div class="col-12 col-md-6 offset-lg-3 col-lg-6">
+   <div class="col-12 col-md-6 col-lg-8">
       <div class="card">
          <form method="post">
             <div class="card-header">
                <h4>Tambah Costumer</h4>
             </div>
             <div class="card-body">
-               <div class="form-group">
-                  <label>Name</label>
-                  <input type="text" autofocus autocomplete="off" class="form-control" name="nama" required>
+
+               <div class="row">
+                  <div class="form-group col-md-6">
+                     <label>Name</label>
+                     <input type="text" autofocus autocomplete="off" class="form-control" name="nama" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                     <label>Alamat</label>
+                     <input type="text" autocomplete="off" class="form-control" required name="alamat">
+                  </div>
                </div>
-               <div class="form-group">
-                  <label>Alamat</label>
-                  <input type="text" autocomplete="off" class="form-control" required name="alamat">
+
+               <div class="row">
+                  <div class="form-group col-md-6">
+                     <label>Member</label>
+                     <select name="member" class="form-control selectric">
+                        <option value="NONE">NONE</option>
+                        <option value="SILVER">SILVER</option>
+                        <option value="GOLD">GOLD</option>
+                        <option value="PLATINUM">PLATINUM</option>
+                     </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                     <label>Nomor Telpon</label>
+                     <input type="text" autocomplete="off" class="form-control" required name="no_tlp">
+                  </div>
                </div>
+               <br>
                <div class="form-group">
-                  <label>Member</label>
-                  <select name="member" class="form-control selectric">
-                     <option value="NONE">NONE</option>
-                     <option value="SILVER">SILVER</option>
-                     <option value="GOLD">GOLD</option>
-                     <option value="PLATINUM">PLATINUM</option>
-                  </select>
+                  <button class="btn btn-primary btn-lg btn-block" type="submit" name="submit">Submit</button>
                </div>
-               <div class="form-group">
-                  <label>Nomor Telpon</label>
-                  <input type="text" autocomplete="off" class="form-control" required name="no_tlp">
-               </div>
-            </div>
-            <div class="card-footer text-right">
-               <button class="btn btn-primary" type="submit" name="submit">Submit</button>
             </div>
          </form>
       </div>

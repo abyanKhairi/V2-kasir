@@ -31,25 +31,32 @@ $pdo =  Koneksi::disconnect();
     <h1>Product</h1>
 </div>
 <div class="row">
-    <div class="col-3 col-md-29 offset-lg-4 col-lg-26">
+    <div class="col-3 col-md-6 col-lg-7">
         <div class="card">
             <form method="post">
                 <div class="card-header">
                     <h4>Edit Product</h4>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label>Nama Product</label>
-                        <input type="text" class="form-control" autocomplete="off" name="nama_produk" required value="<?php echo $nama_produk ?>">
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nama Product</label>
+                            <input type="text" class="form-control" autocomplete="off" name="nama_produk" required value="<?php echo $nama_produk ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Jumlah Product</label>
+                            <input type="number" class="form-control" autocomplete="off" required name="jumlah_produk" value="<?php echo $jumlah_produk ?>">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Jumlah Product</label>
-                        <input type="number" class="form-control" autocomplete="off" required name="jumlah_produk" value="<?php echo $jumlah_produk ?>">
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Harga Satuan</label>
+                            <input type="numer" class="form-control" autocomplete="off" required name="harga_produk" value="<?php echo $harga_produk ?>">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Harga Satuan</label>
-                        <input type="numer" class="form-control" autocomplete="off" required name="harga_produk" value="<?php echo $harga_produk ?>">
-                    </div>
+
                 </div>
                 <div class="card-footer text-right">
                     <button class="btn btn-primary" type="submit" name="update">Update</button>

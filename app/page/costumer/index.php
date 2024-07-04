@@ -70,9 +70,10 @@ switch ($pesan) {
             </div>
             <div class="text-right">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#costumerModal">
-                    Tambah Costumer
-                </button>
+                <a href="index.php?page=costumer&act=create"> <button type="button" class="btn btn-primary">
+                        Tambah Costumer
+                    </button>
+                </a>
             </div>
         </div>
 
@@ -103,12 +104,12 @@ switch ($pesan) {
 
                     ?>
                         <tr>
-                            <td><?php echo $i ?></td>
-                            <td><?php echo $row["nama"] ?></td>
-                            <td><?php echo $row["alamat"] ?></td>
-                            <td><?php echo $row["no_tlp"] ?></td>
-                            <td><?php echo $anggota ?></td>
-                            <td>
+                            <td class="align-middle"><?php echo $i ?></td>
+                            <td class="align-middle"><?php echo $row["nama"] ?></td>
+                            <td class="align-middle"><?php echo $row["alamat"] ?></td>
+                            <td class="align-middle"><?php echo $row["no_tlp"] ?></td>
+                            <td class="align-middle"><?php echo $anggota ?></td>
+                            <td class="align-middle">
                                 <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=costumer&act=edit&id=<?php echo $row["id_pembeli"] ?>"><i class="fas fa-pencil-alt"></i></a>
                                 <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="delete" href='index.php?page=costumer&act=delete&id=<?php echo $row['id_pembeli'] ?>' id="delete"><i class="fas fa-trash"></i></a>
                             </td>
@@ -121,19 +122,33 @@ switch ($pesan) {
                 <div class="card-footer text-right">
                     <nav class="d-inline-block">
                         <ul class="pagination mb-0">
-                            <li class="page-item">
+                            <li class="page-item ">
                                 <a class="page-link" href="index.php?page=costumer&halaman=<?= $paging->prev_page() ?>" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                             </li>
                             <?php
-                            for ($i = 1; $i <= $pages; $i++) {
+                            for ($i = 1; $i <= $pages; $i++) :
+                                $halaman = isset($_GET['halaman']) ? $_GET['halaman'] : '';
+                                if ($halaman == $i) {
                             ?>
-                                <a class="page-link" href="index.php?page=costumer&halaman=<?= $i; ?>"><?= $i ?> </a>
+                                    <li class="page-item active">
+                                        <a class="page-link active" href="index.php?page=costumer&halaman=<?= $i; ?>"><?= $i ?> </a>
+                                    </li>
+                                <?php
+                                } else {
+                                ?>
+                                    <li class="page-item">
+                                        <a class="page-link active" href="index.php?page=costumer&halaman=<?= $i; ?>"><?= $i ?> </a>
+                                    </li>
                             <?php
-                            }
+                                }
+                            endfor;
                             ?>
                             <li class="page-item">
-                                <a class="page-link" href="index.php?page=costumer&halaman=<?= $paging->next_page() ?>" tabindex="-1"><i class="fas fa-chevron-right"></i></a>
+                                <a class="page-link" href="index.php?page=costumer&halaman=<?= $paging->next_page() ?>"><i class="fas fa-chevron-right"></i></a>
                             </li>
+                            <?php
+                            $pdo =  Koneksi::disconnect();
+                            ?>
                         </ul>
                     </nav>
                 </div>
