@@ -2,13 +2,13 @@
     "name": "asus/zkasir",
     "description": "zkasir",
     "type": "project",
-    "require": {
-        "mpdf/mpdf": "^6.1"
-    },
     "license": "GLN",
     "autoload": {
         "psr-4": {
             "Asus\\Zkasir\\": "src/"
         }
+    },
+    "require": {
+        "mpdf/mpdf": "^8.2"
     }
 }

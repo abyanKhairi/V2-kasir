@@ -58,6 +58,7 @@ $pdo = Koneksi::disconnect();
                         <td class="col-md-3">Rp. <?= number_format($cek['kembalian']) ?></td>
                     </tr>
                 </table>
+                <a href="index.php?cetak=struk"><button>Cetak</button></a>
             </div>
         </div>
     </div>
