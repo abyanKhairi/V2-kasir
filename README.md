@@ -66,7 +66,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -77,7 +76,7 @@
 
 [![Zkasir][product-screenshot]]()
 
-Zkasir adalah Sistem informasi sederhana yang menggunakan PHP OOP Native
+Zkasir adalah Sistem informasi sederhana yang menggunakan bahasa pemrograman PHP OOP NATIVE
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -85,7 +84,8 @@ Zkasir adalah Sistem informasi sederhana yang menggunakan PHP OOP Native
 
 ## Getting Started
 
-Pastikan sudah mendownload <a href="https://git-scm.com/downloads">Git</a> Dan <a href="https://nodejs.org/">Node.js(Sudah Termasuk npm)
+Pastikan sudah mendownload <a href="https://git-scm.com/downloads">Git</a> Dan <a href="https://nodejs.org/">Node.js </a>(Sudah Termasuk npm).
+Buka Git Bash dan jalankan code dibawah ini
 
 ### Prerequisites
 
@@ -108,7 +108,7 @@ Pastikan sudah mendownload <a href="https://git-scm.com/downloads">Git</a> Dan <
 2. Go Into The Repository
 
    ```sh
-    cd V2-kasir
+    cd repository-name
    ```
 
 3. Install NPM packages
@@ -122,18 +122,6 @@ Pastikan sudah mendownload <a href="https://git-scm.com/downloads">Git</a> Dan <
    npm start
    ```
    <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments
 
