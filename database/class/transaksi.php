@@ -253,4 +253,23 @@ class Transaksi
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+
+    // Untuk Bagian Report
+
+    public function countUang($tanggal)
+    {
+        try {
+            if ($tanggal) {
+                $stmt = $this->db->prepare("SELECT SUM(total_harga) FROM bayar JOIN transaksi ON bayar.id_transaksi = transaksi.id_transaksi WHERE tanggal_transaksi LIKE :tanggal");
+            } else {
+                $stmt = $this->db->prepare("SELECT SUM(total_harga) FROM bayar JOIN transaksi ON bayar.id_transaksi = transaksi.id_transaksi WHERE tanggal_transaksi NOT LIKE :tanggal");
+            }
+            $stmt->bindParam(":tanggal", $tanggal);
+            $stmt->execute();
+            return  $stmt->fetch(PDO::FETCH_COLUMN);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }

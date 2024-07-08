@@ -12,15 +12,12 @@ $html = '
         <link rel="stylesheet" href="../assets/css/custom.css">
     </head>
         <body>
-<div>
-    <div>
         <div>
             <div>
                 <h4>Transaksi List</h4>
             </div>
         </div>
-        <div>
-    <div>
+
         <table align="center" border="1" cellspacing="0" cellpadding="10">
             <tr>
                 <th>No</th>
@@ -37,11 +34,8 @@ $pdo = Koneksi::connect();
 $tanggal = $_GET['tanggal'];
 $transaksi = new Transaksi($pdo);
 $paging = new Page($pdo, "transaksi");
-if (isset($_POST["cari"])) {
-    $key = $_POST["keyword"];
-}
+$bayar = $transaksi->countUang($tanggal);
 $rows = $transaksi->getTransaksi(@$tanggal);
-$pages = $paging->get_pagination_number();
 $i = 1;
 foreach ($rows as $row) :
     $cek = $transaksi->getIdBayar($row["id_transaksi"])
@@ -68,6 +62,13 @@ foreach ($rows as $row) :
 endforeach;
 
 $html .= '</table>
+<br>
+    <table border="1" cellspacing="0" cellpadding="10">
+    <tr>
+        <td align="center" width="15cm">Total Pendapatan Keseluruhan / Total Pendapatan Bulan Ini</td>
+        <td align="center" width="6cm">Rp.' . number_format($bayar) . '</td>
+    </tr>
+    </table>
 </body>
 </html>';
 

@@ -55,7 +55,7 @@ switch ($pesan) {
         <div class="form-grup">
             <div class="row">
                 <div class="col-3">
-                    <input type='date' class="form-control datepicker" name="keyword" autocomplete="off" placeholder="YYYY-MM-DD">
+                    <input type='datetime' class="form-control datepicker" name="keyword" autocomplete="off" placeholder="YYYY-MM-DD">
                 </div>
                 <button class="btn btn-primary btn-action mr-1" type="submit" style="cursor: pointer;" name="cari"><i class="fas fa-search"></i></button>
             </div>

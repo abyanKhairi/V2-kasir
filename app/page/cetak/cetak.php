@@ -22,19 +22,20 @@ $html = '<!DOCTYPE html>
         <body>
         <div class="cartu">
             <h5 class="zkasir">ZKASIR</h5>
+            <hr>
             <h2 class="struk">Struk Transaksi</h2>
             <div class="letakTgl">' . $get["tanggal_transaksi"] . '</div>
             <div>
                 <p>ID transaksi : ' . $cek["id_transaksi"] . ' </p>
                 <p>ID Pembayaran : ' . $id_struk . ' </p>
             </div>
-
-            <table align="center" border="1" cellspacing="0" cellpadding="10">
-            <tr bgcolor="#E1E1E1">
-            <th>Nama Product</th>
-            <th>Jumlah</th>
-            <th>Harga Satuan</th>
-            <th>Total</th>
+            <hr>
+            <table align="center" cellspacing="0" cellpadding="10">
+            <tr>
+            <th class="thSize" width="8cm">Nama Product</th>
+            <th class="thSize" width="2cm">Jumlah</th>
+            <th class="thSize" width="5cm">Harga Satuan</th>
+            <th class="thSize" width="4cm">Total</th>
             </tr>
             
             ';
@@ -42,31 +43,53 @@ foreach ($rows as $row) {
 
     $html .= '
         <tr>
-                <td align="center"> ' . $row["nama_produk"] . '</td>
-                <td align="center">' . $row["qty"] . '</td>
-                <td align="center">Rp. ' . number_format($row["harga_produk"]) . '</td>
-                <td align="center">Rp. ' . number_format($row["qty"] * $row["harga_produk"]) . '</td>
+                <td class="tdSize" align="center"> ' . $row["nama_produk"] . '</td>
+                <td class="tdSize" align="center">' . $row["qty"] . '</td>
+                <td class="tdSize" align="center">Rp. ' . number_format($row["harga_produk"]) . '</td>
+                <td class="tdSize" align="center">Rp. ' . number_format($row["qty"] * $row["harga_produk"]) . '</td>
         </tr>';
 }
 $html .= '
-<tr bgcolor="#E1E1E1">
-        <th>Jumlah Yang Dibayarkan</th>
-        <th>Kembalian</td>
-        <th>Discount</th>
-        <th>Total Harga</th>
-        </tr>
-        <tr>
-        <td align="center">Rp.' . number_format($cek["jumlah_bayar"]) . '</td>
-        <td align="center">Rp.' . number_format($cek["kembalian"]) . '</td>
-        <td align="center">Rp.' . number_format($cek["discount"]) . '</td>
-        <td align="center">Rp.' . number_format($cek["total_harga"]) . '</td>
-        </tr>
-        </table>
+</table>
+<hr>
+<hr>
+<table class="bolder" align="center" cellspacing="0" cellpadding="10">
+<tr>
+    <th class="thSize" width="10cm">Harga</th>
+    <th class="thSize" width="10cm">Rp.' . number_format($cek["total_harga"]  + $cek["discount"]) . '</th>
+</tr>
+<tr>
+    <th class="thSize">Discount</th>
+    <th class="thSize">Rp.' . number_format($cek["discount"]) . '</th>
+</tr>
+<tr>
+    <th class="thSize">Total Harga</th>
+    <th class="thSize">Rp.' . number_format($cek["total_harga"]) . '</th>
+</tr>
+
+
+<tr>
+    <th class="thSize">Uang</th>
+    <th class="thSize">Rp.' . number_format($cek["jumlah_bayar"]) . '</th>
+</tr>
+
+<tr>
+    <th class="thSize">Kembalian</td>
+    <th class="thSize">Rp.' . number_format($cek["kembalian"]) . '</th>
+</tr>
+</table>
+
+        <hr>
+        <div>
+            <h5 style+"font-style: italic;" align="center">
+                Terimakasih Telah Berbelanja Disini
+            </h5>
+
+        </div>
     </div>
     </body>
 </html>
 ';
-
 
 // send the captured HTML from the output buffer to the mPDF class for processing
 $mpdf->WriteHTML($html);
