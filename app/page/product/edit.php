@@ -1,6 +1,6 @@
 <?php
 $pdo = Koneksi::connect();
-$produk = new produk($pdo);
+$produk = produk::getInsatance($pdo);
 
 $id_produk = $_GET['id'];
 

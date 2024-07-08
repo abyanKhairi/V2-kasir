@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
 
     $pdo = Koneksi::connect();
 
-    $produk = new produk($pdo);
+    $produk = produk::getInsatance($pdo);
     if ($produk->tambah($nama_produk, $jumlah_produk, $harga_produk, $gambarProduk)) {
         echo "<script>window.location.href = 'index.php?page=product'</script>";
     };

@@ -1,33 +1,3 @@
-<?php
-$pdo = Koneksi::connect();
-$produk = new produk($pdo);
-
-
-if (isset($_POST["tambah"])) {
-
-    $nama_produk = $_POST['nama_produk'];
-    $jumlah_produk = $_POST['jumlah_produk'];
-    $harga_produk = $_POST['harga_produk'];
-    $gambar = $_POST['gambar'];
-
-    if ($produk->tambah($nama_produk, $jumlah_produk, $harga_produk, $gambar)) {
-        echo "<script>window.location.href = 'index.php?page=product'</script>";
-    };
-}
-
-$pdo = Koneksi::connect();
-$produk = new produk($pdo);
-if (isset($_POST['update'])) {
-    $id_produk = $_POST['id_produk'];
-    $nama_produk = $_POST['nama_produk'];
-    $jumlah_produk = $_POST['jumlah_produk'];
-    $harga_produk = $_POST['harga_produk'];
-    $produk->update($id_produk, $nama_produk, $jumlah_produk, $harga_produk);
-}
-
-$pdo =  Koneksi::disconnect();
-?>
-
 <div class="section-header">
     <h1>Product</h1>
 </div>
@@ -211,47 +181,6 @@ switch ($pesan) {
                         ?>
                     </ul>
                 </nav>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!--Modal-->
-<div class="modal fade" id="productModal" data-backdrop="" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title h5" id="staticBackdropLabel">Tambah Data Product</h1>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label>Nama Product</label>
-                            <input type="text" autocomplete="off" autofocus class="form-control" name="nama_produk" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Jumlah Product</label>
-                            <input type="number" autocomplete="off" class="form-control" required name="jumlah_produk">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Harga Satuan</label>
-                            <input type="number" autocomplete="off" class="form-control" required name="harga_produk">
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="tambah">
-                                Tambah
-                            </button>
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

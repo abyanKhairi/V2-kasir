@@ -4,12 +4,21 @@ class produk
 {
 
     private $db;
-    private $error;
+    private static $instance = null;
 
 
     public function __construct($db_conn)
     {
         $this->db = $db_conn;
+    }
+
+    public static function getInsatance($pdo)
+    {
+        if (self::$instance == null) {
+            self::$instance = new produk($pdo);
+        }
+
+        return self::$instance;
     }
 
 

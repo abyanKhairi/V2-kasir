@@ -6,6 +6,9 @@ class Auth
 
     private $error;
 
+    private static $instance = null;
+
+
     public function __construct($db_conn)
     {
         $this->db = $db_conn;
@@ -13,6 +16,14 @@ class Auth
         @session_start();
     }
 
+    public static function getInstance($pdo)
+    {
+        if (self::$instance == null) {
+            self::$instance = new Auth($pdo);
+        }
+
+        return self::$instance;
+    }
 
     public function register($nama, $username, $email, $password, $alamat, $not_tlp, $role)
     {

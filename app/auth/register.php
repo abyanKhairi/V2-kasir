@@ -1,7 +1,7 @@
 <?php
 
 $pdo = Koneksi::connect();
-$user = new Auth($pdo);
+$user = Auth::getInstance($pdo);
 
 
 if ($user->isLoggedIn()) {

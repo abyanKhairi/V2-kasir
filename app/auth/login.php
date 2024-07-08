@@ -6,7 +6,7 @@ if (isset($_POST["login"])) {
 
 
   $pdo = Koneksi::connect();
-  $user = new Auth($pdo);
+  $user = Auth::getInstance($pdo);
   if ($user->login($username, $password)) {
     header("Location: ../app/index.php");
   } else {

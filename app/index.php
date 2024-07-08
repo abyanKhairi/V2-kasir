@@ -3,7 +3,7 @@ include("../database/koneksi.php");
 include "../database/class/auth.php";
 
 $pdo = Koneksi::connect();
-$user = new Auth($pdo);
+$user = Auth::getInstance($pdo);
 $currentUser = $user->getUser();
 
 $pdo =  Koneksi::disconnect();

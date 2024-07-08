@@ -3,7 +3,7 @@
 $id_produk = $_GET['id'];
 
 $pdo = Koneksi::connect();
-$produk = new produk($pdo);
+$produk = produk::getInsatance($pdo);
 
 $produk->delete($id_produk);
 if ($produk->delete($id_produk) == true) {
