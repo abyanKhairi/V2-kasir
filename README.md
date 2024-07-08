@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/abyanKhairi/V2-kasir">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="assets/img/logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">ZKasir</h3>
@@ -87,12 +87,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-- [![Next][Next.js]][Next-url]
-- [![React][React.js]][React-url]
-- [![Vue][Vue.js]][Vue-url]
-- [![Angular][Angular.io]][Angular-url]
-- [![Svelte][Svelte.dev]][Svelte-url]
-- [![Laravel][Laravel.com]][Laravel-url]
+-
+- [![php][php.com]][php-url]
 - [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 - [![JQuery][JQuery.com]][JQuery-url]
 
@@ -194,9 +190,9 @@ Project Link: [https://github.com/abyanKhairi/V2-kasir](https://github.com/abyan
 
 ## Acknowledgments
 
-- []()
-- []()
-- []()
+- [Stisla Template](https://github.com/stisla/stisla)
+- [Font Awesome](https://fontawesome.com/icons)
+- [Bootstrap](https://getbootstrap.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -232,3 +228,4 @@ Project Link: [https://github.com/abyanKhairi/V2-kasir](https://github.com/abyan
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com
+[Php-url]: https://www.php.net/
