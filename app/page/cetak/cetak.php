@@ -36,9 +36,8 @@ $html = '<!DOCTYPE html>
             <th class="thSize" width="2cm">Jumlah</th>
             <th class="thSize" width="5cm">Harga Satuan</th>
             <th class="thSize" width="4cm">Total</th>
-            </tr>
-            
-            ';
+            </tr>';
+
 foreach ($rows as $row) {
 
     $html .= '
@@ -49,6 +48,7 @@ foreach ($rows as $row) {
                 <td class="tdSize" align="center">Rp. ' . number_format($row["qty"] * $row["harga_produk"]) . '</td>
         </tr>';
 }
+
 $html .= '
 </table>
 <hr>
@@ -91,7 +91,5 @@ $html .= '
 </html>
 ';
 
-// send the captured HTML from the output buffer to the mPDF class for processing
 $mpdf->WriteHTML($html);
-
 $mpdf->Output();
