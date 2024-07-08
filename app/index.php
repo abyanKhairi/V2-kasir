@@ -8,6 +8,9 @@ $currentUser = $user->getUser();
 
 $pdo =  Koneksi::disconnect();
 
+
+
+
 if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
     $log = isset($_GET['auth']) ? $_GET['auth'] : 'auth';
     switch ($log) {
@@ -22,6 +25,13 @@ if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
             break;
     }
 } else {
+    $cetak = isset($_GET['cetak']) ? $_GET['cetak'] : 'cetak';
+    switch ($cetak) {
+        case 'struk':
+            include 'page/cetak/cetak.php';
+        case 'transaksi':
+            include 'page/transaksi/report.php';
+    }
 ?>
     <!DOCTYPE html>
     <html lang="en">

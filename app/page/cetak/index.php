@@ -31,19 +31,18 @@ $pdo = Koneksi::disconnect();
                         <th scope="col">Harga Satuan</th>
                         <th scope="col">Total</th>
                     </tr>
-                    <tr>
-                        <?php
-                        foreach ($rows as $row) {
-                        ?>
+                    <?php
+                    foreach ($rows as $row) {
+                    ?>
+                        <tr>
                             <td><?= $row['nama_produk'] ?></td>
                             <td><?= $row['qty'] ?></td>
                             <td>Rp. <?= number_format($row['harga_produk']) ?></td>
                             <td>Rp. <?= number_format($row['qty'] * $row['harga_produk']) ?></td>
-                    </tr>
-                <?php } ?>
+                        </tr>
+                    <?php } ?>
                 </table>
                 <hr>
-                </table>
                 <table class="table table-striped table-md">
                     <tr>
                         <th>Total Harga</th>
@@ -58,7 +57,7 @@ $pdo = Koneksi::disconnect();
                         <td class="col-md-3">Rp. <?= number_format($cek['kembalian']) ?></td>
                     </tr>
                 </table>
-                <a href="index.php?cetak=struk"><button>Cetak</button></a>
+                <a href="index.php?cetak=struk&id_struk=<?= $id_struk ?>"><button class="btn btn-primary btn-lg btn-block">Cetak</button></a>
             </div>
         </div>
     </div>

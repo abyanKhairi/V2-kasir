@@ -6,3 +6,31 @@
  */
 
 /*# sourceMappingURL=custom.css.map */
+
+.cartu {
+  border: 1;
+  background-color: rgb(240, 235, 235);
+  margin: 66;
+}
+
+.letakTgl {
+  text-align: right;
+  margin-right: 10;
+}
+
+.struk {
+  text-align: center;
+}
+
+p {
+  font-size: 15;
+  margin-left: 13;
+}
+
+.zkasir {
+  margin-left: 13;
+}
+
+td {
+  background-color: rgb(244, 241, 241);
+}
