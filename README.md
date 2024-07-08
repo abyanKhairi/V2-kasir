@@ -89,10 +89,14 @@ Buka Git Bash dan jalankan code dibawah ini
 
 ### Prerequisites
 
+- Pastikan npm sudah terinstall
+
 - pengecekan npm
+
   ```sh
   npm -v
   ```
+
 - update npm
 
   ```sh
