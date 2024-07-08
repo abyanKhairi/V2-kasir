@@ -79,7 +79,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Zkasir][product-screenshot]]()
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `abyanKhairi`, `V2-kasir`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
@@ -88,7 +88,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ### Built With
 
 -
-- [![Php][php.com]][php-url]
+- [![Php][Php.com]][php-url]
 - [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 - [![JQuery][JQuery.com]][JQuery-url]
 
@@ -135,19 +135,6 @@ This is an example of how to list things you need to use the software and how to
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
-
-See the [open issues](https://github.com/abyanKhairi/V2-kasir/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -211,7 +198,7 @@ Project Link: [https://github.com/abyanKhairi/V2-kasir](https://github.com/abyan
 [license-url]: https://github.com/abyanKhairi/V2-kasir/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: assets/img/dashboard-zkasir.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
@@ -229,3 +216,4 @@ Project Link: [https://github.com/abyanKhairi/V2-kasir](https://github.com/abyan
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com
 [Php-url]: https://www.php.net/
+[Php.com]: https://www.php.net/
