@@ -98,52 +98,9 @@ switch ($pesan) {
                         <td class="align-middle">Rp. <?php echo number_format($row["harga_produk"]) ?></td>
                         <td class="align-middle">
                             <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="index.php?page=product&act=edit&id=<?php echo $row["id_produk"] ?>"><i class="fas fa-pencil-alt"></i></a>
-                            <!-- <a class="btn btn-primary btn-action mr-1" data-toggle="modal" title="Edit" data-target="#productModal<?php echo $row['id_produk'] ?>"><i class="fas fa-pen"></i></a> -->
                             <a class="btn btn-danger btn-action tombol-hapus" data-toggle="tooltip" title="Delete" href="index.php?page=product&act=delete&id=<?php echo $row['id_produk'] ?>'"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
-
-                    <!--Edit Modal-->
-                    <div class="modal fade" id="productModal<?= $row['id_produk'] ?>" data-backdrop="" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title h5" id="staticBackdropLabel">Edit Data Product</h1>
-                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="POST">
-                                        <input type="hidden" value="<?php echo $row["id_produk"] ?>" name="id_produk">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label>Nama Product </label>
-                                                <input type="text" autocomplete="off" autofocus class="form-control" name="nama_produk" value="<?php echo $row["nama_produk"] ?>" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Jumlah Product</label>
-                                                <input type="number" autocomplete="off" class="form-control" required name="jumlah_produk" value="<?php echo $row["jumlah_produk"] ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Harga Satuan</label>
-                                                <input type="number" autocomplete="off" class="form-control" required name="harga_produk" value="<?php echo $row["harga_produk"] ?>">
-                                            </div>
-                                            <br>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary btn-lg btn-block" name="update">
-                                                    Update
-                                                </button>
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--akhir modal edit-->
-
                 <?php
                     $i++;
                 endforeach;
