@@ -1,7 +1,7 @@
 <?php
 class Koneksi
 {
-    private static $dbName = 'kasir';
+    private static $dbName = 'zkasir';
     private static $dbHost = 'localhost';
     private static $dbUser = 'root';
     private static $dbPass = '';
