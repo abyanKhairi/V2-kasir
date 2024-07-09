@@ -5,7 +5,7 @@ if (isset($_POST['tambahTransaksi'])) {
 
     $pdo = Koneksi::connect();
 
-    $transaksi = new Transaksi($pdo);
+    $transaksi = Transaksi::getInstance($pdo);
     if ($transaksi->tambahTransaksi($id_pembeli, $tanggal)) {
         echo "<script>window.location.href = 'index.php?page=transaksi'</script>";
     };
@@ -26,7 +26,6 @@ if (isset($_POST['tambahTransaksi'])) {
                         <select class="form-control selectric" name="id_pembeli">
                             <?php
                             $pdo = Koneksi::connect();
-                            $transaksi = new Transaksi($pdo);
                             $rows = $transaksi->getCustomer();
 
                             foreach ($rows as $row) {

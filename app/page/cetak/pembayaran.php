@@ -2,7 +2,7 @@
 
 $id_transaksi = $_GET["id"];
 $pdo = Koneksi::connect();
-$bayar = new Bayar($pdo);
+$bayar = Bayar::getInstance($pdo);
 $get = $bayar->getTransaksi($id_transaksi);
 
 //pengecekan discount member

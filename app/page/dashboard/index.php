@@ -3,7 +3,7 @@ include '../database/class/count.php';
 
 $pdo = Koneksi::connect();
 
-$count =  new count($pdo);
+$count =  count::getInstance($pdo);
 $jual = $count->chart('SELESAI');
 $blmjual = $count->chart('PENDING');
 $user = $count->count("user");

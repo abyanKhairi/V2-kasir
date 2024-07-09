@@ -2,6 +2,9 @@
 
 class Page
 {
+
+    private $instance = null;
+
     private $db, $table, $total_records, $id, $limit = 5;
 
     public function __construct($db_conn, $table)
@@ -9,6 +12,15 @@ class Page
         $this->db = $db_conn;
         $this->table = $table;
         $this->set_total_records($this->id);
+    }
+
+    public static function getInstance($pdo, $table)
+    {
+        if (self::$instance == null) {
+            self::$instance = new Page($pdo, $table);
+        }
+
+        return self::$instance;
     }
 
     public function set_total_records($id)

@@ -1,6 +1,6 @@
 <?php
 $pdo = Koneksi::connect();
-$costumer = new costumer($pdo);
+$costumer = costumer::getInsatance($pdo);
 
 $id_pembeli = $_GET['id'];
 

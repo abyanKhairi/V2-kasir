@@ -39,7 +39,7 @@
             if (isset($_POST['cari'])) {
                 $key = $_POST['keyword'];
             }
-            $paging = new Page($pdo, 'user');
+            $paging = Page::getInstance($pdo, 'user');
             $rows = $paging->get_data(@$key, 'nama');
             $pages = $paging->get_pagination_number();
             foreach ($rows as $row) {

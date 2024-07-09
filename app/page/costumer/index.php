@@ -1,18 +1,14 @@
 <?php
 
-if (isset($_POST["tambah"])) {
-    $nama = $_POST['nama'];
-    $alamat = $_POST['alamat'];
-    $no_tlp = $_POST['no_tlp'];
 
-    $pdo = Koneksi::connect();
-
-    $costumer = new costumer($pdo);
-    if ($costumer->tambah($nama, $alamat, $no_tlp)) {
-        echo "<script>window.location.href = 'index.php?page=costumer'</script>";
-    };
-    $pdo =  Koneksi::disconnect();
+$costumer = costumer::getInsatance($pdo);
+if (isset($_POST['cari'])) {
+    $key = $_POST['keyword'];
 }
+
+$paging = Page::getInstance($pdo, 'pembeli');
+$rows = $paging->get_data(@$key, 'nama');
+$pages = $paging->get_pagination_number();
 
 ?>
 
@@ -90,14 +86,6 @@ switch ($pesan) {
                     </tr>
                     <?php
                     $pdo = Koneksi::connect();
-                    $costumer = new costumer($pdo);
-                    if (isset($_POST['cari'])) {
-                        $key = $_POST['keyword'];
-                    }
-
-                    $paging = new Page($pdo, 'pembeli');
-                    $rows = $paging->get_data(@$key, 'nama');
-                    $pages = $paging->get_pagination_number();
                     $i = 1;
                     foreach ($rows as $row) {
                         $anggota = $costumer->showMember($row["id_pembeli"])
@@ -152,48 +140,6 @@ switch ($pesan) {
                         </ul>
                     </nav>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal -->
-
-<div class="modal fade" id="costumerModal" data-backdrop="" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title h5" id="staticBackdropLabel">Tambah Data Costumer</h1>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="nama">Name</label>
-                            <input id="nama" type="text" class="form-control" autocomplete="off" name="nama" autofocus required>
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <input id="alamat" type="text" class="form-control" autocomplete="off" name="alamat" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Nomor Telpon</label>
-                            <input type="text" autocomplete="off" class="form-control" required name="no_tlp">
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="tambah">
-                                Tambah
-                            </button>
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

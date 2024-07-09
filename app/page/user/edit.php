@@ -1,6 +1,6 @@
 <?php
 $pdo = Koneksi::connect();
-$crudUser = new user($pdo);
+$crudUser = user::getInstance($pdo);
 
 $id_user = $_GET['id'];
 
@@ -12,8 +12,6 @@ if (isset($_POST["edit"])) {
     $alamat = $_POST["alamat"];
     $not_tlp = $_POST["not_tlp"];
     $role = $_POST["role"];
-    $crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role);
-
     if ($crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role) == true) {
 
         echo "<script>

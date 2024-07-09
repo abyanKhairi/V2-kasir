@@ -1,10 +1,22 @@
 <?php
 class Bayar
 {
+
+    private static $instance = null;
     private $db;
     public function __construct($db_conn)
     {
         $this->db = $db_conn;
+    }
+
+
+    public static function getInstance($pdo)
+    {
+        if (self::$instance == null) {
+            self::$instance = new Bayar($pdo);
+        }
+
+        return self::$instance;
     }
 
     public function hitungTotal($id_transaksi)

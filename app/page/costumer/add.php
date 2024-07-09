@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
 
    $pdo = Koneksi::connect();
 
-   $costumer = new costumer($pdo);
+   $costumer = costumer::getInsatance($pdo);
    if ($costumer->tambah($nama, $alamat, $no_tlp)) {
       //untuk mendapatkan id pembeli yang terakhir kali dimasukkan
       $id_pembeli = $pdo->lastInsertId();

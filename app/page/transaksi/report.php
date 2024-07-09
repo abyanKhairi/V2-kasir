@@ -7,8 +7,8 @@ $mpdf = new \Mpdf\Mpdf();
 
 $pdo = Koneksi::connect();
 $tanggal = $_GET['tanggal'];
-$transaksi = new Transaksi($pdo);
-$paging = new Page($pdo, "transaksi");
+$transaksi = Transaksi::getInstance($pdo);
+$paging = Page::getInstance($pdo, "transaksi");
 $bayar = $transaksi->countUang($tanggal);
 $rows = $transaksi->getTransaksi(@$tanggal);
 $pdo = Koneksi::disconnect();

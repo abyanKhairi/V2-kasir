@@ -2,12 +2,26 @@
 
 class Transaksi
 {
+
+    private static $instance = null;
+
     private $db;
 
     public function __construct($db_conn)
     {
         $this->db = $db_conn;
     }
+
+
+    public static function getInstance($pdo)
+    {
+        if (self::$instance == null) {
+            self::$instance = new Transaksi($pdo);
+        }
+        return self::$instance;
+    }
+
+
 
     //untuk menggambil data dari tabel transaksi yang berelasi dengan pembeli
     public function getTransaksi($tanggal = null)
@@ -18,6 +32,7 @@ class Transaksi
             if ($this->current_page() > 1) {
                 $start = ($this->current_page() * $limit) - $limit;
             }
+
             if ($tanggal) {
                 $stmt = $this->db->prepare("SELECT transaksi.*, pembeli.id_pembeli , pembeli.nama ,pembeli.alamat , pembeli.no_tlp           
             FROM transaksi 

@@ -11,7 +11,7 @@ if (isset($_POST["tambah"])) {
 
     $pdo = Koneksi::connect();
 
-    $crudUser = new user($pdo);
+    $crudUser = user::getInstance($pdo);
     $crudUser->tambah($nama, $username, $email, $password, $alamat, $not_tlp, $role);
 
     $pdo =  Koneksi::disconnect();

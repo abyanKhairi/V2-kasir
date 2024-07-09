@@ -71,7 +71,7 @@ switch ($pesan) {
                 </tr>
                 <?php
                 $pdo = Koneksi::connect();
-                $paging = new Page($pdo, 'product');
+                $paging = Page::getInstance($pdo, 'product');
 
                 if (isset($_POST['cari'])) {
                     $key = $_POST['keyword'];

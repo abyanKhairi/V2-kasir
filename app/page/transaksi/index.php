@@ -94,8 +94,8 @@ switch ($pesan) {
 
                     <?php
                     $pdo = Koneksi::connect();
-                    $transaksi = new Transaksi($pdo);
-                    $paging = new Page($pdo, 'transaksi');
+                    $transaksi = Transaksi::getInstance($pdo);
+                    $paging = Page::getInstance($pdo, 'transaksi');
                     $rows = $transaksi->getTransaksi(@$key);
                     $pages = $paging->get_pagination_number();
                     $i = 1;

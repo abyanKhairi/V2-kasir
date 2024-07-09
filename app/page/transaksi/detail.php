@@ -1,6 +1,6 @@
 <?php
 $pdo = Koneksi::connect();
-$transaksi = new Transaksi($pdo);
+$transaksi = Transaksi::getInstance($pdo);
 $id_transaksi = $_GET['id'];
 
 
@@ -32,8 +32,6 @@ if (isset($_POST['tambahProduct'])) {
                             <select class="form-control selectric" name="id_produk">
                                 <?php
                                 $pdo = Koneksi::connect();
-                                $transaksi = new Transaksi($pdo);
-
                                 $rows = $transaksi->getProduk("product", $id_transaksi);
 
                                 foreach ($rows as $row) {
@@ -87,7 +85,6 @@ if (isset($_POST['tambahProduct'])) {
                         </tr>
                         <?php
                         $pdo = Koneksi::connect();
-                        $transaksi = new Transaksi($pdo);
                         $rows = $transaksi->getDetail($id_transaksi);
                         $i = 1;
                         foreach ($rows as $row) :
@@ -124,7 +121,6 @@ if (isset($_POST['tambahProduct'])) {
         <div class="card-body">
             <?php
             $pdo = Koneksi::connect();
-            $transaksi = new Transaksi($pdo);
             $totals = $transaksi->total($id_transaksi);
             ?>
             <h5>Total Harga</h5>

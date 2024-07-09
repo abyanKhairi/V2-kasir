@@ -3,8 +3,7 @@
 $id_user = $_GET['id'];
 
 $pdo = Koneksi::connect();
-$crudUser = new user($pdo);
-$crudUser->delete($id_user);
+$crudUser = user::getInstance($pdo);
 
 if ($crudUser->delete($id_user) == true) {
 ?><script>

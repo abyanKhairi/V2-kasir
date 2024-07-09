@@ -1,6 +1,6 @@
 <?php
 $pdo = Koneksi::connect();
-$transaksi = new Transaksi($pdo);
+$transaksi = Transaksi::getInstance($pdo);
 
 //menghapus Transaksi
 if (isset($_GET['id'])) {

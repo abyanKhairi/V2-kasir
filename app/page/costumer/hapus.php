@@ -2,7 +2,7 @@
 
 $id_pembeli = $_GET['id'];
 $pdo = Koneksi::connect();
-$costumer = new costumer($pdo);
+$costumer = costumer::getInsatance($pdo);
 $costumer->delete($id_pembeli);
 
 if ($costumer->delete($id_pembeli) == true) {
