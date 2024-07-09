@@ -13,8 +13,6 @@ if (isset($_POST["login"])) {
     //jika gaal login
     $error = $user->getError();
   }
-
-  $pdo =  Koneksi::disconnect();
 }
 
 

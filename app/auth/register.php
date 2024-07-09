@@ -22,7 +22,6 @@ if (isset($_POST["regis"])) {
     } else {
         $error = $user->getError();
     }
-    $pdo = Koneksi::disconnect();
 }
 
 ?>

@@ -3,6 +3,7 @@
 $pdo = Koneksi::connect();
 
 $costumer = costumer::getInsatance($pdo);
+
 if (isset($_POST['cari'])) {
     $key = $_POST['keyword'];
 }
@@ -10,7 +11,6 @@ $paging = Page::getInstance($pdo, 'pembeli');
 $rows = $paging->get_data(@$key, 'nama');
 $pages = $paging->get_pagination_number();
 
-$pdo = Koneksi::disconnect();
 ?>
 
 <div class="section-header">
@@ -86,7 +86,6 @@ switch ($pesan) {
                         <th scope="col">Action</th>
                     </tr>
                     <?php
-                    $pdo = Koneksi::connect();
                     $i = 1;
                     foreach ($rows as $row) {
                         $anggota = $costumer->showMember($row["id_pembeli"])
@@ -105,7 +104,6 @@ switch ($pesan) {
                         </tr>
                     <?php $i++;
                     }
-                    $pdo =  Koneksi::disconnect();
                     ?>
                 </table>
                 <div class="card-footer text-right">

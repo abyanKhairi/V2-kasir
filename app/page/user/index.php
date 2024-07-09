@@ -91,7 +91,6 @@
                     <a class="page-link" href="index.php?page=user&halaman=<?= $paging->next_page() ?>"><i class="fas fa-chevron-right"></i></a>
                 </li>
                 <?php
-                $pdo =  Koneksi::disconnect();
                 ?>
             </ul>
         </nav>

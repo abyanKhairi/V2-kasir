@@ -1,12 +1,8 @@
 <?php
 class Koneksi
 {
-    private static $dbName = 'kasir';
-    private static $dbHost = 'localhost';
-    private static $dbUser = 'root';
-    private static $dbPass = '';
 
-    private static $con = null;
+    private static $instance = null;
 
     public function __construct()
     {
@@ -15,21 +11,21 @@ class Koneksi
 
     public static function connect()
     {
-        if (null == self::$con) {
+
+        $dbName = 'kasir';
+        $dbHost = 'localhost';
+        $dbUser = 'root';
+        $dbPass = '';
+
+        if (self::$instance == null) {
             try {
-                self::$con = new PDO("mysql:host=" . self::$dbHost . ";" . "dbname=" . self::$dbName, self::$dbUser, self::$dbPass);
+                self::$instance = new \PDO("mysql:host={$dbHost};dbname={$dbName};", "{$dbUser}", "{$dbPass}");
             } catch (
                 PDOException $e
             ) {
                 die($e->getMessage());
             }
         }
-        return self::$con;
-    }
-
-    public static function disconnect()
-    {
-        self::$con = null;
-        return false;
+        return self::$instance;
     }
 }

@@ -23,7 +23,6 @@ if (isset($_POST['update'])) {
 if (isset($id_produk)) {
     extract($produk->getID($id_produk));
 }
-$pdo =  Koneksi::disconnect();
 ?>
 
 

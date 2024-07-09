@@ -19,8 +19,6 @@ if (isset($_POST["submit"])) {
     if ($produk->tambah($nama_produk, $jumlah_produk, $harga_produk, $gambarProduk)) {
         echo "<script>window.location.href = 'index.php?page=product'</script>";
     };
-
-    $pdo =  Koneksi::disconnect();
 }
 
 ?>

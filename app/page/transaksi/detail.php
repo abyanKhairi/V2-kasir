@@ -11,7 +11,6 @@ if (isset($_POST['tambahProduct'])) {
     $qty = $_POST['qty'];
 
     $transaksi->tambahDetail($id_transaksi, $id_produk, $qty);
-    $pdo = Koneksi::disconnect();
 }
 
 
@@ -40,7 +39,7 @@ if (isset($_POST['tambahProduct'])) {
 
                                 <?php
                                 }
-                                $pdo = Koneksi::disconnect();
+
                                 ?>
 
 
@@ -107,7 +106,6 @@ if (isset($_POST['tambahProduct'])) {
                         <?php
                             $i++;
                         endforeach;
-                        $pdo =  Koneksi::disconnect();
                         ?>
                     </table>
                 </div>
@@ -126,7 +124,7 @@ if (isset($_POST['tambahProduct'])) {
             <h5>Total Harga</h5>
             <h6>Rp. <?= number_format($totals["total_harga"]) ?></h6>
             <?php
-            $pdo = Koneksi::disconnect();
+
 
             if ($rows == true) {
             ?>

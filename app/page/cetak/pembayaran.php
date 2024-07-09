@@ -40,7 +40,6 @@ if (isset($_POST['bayar'])) {
     } else {
         $error = $bayar->getError();
     }
-    $pdo = Koneksi::disconnect();
 }
 ?>
 <br>

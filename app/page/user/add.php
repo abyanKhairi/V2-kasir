@@ -9,12 +9,9 @@ if (isset($_POST["tambah"])) {
     $role = $_POST["role"];
 
 
-    $pdo = Koneksi::connect();
 
     $crudUser = user::getInstance($pdo);
     $crudUser->tambah($nama, $username, $email, $password, $alamat, $not_tlp, $role);
-
-    $pdo =  Koneksi::disconnect();
 }
 
 

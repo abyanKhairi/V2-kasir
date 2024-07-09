@@ -9,7 +9,6 @@ $bayar = Pembayaran::getInstance($pdo);
 $cek = $bayar->getBayar($id_struk);
 $get = $bayar->getTransaksi($cek["id_transaksi"]);
 $rows = $bayar->getStruk($cek["id_transaksi"]);
-$pdo = Koneksi::disconnect();
 $mpdf = new \Mpdf\Mpdf();
 ?>
 <?php

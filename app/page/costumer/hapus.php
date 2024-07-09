@@ -10,5 +10,3 @@ if ($costumer->delete($id_pembeli) == true) {
 } else {
         echo "<script>window.location.href = 'index.php?page=costumer&pesan=gagal'</script>";
 }
-
-$pdo =  Koneksi::disconnect();

@@ -2,7 +2,6 @@
 include '../database/class/count.php';
 
 $pdo = Koneksi::connect();
-
 $count =  count::getInstance($pdo);
 $jual = $count->chart('SELESAI');
 $blmjual = $count->chart('PENDING');
@@ -14,7 +13,6 @@ $pdSelesai = $count->countJual("SELESAI");
 $pdBelum = $count->countJual("PENDING");
 $bayar = $count->countUang('bayar');
 
-$pdo =  Koneksi::disconnect();
 
 ?>
 

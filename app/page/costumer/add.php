@@ -1,14 +1,18 @@
 <?php
 
+$pdo = Koneksi::connect();
+
 if (isset($_POST["submit"])) {
    $nama = $_POST['nama'];
    $alamat = $_POST['alamat'];
    $no_tlp = $_POST['no_tlp'];
    $member = $_POST['member'];
 
-   $pdo = Koneksi::connect();
+
+
 
    $costumer = costumer::getInsatance($pdo);
+
    if ($costumer->tambah($nama, $alamat, $no_tlp)) {
       //untuk mendapatkan id pembeli yang terakhir kali dimasukkan
       $id_pembeli = $pdo->lastInsertId();
@@ -22,7 +26,6 @@ if (isset($_POST["submit"])) {
 
       echo "<script>window.location.href = 'index.php?page=costumer'</script>";
    };
-   $pdo =  Koneksi::disconnect();
 }
 
 ?>
@@ -36,7 +39,7 @@ if (isset($_POST["submit"])) {
       <div class="card">
          <form method="post">
             <div class="card-header">
-               <h4>Tambah Costumer</h4>
+               <h4>Tambah Costumer </h4>
             </div>
             <div class="card-body">
 

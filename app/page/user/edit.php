@@ -23,7 +23,6 @@ if (isset($_POST["edit"])) {
 if (isset($id_user)) {
     extract($crudUser->getID($id_user));
 }
-$pdo =  Koneksi::disconnect();
 
 ?>
 

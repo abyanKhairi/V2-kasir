@@ -25,8 +25,3 @@ if (isset($_GET['id_produk']) && isset($_GET['id_transaksi'])) {
         echo "gagal menghapus Transaksi";
     }
 }
-
-
-
-
-$pdo =  Koneksi::disconnect();

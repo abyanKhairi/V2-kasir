@@ -28,7 +28,6 @@ if (isset($id_pembeli)) {
    extract($costumer->getID($id_pembeli));
 }
 
-$pdo =  Koneksi::disconnect();
 ?>
 
 

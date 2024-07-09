@@ -7,7 +7,6 @@ $cek = $bayar->getBayar($id_struk);
 $get = $bayar->getTransaksi($cek['id_transaksi']);
 $rows = $bayar->getStruk($cek['id_transaksi']);
 
-$pdo = Koneksi::disconnect();
 ?>
 
 <div class="col-25 col-sm-20 offset-sm-2 col-md-18 col-lg-20 offset-lg-3">

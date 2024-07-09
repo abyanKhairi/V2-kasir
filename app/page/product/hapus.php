@@ -11,4 +11,3 @@ if ($produk->delete($id_produk) == true) {
 } else {
     echo "<script>window.location.href = 'index.php?page=product&pesan=gagal'</script>";
 }
-$pdo =  Koneksi::disconnect();

@@ -11,7 +11,6 @@ $transaksi = Transaksi::getInstance($pdo);
 $paging = Page::getInstance($pdo, "transaksi");
 $bayar = $transaksi->countUang($tanggal);
 $rows = $transaksi->getTransaksi(@$tanggal);
-$pdo = Koneksi::disconnect();
 
 
 $html = '

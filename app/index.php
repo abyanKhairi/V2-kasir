@@ -6,7 +6,6 @@ $pdo = Koneksi::connect();
 $user = Auth::getInstance($pdo);
 $currentUser = $user->getUser();
 
-$pdo =  Koneksi::disconnect();
 
 
 
