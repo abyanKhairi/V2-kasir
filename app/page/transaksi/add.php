@@ -24,14 +24,14 @@ if (isset($_POST['tambahTransaksi'])) {
                     <div class="card-body">
                         <label for="nama">Name Pelanggan</label>
                         <select class="form-control selectric" name="id_pembeli">
+
                             <?php
                             $pdo = Koneksi::connect();
+                            $transaksi = Transaksi::getInstance($pdo);
                             $rows = $transaksi->getCustomer();
-
                             foreach ($rows as $row) {
                             ?>
                                 <option value="<?= $row['id_pembeli'] ?>"><?= $row['nama'] ?></option>
-
                             <?php
                             }
                             $pdo = Koneksi::disconnect();
