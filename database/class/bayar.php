@@ -1,5 +1,5 @@
 <?php
-class Bayar
+class Pembayaran
 {
 
     private static $instance = null;
@@ -13,12 +13,14 @@ class Bayar
     public static function getInstance($pdo)
     {
         if (self::$instance == null) {
-            self::$instance = new Bayar($pdo);
+            self::$instance = new Pembayaran($pdo);
         }
 
         return self::$instance;
     }
 
+
+    // hitung total total harga produk peritem 
     public function hitungTotal($id_transaksi)
     {
         $stmt = $this->db->prepare("SELECT SUM(detail_transaksi.qty * product.harga_produk) as total_harga 
@@ -31,6 +33,7 @@ class Bayar
         return $result ? $result['total_harga'] : 0;
     }
 
+    //menyimpan pembayaran / input pembayaran ke database
     public function simpanPembayaran($id_transaksi, $total_harga, $jumlah_bayar, $kembalian, $discount)
     {
         try {
@@ -49,6 +52,7 @@ class Bayar
         }
     }
 
+    // merubah status pendign ke selesai ketika sudah melakukan pembayaran
     public function statusUpdate($id_transaksi)
     {
 
@@ -57,6 +61,8 @@ class Bayar
         $stmt->execute();
         return true;
     }
+
+    // menmapilkan data bayar / mendapatkan data bayar pada table bayar
     public function getBayar($id_bayar)
     {
         $stmt = $this->db->prepare("SELECT * FROM bayar WHERE id_bayar = :id_bayar");
@@ -65,6 +71,7 @@ class Bayar
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // menampilkan data untuk struk
     public function getStruk($id_transaksi)
     {
         $stmt = $this->db->prepare("SELECT detail_transaksi.qty, product.nama_produk, product.harga_produk 
@@ -76,6 +83,7 @@ class Bayar
         return $stmt->fetchAll();
     }
 
+    //menampilan data transaksi dari table transaksi
     public function getTransaksi($id_transaksi)
     {
         $stmt = $this->db->prepare("SELECT * FROM transaksi WHERE id_transaksi = :id_transaksi");
@@ -84,16 +92,18 @@ class Bayar
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getError()
-    {
-        return true;
-    }
-
+    //pengecekan discount sesuai member
     public function getDiscount($id_pembeli)
     {
         $stmt = $this->db->prepare("SELECT pembeli.* , member.* FROM pembeli JOIN member ON pembeli.id_member = member.id_member WHERE id_pembeli = :id_pembeli");
         $stmt->bindParam(":id_pembeli", $id_pembeli);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    //pesan error
+    public function getError()
+    {
+        return true;
     }
 }

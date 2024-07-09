@@ -1,15 +1,16 @@
 <?php
 
+$pdo = Koneksi::connect();
 
 $costumer = costumer::getInsatance($pdo);
 if (isset($_POST['cari'])) {
     $key = $_POST['keyword'];
 }
-
 $paging = Page::getInstance($pdo, 'pembeli');
 $rows = $paging->get_data(@$key, 'nama');
 $pages = $paging->get_pagination_number();
 
+$pdo = Koneksi::disconnect();
 ?>
 
 <div class="section-header">
@@ -135,7 +136,6 @@ switch ($pesan) {
                                 <a class="page-link" href="index.php?page=costumer&halaman=<?= $paging->next_page() ?>"><i class="fas fa-chevron-right"></i></a>
                             </li>
                             <?php
-                            $pdo =  Koneksi::disconnect();
                             ?>
                         </ul>
                     </nav>

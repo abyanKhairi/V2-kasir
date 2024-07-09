@@ -5,7 +5,7 @@ include "../database/class/bayar.php";
 $id_struk = $_GET["id_struk"];
 
 $pdo = Koneksi::connect();
-$bayar = Bayar::getInstance($pdo);
+$bayar = Pembayaran::getInstance($pdo);
 $cek = $bayar->getBayar($id_struk);
 $get = $bayar->getTransaksi($cek["id_transaksi"]);
 $rows = $bayar->getStruk($cek["id_transaksi"]);

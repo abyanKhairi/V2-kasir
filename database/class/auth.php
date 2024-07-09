@@ -25,6 +25,7 @@ class Auth
         return self::$instance;
     }
 
+    //Menambhakan data apabila user belum mempunyai akun
     public function register($nama, $username, $email, $password, $alamat, $not_tlp, $role)
     {
         try {
@@ -61,7 +62,11 @@ class Auth
             $stmt->bindParam(":username", $username);
             $stmt->execute();
             $data = $stmt->fetch();
+
+            //jika data ada pada table
+
             if ($stmt->rowCount()  > 0) {
+
                 //cek password
                 if (password_verify($password, $data["password"])) {
                     $_SESSION['user_session'] = $data['id_user'];
@@ -81,8 +86,7 @@ class Auth
     }
 
 
-
-
+    // cek apabila user sudah login atau belum
     public function isLoggedIn()
     {
         //apakah user_session sudah ada di session
@@ -92,6 +96,7 @@ class Auth
     }
 
 
+    // mendapatkan data user yang login saat ini
     public function getUser()
     {
         if (!$this->isLoggedIn()) {
@@ -108,7 +113,7 @@ class Auth
         }
     }
 
-
+    //logout
     public function logout()
     {
         //hapus Session
@@ -119,6 +124,7 @@ class Auth
         return true;
     }
 
+    //pesan error
     public function getError()
     {
         return true;

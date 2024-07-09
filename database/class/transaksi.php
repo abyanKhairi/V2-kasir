@@ -229,21 +229,12 @@ class Transaksi
         }
     }
 
-    public function jumlahT($id_transaksi)
+    public function jumlahTransaski($id_transaksi)
     {
         $stmt = $this->db->prepare("SELECT COUNT(id_transaksi)FROM detail_transaksi WHERE id_transaksi = :id_transaksi");
         $stmt->bindParam(":id_transaksi", $id_transaksi);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_COLUMN);
-    }
-    public function edit($id_detail)
-    {
-        try {
-            $stmt = $this->db->prepare("UPDATE detail_transaksi SET qty = :qty WHERE id_detail_transaksi = :id_detail");
-            $stmt->bindParam(":id_detail", $id_detail);
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
     }
 
     public function cariTanggal($tanggal)

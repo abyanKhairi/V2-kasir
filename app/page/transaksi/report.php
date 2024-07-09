@@ -51,7 +51,7 @@ foreach ($rows as $row) :
     <td align="center">' . $i . '</td>
     <td class="TrTdSize" align="center">' . $row["tanggal_transaksi"] . '</td>
     <td class="TrTdSize" align="center">' . $row["nama"] . '</td>
-    <td class="TrTdSize" align="center">' . $transaksi->jumlahT($row["id_transaksi"]) . '</td>
+    <td class="TrTdSize" align="center">' . $transaksi->jumlahTransaski($row["id_transaksi"]) . '</td>
     <td class="TrTdSize" align="center">' . $row["no_tlp"] . '</td>
     <td class="TrTdSize" align="center">' . $row["alamat"] . '</td>
 ';

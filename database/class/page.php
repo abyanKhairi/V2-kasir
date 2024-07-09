@@ -3,7 +3,7 @@
 class Page
 {
 
-    private $instance = null;
+    private static $instance = null;
 
     private $db, $table, $total_records, $id, $limit = 5;
 

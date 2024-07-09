@@ -42,16 +42,6 @@ switch ($pesan) {
     </div>
 
     <form action="" method="post">
-        <div class="">
-            <select name="cekStatus">
-                <option value="SELESAI">DIbayar</option>
-                <option value="PENDING">Belum Bayar</option>
-            </select>
-            <button class="btn btn-primary btn-action mr-1" type="submit" style="cursor: pointer;" name="cari"><i class="fas fa-search"></i></button>
-        </div>
-    </form>
-
-    <form action="" method="post">
         <div class="form-grup">
             <div class="row">
                 <div class="col-3">
@@ -106,7 +96,7 @@ switch ($pesan) {
                             <td class="align-middle"><?php echo $i ?></td>
                             <td class="align-middle"><?php echo $row["tanggal_transaksi"] ?></td>
                             <td class="align-middle"><?php echo $row["nama"] ?></td>
-                            <td class="align-middle"><?php echo $transaksi->jumlahT($row["id_transaksi"]) ?></td>
+                            <td class="align-middle"><?php echo $transaksi->jumlahTransaski($row["id_transaksi"]) ?></td>
                             <td class="align-middle"><?php echo $row["no_tlp"] ?></td>
                             <td class="align-middle"><?php echo $row["alamat"] ?></td>
                             <?php
