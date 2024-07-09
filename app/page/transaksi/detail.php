@@ -30,7 +30,6 @@ if (isset($_POST['tambahProduct'])) {
                             <label for="nama">Nama Pelanggan</label>
                             <select class="form-control selectric" name="id_produk">
                                 <?php
-                                $pdo = Koneksi::connect();
                                 $rows = $transaksi->getProduk("product", $id_transaksi);
 
                                 foreach ($rows as $row) {
@@ -83,7 +82,6 @@ if (isset($_POST['tambahProduct'])) {
                             <th scope="col">Action</th>
                         </tr>
                         <?php
-                        $pdo = Koneksi::connect();
                         $rows = $transaksi->getDetail($id_transaksi);
                         $i = 1;
                         foreach ($rows as $row) :
@@ -118,7 +116,6 @@ if (isset($_POST['tambahProduct'])) {
     <div class="card">
         <div class="card-body">
             <?php
-            $pdo = Koneksi::connect();
             $totals = $transaksi->total($id_transaksi);
             ?>
             <h5>Total Harga</h5>

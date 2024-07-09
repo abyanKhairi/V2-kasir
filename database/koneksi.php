@@ -15,12 +15,11 @@ class Koneksi
 
     public static function connect()
     {
-        if (null == self::$instance) {
+        if (self::$instance == null) {
             try {
                 self::$instance = new PDO("mysql:host=" . self::$dbHost . ";" . "dbname=" . self::$dbName, self::$dbUser, self::$dbPass);
-            } catch (
-                PDOException $e
-            ) {
+                self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
                 die($e->getMessage());
             }
         }
