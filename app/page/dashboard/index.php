@@ -3,15 +3,15 @@ include '../database/class/count.php';
 
 $pdo = Koneksi::connect();
 $count =  count::getInstance($pdo);
-$jual = $count->chart('SELESAI');
-$blmjual = $count->chart('PENDING');
-$user = $count->count("user");
-$pembeli = $count->count('pembeli');
-$product = $count->count('product');
-$transaksiTl = $count->count('transaksi');
-$pdSelesai = $count->countJual("SELESAI");
-$pdBelum = $count->countJual("PENDING");
-$bayar = $count->countUang('bayar');
+$jual = $count->chartDibayar('SELESAI');
+$blmjual = $count->chartDibayar('PENDING');
+$user = $count->countData("user");
+$pembeli = $count->countData('pembeli');
+$product = $count->countData('product');
+$transaksiTl = $count->countData('transaksi');
+$pdSelesai = $count->countDibayar("SELESAI");
+$pdBelum = $count->countDibayar("PENDING");
+$bayar = $count->countPendapatan('bayar');
 
 
 ?>

@@ -9,7 +9,7 @@ $pdo = Koneksi::connect();
 $tanggal = $_GET['tanggal'];
 $transaksi = Transaksi::getInstance($pdo);
 $paging = Page::getInstance($pdo, "transaksi");
-$bayar = $transaksi->countUang($tanggal);
+$bayar = $transaksi->countPendapatan($tanggal);
 $rows = $transaksi->getTransaksi(@$tanggal);
 
 

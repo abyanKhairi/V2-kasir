@@ -20,21 +20,24 @@ class count
         return self::$instance;
     }
 
-    public function count($table)
+    //menghitung total data
+    public function countData($table)
     {
         $stmt = $this->db->prepare("SELECT COUNT(*) FROM $table");
         $stmt->execute();
         return  $stmt->fetch(PDO::FETCH_COLUMN);
     }
 
-    public function countUang($table)
+    //menghitung berapa total pendapatan
+    public function countPendapatan($table)
     {
         $stmt = $this->db->prepare("SELECT SUM(total_harga) FROM $table");
         $stmt->execute();
         return  $stmt->fetch(PDO::FETCH_COLUMN);
     }
 
-    public function countJual($status)
+    //menghitung barang yang sudah dibayar dan belum dibayar
+    public function countDibayar($status)
     {
         $stmt = $this->db->prepare("SELECT SUM(qty) FROM detail_transaksi 
         JOIN transaksi 
@@ -45,7 +48,8 @@ class count
         return  $stmt->fetch(PDO::FETCH_COLUMN);
     }
 
-    public function chart($status)
+    //menghitung barang yang sudah dibayar dan belum dibayar
+    public function chartDibayar($status)
     {
         try {
             $stmt = $this->db->prepare("SELECT product.nama_produk, SUM(detail_transaksi.qty) AS total_terjual

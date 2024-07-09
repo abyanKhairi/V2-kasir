@@ -59,6 +59,7 @@ if (isset($_POST['tambahProduct'])) {
                     </div>
 
             </form>
+
         </div>
     </div>
 </div>
@@ -82,7 +83,7 @@ if (isset($_POST['tambahProduct'])) {
                             <th scope="col">Action</th>
                         </tr>
                         <?php
-                        $rows = $transaksi->getDetail($id_transaksi);
+                        $rows = $transaksi->getDetailTransaksi($id_transaksi);
                         $i = 1;
                         foreach ($rows as $row) :
                             $total = $row['qty'] * $row['harga_produk'];
@@ -112,11 +113,11 @@ if (isset($_POST['tambahProduct'])) {
     </div>
 </div>
 
-<div style="text-align: center;" class="col-3">
+<div style="text-align: center;" class="col-lg-2">
     <div class="card">
         <div class="card-body">
             <?php
-            $totals = $transaksi->total($id_transaksi);
+            $totals = $transaksi->totalHarga($id_transaksi);
             ?>
             <h5>Total Harga</h5>
             <h6>Rp. <?= number_format($totals["total_harga"]) ?></h6>
@@ -126,7 +127,7 @@ if (isset($_POST['tambahProduct'])) {
             if ($rows == true) {
             ?>
                 <br>
-                <a href="index.php?page=struk&act=pembayaran&id=<?= $id_transaksi ?>"> <button type="submit" class="btn btn-primary btn-lg btn-block" name="">
+                <a href="index.php?page=struk&act=pembayaran&id=<?= $id_transaksi ?>"> <button type="submit" style="font-size: 10px;" class="btn btn-primary btn-block" name="">
                         Selesaikan Transaksi
                     </button></a>
             <?php } ?>

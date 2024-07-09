@@ -21,7 +21,7 @@ class Pembayaran
 
 
     // hitung total total harga produk peritem 
-    public function hitungTotal($id_transaksi)
+    public function hitungTotalHarga($id_transaksi)
     {
         $stmt = $this->db->prepare("SELECT SUM(detail_transaksi.qty * product.harga_produk) as total_harga 
                                     FROM detail_transaksi 
@@ -43,9 +43,8 @@ class Pembayaran
             $stmt->bindParam(":jumlah_bayar", $jumlah_bayar);
             $stmt->bindParam(":kembalian", $kembalian);
             $stmt->bindParam(":discount", $discount);
+            $this->statusUpdate($id_transaksi);
             $stmt->execute();
-
-
             return $this->db->lastInsertId();
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -55,12 +54,17 @@ class Pembayaran
     // merubah status pendign ke selesai ketika sudah melakukan pembayaran
     public function statusUpdate($id_transaksi)
     {
+        try {
 
-        $stmt = $this->db->prepare("UPDATE transaksi SET status = 'SELESAI' WHERE id_transaksi = :id_transaksi ");
-        $stmt->bindParam(":id_transaksi", $id_transaksi);
-        $stmt->execute();
-        return true;
+            $stmt = $this->db->prepare("UPDATE transaksi SET status = 'SELESAI' WHERE id_transaksi = :id_transaksi ");
+            $stmt->bindParam(":id_transaksi", $id_transaksi);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
+
 
     // menmapilkan data bayar / mendapatkan data bayar pada table bayar
     public function getBayar($id_bayar)

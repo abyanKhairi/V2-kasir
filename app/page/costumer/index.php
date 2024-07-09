@@ -3,13 +3,13 @@
 $pdo = Koneksi::connect();
 
 $costumer = costumer::getInsatance($pdo);
+$paging = Page::getInstance($pdo, 'pembeli');
 
 if (isset($_POST['cari'])) {
     $key = $_POST['keyword'];
 }
-$paging = Page::getInstance($pdo, 'pembeli');
-$rows = $paging->get_data(@$key, 'nama');
-$pages = $paging->get_pagination_number();
+$rows = $paging->getData(@$key, 'nama');
+$pages = $paging->getPageNumber();
 
 ?>
 
@@ -110,7 +110,7 @@ switch ($pesan) {
                     <nav class="d-inline-block">
                         <ul class="pagination mb-0">
                             <li class="page-item ">
-                                <a class="page-link" href="index.php?page=costumer&halaman=<?= $paging->prev_page() ?>" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                                <a class="page-link" href="index.php?page=costumer&halaman=<?= $paging->prevPage() ?>" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                             </li>
                             <?php
                             for ($i = 1; $i <= $pages; $i++) :
@@ -131,7 +131,7 @@ switch ($pesan) {
                             endfor;
                             ?>
                             <li class="page-item">
-                                <a class="page-link" href="index.php?page=costumer&halaman=<?= $paging->next_page() ?>"><i class="fas fa-chevron-right"></i></a>
+                                <a class="page-link" href="index.php?page=costumer&halaman=<?= $paging->nextPage() ?>"><i class="fas fa-chevron-right"></i></a>
                             </li>
                             <?php
                             ?>

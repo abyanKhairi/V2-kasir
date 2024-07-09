@@ -11,7 +11,7 @@ class Page
     {
         $this->db = $db_conn;
         $this->table = $table;
-        $this->set_total_records($this->id);
+        $this->setTotalData($this->id);
     }
 
     public static function getInstance($pdo, $table)
@@ -23,7 +23,8 @@ class Page
         return self::$instance;
     }
 
-    public function set_total_records($id)
+
+    public function setTotalData($id)
     {
         $stmt = $this->db->prepare("SELECT :id FROM $this->table");
         $stmt->bindParam(":id", $id);
@@ -31,34 +32,35 @@ class Page
         $this->total_records = $stmt->rowCount();
     }
 
-    public function current_page()
+    public function HalamanSaatIni()
     {
         return isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
     }
 
-    public function get_data($keyword, $record)
+
+    public function getData($keyword, $record)
     {
         $start = 0;
-        if ($this->current_page() > 1) {
-            $start = ($this->current_page() * $this->limit) - $this->limit;
+        if ($this->HalamanSaatIni() > 1) {
+            $start = ($this->HalamanSaatIni() * $this->limit) - $this->limit;
         }
         $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE $record like '%$keyword%' LIMIT $start, $this->limit");
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
-    public function get_pagination_number()
+    public function getPageNumber()
     {
         return ceil($this->total_records / $this->limit);
     }
 
-    public function prev_page()
+    public function prevPage()
     {
-        return ($this->current_page() > 1) ? $this->current_page() - 1 : 1;
+        return ($this->HalamanSaatIni() > 1) ? $this->HalamanSaatIni() - 1 : 1;
     }
 
-    public function next_page()
+    public function nextPage()
     {
-        return ($this->current_page() < $this->get_pagination_number()) ? $this->current_page() + 1 : $this->get_pagination_number();
+        return ($this->HalamanSaatIni() < $this->getPageNumber()) ? $this->HalamanSaatIni() + 1 : $this->getPageNumber();
     }
 }

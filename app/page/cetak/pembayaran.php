@@ -8,9 +8,8 @@ $get = $bayar->getTransaksi($id_transaksi);
 //pengecekan discount member
 $cekAnggota = $bayar->getDiscount($get["id_pembeli"]);
 $cekDiscount = $cekAnggota['keanggotaan'];
-$total_harga = $bayar->hitungTotal($id_transaksi);
+$total_harga = $bayar->hitungTotalHarga($id_transaksi);
 
-var_dump($total_harga);
 switch ($cekDiscount) {
     case 'SILVER':
         $discount = $total_harga * 0.15;
@@ -25,8 +24,6 @@ switch ($cekDiscount) {
         $discount = 0;
         break;
 }
-var_dump($discount);
-
 //proses memasukan data ke tabel bayar
 if (isset($_POST['bayar'])) {
     $jumlah_bayar = $_POST['jumlah_bayar'];
@@ -35,7 +32,6 @@ if (isset($_POST['bayar'])) {
 
     if ($jumlah_bayar >= $total_harga) {
         $id_bayar = $bayar->simpanPembayaran($id_transaksi, $hargaSeluruh, $jumlah_bayar, $kembalian, $discount);
-        $bayar->statusUpdate($id_transaksi);
         echo "<script>window.location.href ='index.php?page=struk&act=total&id_struk=$id_bayar'</script>";
     } else {
         $error = $bayar->getError();
@@ -61,6 +57,8 @@ if (isset($error)) {
 <div class="row">
     <div class="col-10 col-sm-6 col-md-4 col-lg-4 offset-lg-4">
         <div class="card">
+            <h3 class="text-center">Total Harga</h3>
+            <h3 class="text-center">Rp.<?= number_format($total_harga) ?></h3>
             <form method="POST">
                 <div class="form-group">
                     <div class="card-body">

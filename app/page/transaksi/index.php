@@ -87,7 +87,7 @@ switch ($pesan) {
                     $transaksi = Transaksi::getInstance($pdo);
                     $paging = Page::getInstance($pdo, 'transaksi');
                     $rows = $transaksi->getTransaksi(@$key);
-                    $pages = $paging->get_pagination_number();
+                    $pages = $paging->getPageNumber();
                     $i = 1;
                     foreach ($rows as $row) :
                         $cek = $transaksi->getIdBayar($row['id_transaksi'])
@@ -133,7 +133,7 @@ switch ($pesan) {
                     <nav class="d-inline-block">
                         <ul class="pagination mb-0">
                             <li class="page-item ">
-                                <a class="page-link" href="index.php?page=transaksi&halaman=<?= $paging->prev_page() ?>" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                                <a class="page-link" href="index.php?page=transaksi&halaman=<?= $paging->prevPage() ?>" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                             </li>
                             <?php
                             for ($i = 1; $i <= $pages; $i++) :
@@ -154,7 +154,7 @@ switch ($pesan) {
                             endfor;
                             ?>
                             <li class="page-item">
-                                <a class="page-link" href="index.php?page=transaksi&halaman=<?= $paging->next_page() ?>"><i class="fas fa-chevron-right"></i></a>
+                                <a class="page-link" href="index.php?page=transaksi&halaman=<?= $paging->nextPage() ?>"><i class="fas fa-chevron-right"></i></a>
                             </li>
                             <?php
                             ?>

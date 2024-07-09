@@ -32,7 +32,8 @@ class Auth
             // enkripsi
             $hashPasswd = password_hash($password, PASSWORD_DEFAULT);
             //Masukkan user baru ke database
-            $stmt = $this->db->prepare("INSERT INTO user(nama, username,email, password, alamat, not_tlp, role) VALUES(:nama, :username ,:email, :pass, :alamat, :not_tlp, :role)");
+            $stmt = $this->db->prepare("INSERT INTO user(nama, username,email, password, alamat, not_tlp, role) 
+                                        VALUES(:nama, :username ,:email, :pass, :alamat, :not_tlp, :role)");
             $stmt->bindParam(":nama", $nama);
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":email", $email);
