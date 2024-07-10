@@ -84,12 +84,14 @@ class costumer
     public function delete($id_pembeli)
     {
         try {
-            $stmt = $this->db->prepare("DELETE FROM pembeli WHERE id_pembeli =:id_pembeli");
+            $stmt = $this->db->prepare("DELETE pembeli.*, member.* FROM pembeli JOIN member ON pembeli.id_member = member.id_member WHERE id_pembeli =:id_pembeli");
             $stmt->bindParam(":id_pembeli", $id_pembeli);
             $stmt->execute();
+
             return true;
-        } catch (PDOException) {
-            return false;
+        } catch (PDOException $e) {
+
+            echo $e->getMessage();
         }
     }
 
@@ -106,7 +108,7 @@ class costumer
         }
     }
 
-    public function memberPembeli($id_pembeli, $id_member)
+    public function setMemberPembeli($id_pembeli, $id_member)
     {
         try {
             $stmt = $this->db->prepare("UPDATE pembeli SET id_member = :id_member WHERE id_pembeli = :id_pembeli");

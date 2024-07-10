@@ -8,12 +8,9 @@ if (isset($_POST["tambah"])) {
     $not_tlp = $_POST["not_tlp"];
     $role = $_POST["role"];
 
-
-
     $crudUser = user::getInstance($pdo);
     $crudUser->tambah($nama, $username, $email, $password, $alamat, $not_tlp, $role);
 }
-
 
 
 ?>

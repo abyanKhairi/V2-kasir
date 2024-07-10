@@ -33,13 +33,16 @@ class Transaksi
                 $start = ($this->halamanSaatIni() * $limit) - $limit;
             }
 
+            //jika tanggal dimasukan
             if ($tanggal) {
                 $stmt = $this->db->prepare("SELECT transaksi.*, pembeli.id_pembeli , pembeli.nama ,pembeli.alamat , pembeli.no_tlp           
             FROM transaksi 
             JOIN pembeli 
             ON pembeli.id_pembeli = transaksi.id_pembeli WHERE tanggal_transaksi LIKE :tanggal LIMIT :start, :limit");
                 $stmt->bindValue(":tanggal", "%$tanggal%");
-            } else {
+            }
+            // jika tanggal tidak dimasukan
+            else {
                 $stmt = $this->db->prepare("SELECT transaksi.*, pembeli.id_pembeli , pembeli.nama ,pembeli.alamat , pembeli.no_tlp           
             FROM transaksi 
             JOIN pembeli 
@@ -105,6 +108,7 @@ class Transaksi
         }
     }
 
+
     public function cekJumlahProduk($id_produk, $qty)
     {
         try {
@@ -149,6 +153,7 @@ class Transaksi
         }
     }
 
+
     //Kurangi stock ketika dimasukkan kedalam detail transaksi
     public function KurangiStok($id_produk, $qty)
     {
@@ -162,6 +167,7 @@ class Transaksi
             echo $e->getMessage();
         }
     }
+
 
     public function getDetailTransaksi($id_transaksi)
     {
@@ -194,12 +200,8 @@ class Transaksi
     {
 
         try {
-            //cek jumlah qty 
-            $stmt = $this->db->prepare("SELECT qty FROM detail_transaksi WHERE id_transaksi = :id_transaksi AND id_produk = :id_produk");
-            $stmt->bindParam(':id_transaksi', $id_transaksi);
-            $stmt->bindParam(':id_produk', $id_produk);
-            $stmt->execute();
-            $cek = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $cek = $this->cekQtyInput($id_transaksi, $id_produk);
 
             //jika detail tidak ditemukan tidak ditenukan
             if ($cek === false) {
@@ -237,6 +239,19 @@ class Transaksi
         }
     }
 
+
+    //cek jumlah qty  yang diinputkan apakah melebihi jumlah stok
+    public function cekQtyInput($id_transaksi, $id_produk)
+    {
+        //cek jumlah qty 
+        $stmt = $this->db->prepare("SELECT qty FROM detail_transaksi WHERE id_transaksi = :id_transaksi AND id_produk = :id_produk");
+        $stmt->bindParam(':id_transaksi', $id_transaksi);
+        $stmt->bindParam(':id_produk', $id_produk);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
     public function hapusTransaksi($id_transaksi)
     {
         try {
@@ -250,6 +265,7 @@ class Transaksi
         }
     }
 
+
     public function jumlahTransaski($id_transaksi)
     {
         $stmt = $this->db->prepare("SELECT COUNT(id_transaksi)FROM detail_transaksi WHERE id_transaksi = :id_transaksi");
@@ -257,6 +273,7 @@ class Transaksi
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_COLUMN);
     }
+
 
     public function getIdBayar($id_transaksi)
     {
@@ -268,7 +285,13 @@ class Transaksi
 
 
 
-    //Bagian Report
+    /*
+    @
+    @
+    Bagian Report
+    @
+    @
+    */
 
 
     //Menghitung Pendapatan berdasarkan tanggal
@@ -277,16 +300,16 @@ class Transaksi
         try {
             if ($tanggal) {
                 $stmt = $this->db->prepare("SELECT SUM(total_harga)
-                                            FROM bayar 
-                                            JOIN transaksi 
-                                            ON bayar.id_transaksi = transaksi.id_transaksi 
-                                            WHERE tanggal_transaksi LIKE :tanggal");
+                FROM bayar 
+                JOIN transaksi 
+                ON bayar.id_transaksi = transaksi.id_transaksi 
+                WHERE tanggal_transaksi LIKE :tanggal");
             } else {
                 $stmt = $this->db->prepare("SELECT SUM(total_harga) 
-                                            FROM bayar 
-                                            JOIN transaksi 
-                                            ON bayar.id_transaksi = transaksi.id_transaksi 
-                                            WHERE tanggal_transaksi NOT LIKE :tanggal");
+                FROM bayar 
+                JOIN transaksi 
+                ON bayar.id_transaksi = transaksi.id_transaksi 
+                WHERE tanggal_transaksi NOT LIKE :tanggal");
             }
 
             $stmt->bindParam(":tanggal", $tanggal);

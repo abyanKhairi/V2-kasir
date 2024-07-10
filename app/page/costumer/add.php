@@ -8,19 +8,17 @@ if (isset($_POST["submit"])) {
    $no_tlp = $_POST['no_tlp'];
    $member = $_POST['member'];
 
-
-
-
    $costumer = costumer::getInsatance($pdo);
 
    if ($costumer->tambah($nama, $alamat, $no_tlp)) {
       //untuk mendapatkan id pembeli yang terakhir kali dimasukkan
       $id_pembeli = $pdo->lastInsertId();
 
+      // jika nilai member dimasukan
       if ($member) {
          $id_member = $costumer->addMember($member);
          if ($id_member) {
-            $costumer->memberPembeli($id_pembeli, $id_member);
+            $costumer->setMemberPembeli($id_pembeli, $id_member);
          }
       }
 
