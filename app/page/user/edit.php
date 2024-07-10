@@ -73,9 +73,6 @@ if (isset($id_user)) {
                                 <option value="superAdmin">superAdmin</option>
                             </select>
                         </div>
-                        <div class="">
-                            <a href="index.php?page=user&act=password&id=<?= $id_user ?>">Reset</a>
-                        </div>
                     </div>
                     <br>
                     <br>
@@ -83,6 +80,10 @@ if (isset($id_user)) {
                         <button type="submit" class="btn btn-primary btn-lg btn-block" name="edit">
                             Edit
                         </button>
+                        <br>
+                        <div class="text-center">
+                            <a href="index.php?page=user&act=password&id=<?= $id_user ?>">Change Password</a>
+                        </div>
                     </div>
                 </div>
             </form>

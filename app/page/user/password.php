@@ -19,10 +19,10 @@ if (isset($_POST["reset"])) {
 ?>
 
 <div class="section-header">
-    <h1>Reset Password</h1>
+    <h1>Change Password</h1>
 </div>
 <div class="row">
-    <div class="col-6 col-md-6 col-lg-6">
+    <div class="col-8 col-md-8 col-lg-8">
         <div class="card">
             <form method="POST">
                 <div class="card-body">
@@ -30,20 +30,22 @@ if (isset($_POST["reset"])) {
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="username">Username</label>
-                            <input id="username" type="text" class="form-control" name="username" required>
+                            <input id="username" type="text" class="form-control" name="username" autocomplete="off" placeholder="Isi sesuai Username" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input id="email" type="email" class="form-control" name="email" required>
+                            <input id="email" type="email" class="form-control" name="email" autocomplete="off" placeholder="Isi sesuai Email" required>
                             <div class="invalid-feedback">
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label for="password">Password</label>
-                        <input id="password" type="password" class="form-control" name="password" required>
-                        <div class="invalid-feedback">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" class="form-control" name="password" autocomplete="off" placeholder="New Password" required>
+                            <div class="invalid-feedback">
+                            </div>
                         </div>
                     </div>
 

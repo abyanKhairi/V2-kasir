@@ -118,7 +118,7 @@ class user
             $hash = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt = $this->db->prepare("UPDATE user SET password = :password WHERE id_user = :id_user");
-            $stmt->bindParam(":password", $password);
+            $stmt->bindParam(":password", $hash);
             $stmt->bindParam(":id_user", $id_user);
             $stmt->execute();
             return true;
