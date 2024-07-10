@@ -57,9 +57,9 @@ class costumer
             $stmt->bindParam(":nama", $nama);
             $stmt->bindParam(":alamat", $alamat);
             $stmt->bindParam(":no_tlp", $no_tlp);
-
-            $this->updateMem($anggota, $id_member);
             $stmt->execute();
+
+            $this->updateMember($anggota, $id_member);
             return true;
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -67,13 +67,15 @@ class costumer
         }
     }
 
-    public function updateMem($anggota, $id_member)
+    public function updateMember($anggota, $id_member)
     {
         try {
             $stmt = $this->db->prepare("UPDATE member SET keanggotaan = :anggota WHERE id_member = :id_member");
             $stmt->bindParam(":anggota", $anggota);
             $stmt->bindParam(":id_member", $id_member);
             $stmt->execute();
+
+            return true;
         } catch (PDOException $th) {
             echo $th->getMessage();
         }
@@ -127,16 +129,6 @@ class costumer
             return $stmt->fetch(PDO::FETCH_COLUMN);
         } catch (PDOException $e) {
             echo $e->getMessage();
-        }
-    }
-
-    public function updateMember()
-    {
-        try {
-            $stmt = $this->db->prepare("UPDATE member SET keanggotaan = :keanggotaan WHERE id_member = :id_member");
-            $stmt->execute();
-        } catch (PDOException $th) {
-            echo $th->getMessage();
         }
     }
 }

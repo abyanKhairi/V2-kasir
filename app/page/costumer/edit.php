@@ -13,9 +13,7 @@ if (isset($_POST["edit"])) {
    $anggota = $_POST['member'];
    $id_member = $_POST['id_member'];
 
-   $costumer->update($id_pembeli, $nama, $alamat, $no_tlp, $anggota, $id_member);
-
-   if ($costumer->update($id_pembeli, $nama, $alamat, $no_tlp, $anggota, $id_member) == true) {
+   if ($costumer->update($id_pembeli, $nama, $alamat, $no_tlp, $anggota, $id_member)) {
 ?>
       <script>
          window.location.href = "index.php?page=costumer"
@@ -70,10 +68,11 @@ if (isset($id_pembeli)) {
                      <input type="text" autocomplete="off" class="form-control" required name="no_tlp" value="<?php echo $no_tlp ?>">
                   </div>
                </div>
-               <div class="form-group">
+               <div class=" form-group">
                   <button class="btn btn-primary btn-lg btn-block" type="submit" name="edit">Edit</button>
                </div>
             </div>
+            <input type="hidden" autocomplete="off" class="form-control" required name="id_member" value="<?= $id_member ?>">
          </form>
       </div>
    </div>
