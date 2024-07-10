@@ -12,11 +12,9 @@ if (isset($_POST["edit"])) {
     $alamat = $_POST["alamat"];
     $not_tlp = $_POST["not_tlp"];
     $role = $_POST["role"];
-    if ($crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role) == true) {
+    if ($crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role)) {
 
-        echo "<script>
-            window.location.href = 'index.php?page=user'
-        </script>";
+        echo "<script>window.location.href = 'index.php?page=user'</script>";
     }
 }
 
@@ -75,12 +73,8 @@ if (isset($id_user)) {
                                 <option value="superAdmin">superAdmin</option>
                             </select>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="password" class="d-block">Password</label>
-                            <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" required>
+                        <div class="">
+                            <a href="index.php?page=user&act=password&id=<?= $id_user ?>">Reset</a>
                         </div>
                     </div>
                     <br>

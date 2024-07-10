@@ -2,6 +2,7 @@
 <div class="section-header">
     <h1>Transaksi</h1>
 </div>
+
 <?php
 if (isset($_POST['cari'])) {
     $key = $_POST['keyword'];

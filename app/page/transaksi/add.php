@@ -1,11 +1,12 @@
 <?php
+$pdo = Koneksi::connect();
+$transaksi = Transaksi::getInstance($pdo);
+
 if (isset($_POST['tambahTransaksi'])) {
     $id_pembeli = $_POST['id_pembeli'];
     $tanggal = $_POST['tanggal'];
 
-    $pdo = Koneksi::connect();
 
-    $transaksi = Transaksi::getInstance($pdo);
     if ($transaksi->tambahTransaksi($id_pembeli, $tanggal)) {
         echo "<script>window.location.href = 'index.php?page=transaksi'</script>";
     };
@@ -23,7 +24,6 @@ if (isset($_POST['tambahTransaksi'])) {
                     <div class="card-body">
                         <label for="nama">Name Pelanggan</label>
                         <select class="form-control selectric" name="id_pembeli">
-
                             <?php
                             $transaksi = Transaksi::getInstance($pdo);
                             $rows = $transaksi->getCustomer();

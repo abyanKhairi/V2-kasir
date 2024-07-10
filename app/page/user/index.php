@@ -1,6 +1,3 @@
-<?php
-?>
-
 <!-- Main Content -->
 <div class="section-header">
     <h1>User</h1>

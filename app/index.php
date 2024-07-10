@@ -6,7 +6,6 @@ $pdo = Koneksi::connect();
 $user = Auth::getInstance($pdo);
 $currentUser = $user->getUser();
 
-
 // Cek user apakah sudah login atau belum
 if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
     $log = isset($_GET['auth']) ? $_GET['auth'] : 'auth';
@@ -22,6 +21,7 @@ if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
             break;
     }
 } else {
+
 
     $cetak = isset($_GET['cetak']) ? $_GET['cetak'] : 'cetak';
     switch ($cetak) {

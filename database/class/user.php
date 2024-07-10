@@ -82,4 +82,48 @@ class user
         $stmt->execute();
         return true;
     }
+
+    public function resetPass($id_user, $username, $password, $email)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM user WHERE username = :username AND email = :email AND id_user = :id_user");
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":id_user", $id_user);
+            $stmt->execute();
+            $data = $stmt->fetch();
+
+            if ($stmt->rowCount()  == 1) {
+
+                if ($data["username"] && $data["email"]) {
+                    $this->updatePassword($id_user, $password);
+                    return true;
+                } else {
+                    echo "Gagal ganti password";
+                    return false;
+                }
+            } else {
+                echo "username dan email tidak sesusai";
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function updatePassword($id_user, $password)
+    {
+        try {
+
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+
+            $stmt = $this->db->prepare("UPDATE user SET password = :password WHERE id_user = :id_user");
+            $stmt->bindParam(":password", $password);
+            $stmt->bindParam(":id_user", $id_user);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }

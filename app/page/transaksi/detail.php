@@ -40,8 +40,6 @@ if (isset($_POST['tambahProduct'])) {
                                 }
 
                                 ?>
-
-
                             </select>
                         </div>
                         <br>
@@ -97,7 +95,6 @@ if (isset($_POST['tambahProduct'])) {
                                 <td class="align-middle">Rp. <?php echo number_format($row["harga_produk"]) ?></td>
                                 <td class="align-middle"><?php echo $row["qty"] ?></td>
                                 <td class="align-middle">Rp. <?php echo number_format($total) ?></td>
-
                                 <td class="align-middle">
                                     <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda Yakin Ingin Menghapus Produk Dari Transaksi?" data-confirm-yes="window.location.href='index.php?page=transaksi&act=delete&id_produk=<?= $row['id_produk'] ?>&id_transaksi=<?= $row['id_transaksi'] ?>'"><i class="fas fa-trash"></i></a>
                                 </td>
@@ -122,7 +119,6 @@ if (isset($_POST['tambahProduct'])) {
             <h5>Total Harga</h5>
             <h6>Rp. <?= number_format($totals["total_harga"]) ?></h6>
             <?php
-
 
             if ($rows == true) {
             ?>

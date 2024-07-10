@@ -1,4 +1,6 @@
 <?php
+$crudUser = user::getInstance($pdo);
+
 if (isset($_POST["tambah"])) {
     $nama = $_POST["nama"];
     $username = $_POST["username"];
@@ -8,11 +10,10 @@ if (isset($_POST["tambah"])) {
     $not_tlp = $_POST["not_tlp"];
     $role = $_POST["role"];
 
-    $crudUser = user::getInstance($pdo);
-    $crudUser->tambah($nama, $username, $email, $password, $alamat, $not_tlp, $role);
+    if ($crudUser->tambah($nama, $username, $email, $password, $alamat, $not_tlp, $role)) {
+        echo "<script>window.location.href='index.php?page=user'</script>";
+    }
 }
-
-
 ?>
 
 <div class="section-header">
