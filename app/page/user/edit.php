@@ -7,12 +7,11 @@ $id_user = $_GET['id'];
 if (isset($_POST["edit"])) {
     $nama = $_POST["nama"];
     $username = $_POST["username"];
-    $password = $_POST["password"];
     $email = $_POST["email"];
     $alamat = $_POST["alamat"];
     $not_tlp = $_POST["not_tlp"];
     $role = $_POST["role"];
-    if ($crudUser->update($id_user, $nama, $username, $email, $password, $alamat, $not_tlp, $role)) {
+    if ($crudUser->update($id_user, $nama, $username, $email, $alamat, $not_tlp, $role)) {
 
         echo "<script>window.location.href = 'index.php?page=user'</script>";
     }

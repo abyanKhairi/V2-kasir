@@ -12,6 +12,8 @@ if (isset($_POST["tambah"])) {
 
     if ($crudUser->tambah($nama, $username, $email, $password, $alamat, $not_tlp, $role)) {
         echo "<script>window.location.href='index.php?page=user'</script>";
+    } else {
+        echo "pesan";
     }
 }
 ?>
@@ -86,6 +88,3 @@ if (isset($_POST["tambah"])) {
         </div>
     </div>
 </div>
-
-
-<?php

@@ -125,6 +125,78 @@ class Auth
         return true;
     }
 
+    public function cekUsernameDanEmail($username, $email)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM user WHERE username = :username AND email = :email");
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+            $stmt->fetch();
+            if ($stmt->rowCount()  > 0) {
+                echo "Yo";
+                return true;
+            } else {
+                echo "Oi";
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function forgetPassword($username, $email, $password)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM user WHERE username = :username AND email = :email");
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+            $stmt->fetch();
+
+            if ($stmt->rowCount()  > 0) {
+                $this->newPassword($username, $email, $password);
+                return true;
+            } else {
+                echo "Oi";
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+
+    public function newPassword($username, $email, $password)
+    {
+        try {
+            $stmt = $this->db->prepare("UPDATE user SET password = :password WHERE username = :username AND email = :email");
+            $stmt->bindParam(":password", $password);
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+
+    public function oldPassword($password)
+    {
+        try {
+
+            $thi = password_verify($password, PASSWORD_DEFAULT);
+
+            $stmt = $this->db->prepare("SELECT password FROM user WHERE password = :password");
+            $stmt->bindParam(":password", $thi);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
+
     //pesan error
     public function getError()
     {

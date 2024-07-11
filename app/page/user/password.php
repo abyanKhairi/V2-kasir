@@ -9,8 +9,8 @@ if (isset($_POST["reset"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    if ($crudUser->resetPass($id_user, $username, $password, $email)) {
-        echo '<script>alert("bisa")</script>';
+    if ($crudUser->resetPassword($id_user, $username, $password, $email)) {
+        echo '<script>window.location.href ="index.php?"</script>';
     } else {
         echo '<script>alert("Gak bisa")</script>';
     }
@@ -30,11 +30,11 @@ if (isset($_POST["reset"])) {
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="username">Username</label>
-                            <input id="username" type="text" class="form-control" name="username" autocomplete="off" placeholder="Isi sesuai Username" required>
+                            <input id="username" type="text" class="form-control" name="username" autocomplete="off" placeholder="Username" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input id="email" type="email" class="form-control" name="email" autocomplete="off" placeholder="Isi sesuai Email" required>
+                            <input id="email" type="email" class="form-control" name="email" autocomplete="off" placeholder="Email" required>
                             <div class="invalid-feedback">
                             </div>
                         </div>
@@ -42,7 +42,7 @@ if (isset($_POST["reset"])) {
 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="password">Password</label>
+                            <label for="password">New Password</label>
                             <input id="password" type="password" class="form-control" name="password" autocomplete="off" placeholder="New Password" required>
                             <div class="invalid-feedback">
                             </div>
@@ -53,7 +53,7 @@ if (isset($_POST["reset"])) {
                     <br>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block" name="reset">
-                            Edit
+                            Change Password
                         </button>
                     </div>
                 </div>

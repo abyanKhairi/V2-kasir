@@ -62,7 +62,7 @@ if (isset($_POST["login"])) {
                 <form method="POST" class="needs-validation" novalidate="">
                   <div class="form-group">
                     <label for="username">username</label>
-                    <input id="username" type="username" class="form-control" name="username" tabindex="1" autocomplete="off" required autofocus>
+                    <input id="username" type="text" class="form-control" name="username" tabindex="1" autocomplete="off" required autofocus>
                     <div class="invalid-feedback">
                       Please fill in your username
                     </div>
@@ -72,7 +72,7 @@ if (isset($_POST["login"])) {
                     <div class="d-block">
                       <label for="password" class="control-label">Password</label>
                       <div class="float-right">
-                        <a href="auth-forgot-password.html" class="text-small">
+                        <a href="index.php?auth=forget" class="text-small">
                           Forgot Password?
                         </a>
                       </div>
