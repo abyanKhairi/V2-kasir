@@ -33,7 +33,7 @@ if (isset($_POST["regis"])) {
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Register &mdash; Stisla</title>
+    <title>Register &mdash; Zkasir</title>
 
     <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/modules/fontawesome/css/all.min.css">

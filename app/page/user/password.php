@@ -10,7 +10,7 @@ if (isset($_POST["reset"])) {
     $password = $_POST["password"];
 
     if ($crudUser->resetPassword($id_user, $username, $password, $email)) {
-        echo '<script>window.location.href ="index.php?"</script>';
+        // echo '<script>window.location.href ="index.php?"</script>';
     } else {
         echo '<script>alert("Gak bisa")</script>';
     }

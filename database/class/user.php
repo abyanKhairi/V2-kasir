@@ -95,9 +95,9 @@ class user
             $stmt->bindParam(":email", $email);
             $stmt->bindParam(":id_user", $id_user);
             $stmt->execute();
-            $stmt->fetch();
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($stmt->rowCount()  == 1) {
+            if ($data) {
                 $this->updatePassword($id_user, $password);
                 return true;
             } else {
@@ -114,9 +114,8 @@ class user
         try {
 
             $hash = password_hash($password, PASSWORD_DEFAULT);
-
             $stmt = $this->db->prepare("UPDATE user SET password = :password WHERE id_user = :id_user");
-            $stmt->bindParam(":password", $hash);
+            $stmt->bindParam(":password", $password);
             $stmt->bindParam(":id_user", $id_user);
             $stmt->execute();
             return true;

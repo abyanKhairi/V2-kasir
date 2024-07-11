@@ -86,7 +86,6 @@ class Auth
         }
     }
 
-
     // cek apabila user sudah login atau belum
     public function isLoggedIn()
     {
@@ -95,7 +94,6 @@ class Auth
             return true;
         }
     }
-
 
     // mendapatkan data user yang login saat ini
     public function getUser()
@@ -145,20 +143,21 @@ class Auth
         }
     }
 
-    public function forgetPassword($username, $email, $password)
+    public function forgotPassword($username, $email, $password)
     {
         try {
             $stmt = $this->db->prepare("SELECT * FROM user WHERE username = :username AND email = :email");
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":email", $email);
             $stmt->execute();
-            $stmt->fetch();
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($stmt->rowCount()  > 0) {
-                $this->newPassword($username, $email, $password);
+            if ($data) {
+                $this->NewPassword($username, $email, $password);
+                echo "Username Dan Email sesuai passowrd diganti";
                 return true;
             } else {
-                echo "Oi";
+                echo "Username Dan Email yang dimasukkan tidak sesuai";
                 return false;
             }
         } catch (PDOException $e) {
@@ -166,36 +165,20 @@ class Auth
         }
     }
 
-
-    public function newPassword($username, $email, $password)
+    public function NewPassword($username, $email, $password)
     {
         try {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $this->db->prepare("UPDATE user SET password = :password WHERE username = :username AND email = :email");
-            $stmt->bindParam(":password", $password);
-            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":password", $hash);
+            $stmt->bindParam(":username", $$username);
             $stmt->bindParam(":email", $email);
             $stmt->execute();
+            return true;
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
-
-
-    public function oldPassword($password)
-    {
-        try {
-
-            $thi = password_verify($password, PASSWORD_DEFAULT);
-
-            $stmt = $this->db->prepare("SELECT password FROM user WHERE password = :password");
-            $stmt->bindParam(":password", $thi);
-            $stmt->execute();
-            return $stmt->fetch();
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
-    }
-
 
     //pesan error
     public function getError()

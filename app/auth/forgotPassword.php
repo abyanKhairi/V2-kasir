@@ -1,17 +1,34 @@
+<?php
+$pdo = Koneksi::connect();
+$user = Auth::getInstance($pdo);
+
+if (isset($_POST["reset"])) {
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    if ($user->forgotPassword($username, $email, $password)) {
+        echo "<script>alert('bisa')</script>";
+    } else {
+        echo "<script>alert('enggak')</script>";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Login &mdash; Stisla</title>
+    <title>Forgot Password</title>
     <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/modules/fontawesome/css/all.min.css">
     <link rel="stylesheet" href=".../assets/modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href=".../assets/css/components.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-
 </head>
 
 <body>
@@ -67,7 +84,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" name="login" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                        <button type="submit" name="reset" class="btn btn-primary btn-lg btn-block" tabindex="4">
                                             Login
                                         </button>
                                     </div>
@@ -85,7 +102,6 @@
             </div>
         </section>
     </div>
-
 
     <script src="../assets/modules/jquery.min.js"></script>
     <script src="../assets/modules/popper.js"></script>

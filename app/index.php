@@ -17,7 +17,7 @@ if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
             include 'auth/register.php';
             break;
         case 'forget':
-            include 'auth/forget_password.php';
+            include 'auth/forgotPassword.php';
             break;
         default:
             include 'auth/login.php';
