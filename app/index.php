@@ -8,8 +8,8 @@ $currentUser = $user->getUser();
 
 // Cek user apakah sudah login atau belum
 if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
-    $log = isset($_GET['auth']) ? $_GET['auth'] : 'auth';
-    switch ($log) {
+    $login = isset($_GET['auth']) ? $_GET['auth'] : 'auth';
+    switch ($login) {
         case 'login':
             include 'auth/login.php';
             break;

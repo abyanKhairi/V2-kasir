@@ -62,6 +62,7 @@ class Auth
     {
         try {
             $stmt = $this->db->prepare("SELECT * FROM user WHERE username = :username");
+            // mysqli_real_escape_string($this->db,$username);
             $stmt->bindParam(":username", $username);
             $stmt->execute();
             $data = $stmt->fetch();

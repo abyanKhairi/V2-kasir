@@ -15,6 +15,11 @@ class Koneksi
 
     public static function connect()
     {
+        set_exception_handler(function ($e) {
+            error_log($e->getMessage());
+            exit('Yang Bener Nulisnya Kocak');
+        });
+
         if (self::$instance == null) {
             try {
                 self::$instance = new PDO("mysql:host=" . self::$dbHost . ";" . "dbname=" . self::$dbName, self::$dbUser, self::$dbPass);
