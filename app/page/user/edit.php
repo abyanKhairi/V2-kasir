@@ -81,7 +81,7 @@ if (isset($id_user)) {
                         </button>
                         <br>
                         <div class="text-center">
-                            <a href="index.php?page=user&act=password&id=<?= $id_user ?>">Change Password</a>
+                            <a href="index.php?page=user&act=confirm-Password&id=<?= $id_user ?>">Change Password</a>
                         </div>
                     </div>
                 </div>

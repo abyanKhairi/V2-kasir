@@ -87,6 +87,29 @@ class user
         return true;
     }
 
+    //pengecekan sebelum ganti passsoerd apakah password yang lama sesuai dengan milik user
+    public function confirmPassword($id_user, $oldPassword)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM user WHERE id_user = :id_user");
+            $stmt->bindParam(":id_user", $id_user);
+            $stmt->execute();
+            $data = $stmt->fetch();
+
+            if ($stmt->rowCount() == 1) {
+                if (password_verify($oldPassword, $data["password"])) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            // return true;
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
     public function resetPassword($id_user, $username, $password, $email)
     {
         try {
