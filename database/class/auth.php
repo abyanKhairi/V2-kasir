@@ -171,7 +171,7 @@ class Auth
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $this->db->prepare("UPDATE user SET password = :password WHERE username = :username AND email = :email");
             $stmt->bindParam(":password", $hash);
-            $stmt->bindParam(":username", $$username);
+            $stmt->bindParam(":username", $username);
             $stmt->bindParam(":email", $email);
             $stmt->execute();
             return true;
