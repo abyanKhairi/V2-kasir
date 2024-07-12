@@ -33,7 +33,7 @@ if (isset($_POST["submit"])) {
 </div>
 
 <div class="row">
-   <div class="col-12 col-md-6 col-lg-8">
+   <div class="col-12 col-md-2o col-lg-20">
       <div class="card">
          <form method="post">
             <div class="card-header">

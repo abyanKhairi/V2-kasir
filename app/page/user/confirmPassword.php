@@ -14,7 +14,7 @@ if (isset($_POST["reset"])) {
         </script>
 <?php
     } else {
-        echo '<script>alert("Gak bisa")</script>';
+        $error = $crudUser->getError();
     }
 }
 
@@ -23,6 +23,14 @@ if (isset($_POST["reset"])) {
 <div class="section-header">
     <h1>Change Password</h1>
 </div>
+
+<?php
+if (isset($error)) {
+    echo "";
+}
+
+?>
+
 <div class="row">
     <div class="card">
         <form method="POST">
@@ -38,11 +46,10 @@ if (isset($_POST["reset"])) {
                         <div class="form-group col-md-12">
                             <label for="password">Password</label>
                             <input id="password" type="password" class="form-control" name="password" autocomplete="off" placeholder="Confirm Password" required>
-                            <div class="invalid-feedback">
-                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" name="reset">
                         Confirm Password

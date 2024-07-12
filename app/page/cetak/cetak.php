@@ -11,6 +11,7 @@ $get = $bayar->getTransaksi($cek["id_transaksi"]);
 $rows = $bayar->getStruk($cek["id_transaksi"]);
 $mpdf = new \Mpdf\Mpdf();
 ?>
+
 <?php
 $html = '<!DOCTYPE html>
 <html lang="en">

@@ -33,6 +33,8 @@ if (!$user->isLoggedIn() && $user->isLoggedIn() == false) {
         case 'transaksi':
             include 'page/transaksi/report.php';
     }
+
+
 ?>
     <!DOCTYPE html>
     <html lang="en">

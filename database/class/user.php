@@ -160,4 +160,9 @@ class user
             echo $e->getMessage();
         }
     }
+
+    public function getError()
+    {
+        return true;
+    }
 }

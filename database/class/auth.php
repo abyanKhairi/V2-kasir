@@ -29,6 +29,8 @@ class Auth
     public function register($nama, $username, $email, $password, $alamat, $not_tlp, $role)
     {
         try {
+
+            $this->cekUsernameDanEmail($username, $email);
             // enkripsi
             $hashPasswd = password_hash($password, PASSWORD_DEFAULT);
             //Masukkan user baru ke database
@@ -118,8 +120,6 @@ class Auth
         //hapus Session
         unset($_SESSION['user_session']);
         session_destroy();
-
-
         return true;
     }
 

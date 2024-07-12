@@ -17,7 +17,7 @@ if (isset($_POST['tambahTransaksi'])) {
 </div>
 
 <div class="row">
-    <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-4">
+    <div class="col-12 col-md-20 col-lg-20">
         <div class="card">
             <form method="POST">
                 <div class="form-group">

@@ -24,7 +24,7 @@ if (isset($_POST["tambah"])) {
 </div>
 
 <div class="row">
-    <div class="col-12 col-md-6 col-lg-10">
+    <div class="col-12 col-md-20 col-lg-20">
         <div class="card">
             <form method="POST" enctype="multipart/form-data">
                 <div class="card-body">

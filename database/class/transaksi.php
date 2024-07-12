@@ -93,6 +93,16 @@ class Transaksi
     }
 
 
+    /*
+
+
+Bagian Detail Transaksi
+
+
+
+*/
+
+
     //mengambil data produk
     public function getProduk($que, $id_transaksi)
     {
@@ -208,7 +218,6 @@ class Transaksi
                 echo "Data Yang ingin Dihapus Tidak Ada";
                 return false;
             }
-
             $qty = $cek['qty'];
 
             //hapus data 
