@@ -17,7 +17,7 @@ class Koneksi
     {
         set_exception_handler(function ($e) {
             error_log($e->getMessage());
-            exit('Yang Bener Nulisnya Kocak');
+            exit('something Wrong');
         });
 
         if (self::$instance == null) {
