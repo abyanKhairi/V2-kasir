@@ -4,7 +4,7 @@ $crudUser = user::getInstance($pdo);
 
 $id_user = $_GET["id"];
 
-if (isset($_POST["reset"])) {
+if (isset($_POST["confirm"])) {
     $password = $_POST["password"];
 
     if ($crudUser->confirmPassword($id_user, $password)) {
@@ -51,7 +51,7 @@ if (isset($error)) {
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" name="reset">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" name="confirm">
                         Confirm Password
                     </button>
                 </div>

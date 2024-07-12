@@ -110,12 +110,10 @@ class user
         }
     }
 
-    public function resetPassword($id_user, $username, $password, $email)
+    public function resetPassword($id_user, $password)
     {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM user WHERE username = :username AND email = :email AND id_user = :id_user");
-            $stmt->bindParam(":username", $username);
-            $stmt->bindParam(":email", $email);
+            $stmt = $this->db->prepare("SELECT * FROM user WHERE id_user = :id_user");
             $stmt->bindParam(":id_user", $id_user);
             $stmt->execute();
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
