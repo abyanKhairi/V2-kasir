@@ -106,26 +106,24 @@ Buka Git Bash dan jalankan code dibawah ini
 ### Installation
 
 1. Clone the Reporepository
+
+   > Salin link untuk clone repository github yang ingin didownload
+
    ```sh
    git clone https://github.com/abyanKhairi/V2-kasir.git
    ```
+
 2. Go Into The Repository
 
-   ```sh
-    cd repository-name
-   ```
-
-3. Install NPM packages
+   > Masuk kedalam file yang akan jadi tempat file repository file github
 
    ```sh
-   npm install
+    cd file-name
    ```
 
-4. Run
-   ```sh
-   npm start
-   ```
-   <p align="right">(<a href="#readme-top">back to top</a>)</p>
+3. Atau download file zip
+
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Acknowledgments
 
