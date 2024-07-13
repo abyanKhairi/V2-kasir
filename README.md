@@ -105,15 +105,9 @@ Buka Git Bash dan jalankan code dibawah ini
 
 ### Installation
 
-1. Clone the Reporepository
+1. Open Git Bash in file where you want to download the file
 
-   > Salin link untuk clone repository github yang ingin didownload
-
-   ```sh
-   git clone https://github.com/abyanKhairi/V2-kasir.git
-   ```
-
-2. Go Into The Repository
+2. Go Into File you want donload the file
 
    > Masuk kedalam file yang akan jadi tempat file repository file github
 
@@ -121,7 +115,15 @@ Buka Git Bash dan jalankan code dibawah ini
     cd file-name
    ```
 
-3. Atau download file zip
+3. Clone the Reporepository
+
+   > Salin link untuk clone repository github yang ingin didownload
+
+   ```sh
+   git clone https://github.com/abyanKhairi/V2-kasir.git
+   ```
+
+4. Or download the zip file
 
   <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
