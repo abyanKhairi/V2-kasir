@@ -15,10 +15,11 @@ class Koneksi
 
     public static function connect()
     {
-        set_exception_handler(function ($e) {
-            error_log($e->getMessage());
-            exit('something Wrong');
-        });
+        //Mengganti Pesan error
+        // set_exception_handler(function ($e) {
+        //     error_log($e->getMessage());
+        //     exit('something Wrong');
+        // });
 
         if (self::$instance == null) {
             try {
