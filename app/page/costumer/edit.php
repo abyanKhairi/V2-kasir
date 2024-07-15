@@ -7,11 +7,11 @@ $id_pembeli = $_GET['id'];
 $getMember = $costumer->showMember($id_pembeli);
 
 if (isset($_POST["edit"])) {
-   $nama = $_POST['nama'];
-   $alamat = $_POST['alamat'];
-   $no_tlp = $_POST['no_tlp'];
-   $anggota = $_POST['member'];
-   $id_member = $_POST['id_member'];
+   $nama = htmlspecialchars($_POST['nama']);
+   $alamat = htmlspecialchars($_POST['alamat']);
+   $no_tlp = htmlspecialchars($_POST['no_tlp']);
+   $anggota = htmlspecialchars($_POST['member']);
+   $id_member = htmlspecialchars($_POST['id_member']);
 
    if ($costumer->update($id_pembeli, $nama, $alamat, $no_tlp, $anggota, $id_member)) {
 ?>

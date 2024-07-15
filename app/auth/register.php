@@ -9,12 +9,12 @@ if ($user->isLoggedIn()) {
 }
 
 if (isset($_POST["regis"])) {
-    $nama = $_POST["nama"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $email = $_POST["email"];
-    $alamat = $_POST["alamat"];
-    $not_tlp = $_POST["not_tlp"];
+    $nama = htmlspecialchars($_POST["nama"]);
+    $username = htmlspecialchars($_POST["username"]);
+    $password = htmlspecialchars($_POST["password"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $alamat = htmlspecialchars($_POST["alamat"]);
+    $not_tlp = htmlspecialchars($_POST["not_tlp"]);
     $role = $_POST["role"];
 
     if ($user->register($nama, $username, $email, $password, $alamat, $not_tlp, $role)) {

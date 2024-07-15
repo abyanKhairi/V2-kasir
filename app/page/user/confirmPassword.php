@@ -5,7 +5,7 @@ $crudUser = user::getInstance($pdo);
 $id_user = $_GET["id"];
 
 if (isset($_POST["confirm"])) {
-    $password = $_POST["password"];
+    $password = htmlspecialchars($_POST["password"]);
 
     if ($crudUser->confirmPassword($id_user, $password)) {
 ?>

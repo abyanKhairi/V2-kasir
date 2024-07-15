@@ -5,9 +5,9 @@ $produk = produk::getInsatance($pdo);
 $id_produk = $_GET['id'];
 
 if (isset($_POST['update'])) {
-    $nama_produk = $_POST['nama_produk'];
-    $jumlah_produk = $_POST['jumlah_produk'];
-    $harga_produk = $_POST['harga_produk'];
+    $nama_produk = htmlspecialchars($_POST['nama_produk']);
+    $jumlah_produk = htmlspecialchars($_POST['jumlah_produk']);
+    $harga_produk = htmlspecialchars($_POST['harga_produk']);
 
 
 

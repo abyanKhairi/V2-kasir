@@ -4,9 +4,9 @@ $pdo = Koneksi::connect();
 
 if (isset($_POST["submit"])) {
    $nama = $_POST['nama'];
-   $alamat = $_POST['alamat'];
-   $no_tlp = $_POST['no_tlp'];
-   $member = $_POST['member'];
+   $alamat = htmlspecialchars($_POST['alamat']);
+   $no_tlp = htmlspecialchars($_POST['no_tlp']);
+   $member = htmlspecialchars($_POST['member']);
 
    $costumer = costumer::getInsatance($pdo);
 

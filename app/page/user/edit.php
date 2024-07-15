@@ -5,11 +5,11 @@ $crudUser = user::getInstance($pdo);
 $id_user = $_GET['id'];
 
 if (isset($_POST["edit"])) {
-    $nama = $_POST["nama"];
-    $username = $_POST["username"];
-    $email = $_POST["email"];
-    $alamat = $_POST["alamat"];
-    $not_tlp = $_POST["not_tlp"];
+    $nama = htmlspecialchars($_POST["nama"]);
+    $username = htmlspecialchars($_POST["username"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $alamat = htmlspecialchars($_POST["alamat"]);
+    $not_tlp = htmlspecialchars($_POST["not_tlp"]);
     $role = $_POST["role"];
     if ($crudUser->update($id_user, $nama, $username, $email, $alamat, $not_tlp, $role)) {
 

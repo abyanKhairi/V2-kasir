@@ -3,8 +3,8 @@ $pdo = Koneksi::connect();
 $transaksi = Transaksi::getInstance($pdo);
 
 if (isset($_POST['tambahTransaksi'])) {
-    $id_pembeli = $_POST['id_pembeli'];
-    $tanggal = $_POST['tanggal'];
+    $id_pembeli = htmlspecialchars($_POST['id_pembeli']);
+    $tanggal = htmlspecialchars($_POST['tanggal']);
 
 
     if ($transaksi->tambahTransaksi($id_pembeli, $tanggal)) {

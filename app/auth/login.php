@@ -3,8 +3,8 @@ $pdo = Koneksi::connect();
 $user = Auth::getInstance($pdo);
 
 if (isset($_POST["login"])) {
-  $username = $_POST["username"];
-  $password = $_POST["password"];
+  $username = htmlspecialchars($_POST["username"]);
+  $password = htmlspecialchars($_POST["password"]);
 
   if ($user->login($username, $password)) {
     header("Location: ../app/index.php");

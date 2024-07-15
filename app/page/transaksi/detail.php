@@ -6,9 +6,9 @@ $id_transaksi = $_GET['id'];
 
 if (isset($_POST['tambahProduct'])) {
 
-    $id_produk = $_POST['id_produk'];
-    $id_transaksi = $_POST['id_transaksi'];
-    $qty = $_POST['qty'];
+    $id_produk = htmlspecialchars($_POST['id_produk']);
+    $id_transaksi = htmlspecialchars($_POST['id_transaksi']);
+    $qty = htmlspecialchars($_POST['qty']);
 
     $transaksi->tambahDetail($id_transaksi, $id_produk, $qty);
 }

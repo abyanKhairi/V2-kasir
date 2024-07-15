@@ -74,7 +74,7 @@ switch ($pesan) {
                 $paging = Page::getInstance($pdo, 'product');
 
                 if (isset($_POST['cari'])) {
-                    $key = $_POST['keyword'];
+                    $key = htmlspecialchars($_POST['keyword']);
                 }
                 $rows = $paging->getData(@$key, 'nama_produk');
                 $pages = $paging->getPageNumber();

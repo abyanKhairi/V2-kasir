@@ -3,9 +3,9 @@ $pdo = Koneksi::connect();
 $user = Auth::getInstance($pdo);
 
 if (isset($_POST["reset"])) {
-    $username = $_POST["username"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+    $username = htmlspecialchars($_POST["username"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
 
     if ($user->forgotPassword($username, $email, $password)) {
         echo "<script>alert('bisa')</script>";

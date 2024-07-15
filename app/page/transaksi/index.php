@@ -5,7 +5,7 @@
 
 <?php
 if (isset($_POST['cari'])) {
-    $key = $_POST['keyword'];
+    $key = htmlspecialchars($_POST['keyword']);
 }
 $pesan =  isset($_GET['pesan']) ? $_GET['pesan'] : '';
 

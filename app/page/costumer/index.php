@@ -6,7 +6,7 @@ $costumer = costumer::getInsatance($pdo);
 $paging = Page::getInstance($pdo, 'pembeli');
 
 if (isset($_POST['cari'])) {
-    $key = $_POST['keyword'];
+    $key = htmlspecialchars($_POST['keyword']);
 }
 $rows = $paging->getData(@$key, 'nama');
 $pages = $paging->getPageNumber();

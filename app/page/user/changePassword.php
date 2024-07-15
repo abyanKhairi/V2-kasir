@@ -7,7 +7,7 @@ $id_user = $_GET["id"];
 if (isset($_POST["reset"])) {
     // $username = $_POST["username"];
     // $email = $_POST["email"];
-    $password = $_POST["password"];
+    $password = htmlspecialchars($_POST["password"]);
 
     if ($crudUser->resetPassword($id_user, $password)) {
         // echo '<script>window.location.href ="index.php?"</script>';

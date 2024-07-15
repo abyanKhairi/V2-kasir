@@ -34,7 +34,7 @@
             <?php
             $pdo = Koneksi::connect();
             if (isset($_POST['cari'])) {
-                $key = $_POST['keyword'];
+                $key = htmlspecialchars($_POST['keyword']);
             }
             $paging = Page::getInstance($pdo, 'user');
             $rows = $paging->getdata(@$key, 'nama');
