@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/abyanKhairi/V2-kasir">
-    <img src="assets/img/logo.png" alt="Logo" width="80" height="80">
+    <img src="assets/img/keranjang.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">ZKasir</h3>
